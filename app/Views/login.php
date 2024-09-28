@@ -21,7 +21,9 @@
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
     <title>
-        MEDCON
+        <?php 
+            echo $title;
+        ?>
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -32,21 +34,98 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    
+
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bs-blue: #63B3ED;
+            --bs-indigo: #596CFF;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #F56565;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #FBD38D;
+            --bs-green: #81E6D9;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-gray-100: #f8f9fa;
+            --bs-gray-200: #f0f2f5;
+            --bs-gray-300: #dee2e6;
+            --bs-gray-400: #ced4da;
+            --bs-gray-500: #adb5bd;
+            --bs-gray-600: #6c757d;
+            --bs-gray-700: #495057;
+            --bs-gray-800: #343a40;
+            --bs-gray-900: #212529;
+            /* --bs-primary: #e91e63; */
+            --bs-primary: #1a2dd8;
+            --bs-secondary: #7b809a;
+            --bs-success: #4CAF50;
+            --bs-info: #1A73E8;
+            --bs-warning: #fb8c00;
+            --bs-danger: #F44335;
+            --bs-light: #f0f2f5;
+            --bs-dark: #344767;
+            --bs-white: #fff;
+            --bs-dark-blue: #1A237E;
+            --bs-primary-rgb: 125, 25, 25;
+            --bs-secondary-rgb: , 128, 154;
+            --bs-success-rgb: 76, 175, 80;
+            --bs-info-rgb: 26, 115, 232;
+            --bs-warning-rgb: 251, 140, 0;
+            --bs-danger-rgb: 244, 67, 53;
+            --bs-light-rgb: 240, 242, 245;
+            --bs-dark-rgb: 52, 71, 103;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-dark-blue-rgb: 26, 35, 126;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-black-rgb: 0, 0, 0;
+            --bs-body-color-rgb: , 128, 154;
+            --bs-body-bg-rgb: 255, 255, 255;
+            --bs-font-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --bs-body-font-family: var(--bs-font-sans-serif);
+            --bs-body-font-size: 1rem;
+            --bs-body-font-weight: 400;
+            --bs-body-line-height: 1.5;
+            --bs-body-color: #7b809a;
+            --bs-body-bg: #fff;
+            --bs-border-width: 1px;
+            --bs-border-style: solid;
+            --bs-border-color: #dee2e6;
+            --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+            --bs-border-radius: 0.375rem;
+            --bs-border-radius-sm: 0.125rem;
+            --bs-border-radius-lg: 0.5rem;
+            --bs-border-radius-xl: 0.75rem;
+            --bs-border-radius-2xl: 1rem;
+            --bs-border-radius-pill: 50rem;
+            --bs-link-color: #272d86;
+            --bs-link-hover-color: #3e6094;
+            --bs-code-color: #d63384;
+            --bs-highlight-bg: #fcf8e3;
+            }
+            .text-gradient.text-primary {
+                background-image: linear-gradient(195deg, #bea7af, #1b57d8);
+            }
+
+            .bg-gradient-primary {
+                background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+            }
+    </style>
+
 
 </head>
 
 <body class="bg-gray-200">
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                <!-- Navbar -->
-
-                <!-- End Navbar -->
-            </div>
-        </div>
-    </div>
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
             <span class="mask bg-gradient-dark opacity-6"></span>
@@ -56,9 +135,16 @@
                         <div class="card z-index-0 fadeIn3 fadeInBottom">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div class="col-4 justify-content-center">
+                                            <img src="<?php echo base_url() . 'assets/img/NEMSU.png' ?>" alt="Nemsu Logo" class="img-thumbnail mx-auto">
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                   
                                     <h2 class="text-white text-center font-weight-bolder">MEDCON</h2>
                                     <h3 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h3>
-
                                 </div>
                             </div>
                             <div class="card-body">
@@ -106,10 +192,10 @@
         </div>
     </main>
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/core/popper.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/core/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -122,7 +208,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script src="<?php echo base_url() ?>/assets/js/material-dashboard.min.js?v=3.1.0"></script>
 </body>
 
 </html>

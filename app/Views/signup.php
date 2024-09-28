@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
     <title>
-        Material Dashboard 2 by Creative Tim
+        <?php echo $title; ?>
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -35,31 +35,87 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
 
+
+
+
+    <!-- Custom -->
+  
+
 </head>
 
-<body class="">
+<body class="bg-gray-200">
 
     <main class="main-content  mt-0">
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../assets/img/illustrations/illustration-signup.jpg'); background-size: cover;">
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-                            <div class="card card-plain">
-                                <div class="card-header">
+                        
+                        <div class="col-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
+                            <div class="card card-plain border">
+                                <div class="card-header bg-white">
                                     <h4 class="font-weight-bolder">Sign Up</h4>
-                                    <p class="mb-0">Enter your email and password to register</p>
+                                    <p class="mb-0">Please fill data honestly</p>
                                 </div>
-                                <div class="card-body">
-                                    <form role="form">
+                                <div class="card-body bg-white">
+                                    <form role="form" action="<?php echo $current_page . '/login' ?>">
+                                        <div class="row">
+                                            <div class="col">
+                                            
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <label class="form-label">First Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col">
+                                            
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <label class="form-label">Middle Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col">
+                                            
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <label class="form-label">Last Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-group flex-nowrap input-group-outline mb-3">
+                                                    <label class="form-label" id ="birthdate_label"></label>
+                                                    <input type="date" class="form-control is-valid" value ="birthdate" id = "birthdate_input">
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="col">
+                                            
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <label class="form-label">Phone Number</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Name</label>
+                                            <label class="form-label">Address</label>
                                             <input type="text" class="form-control">
                                         </div>
+
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
                                             <input type="email" class="form-control">
@@ -74,7 +130,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                                <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
                                         <a href="<?php echo $signin ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
@@ -88,23 +144,24 @@
         </section>
     </main>
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/core/popper.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/core/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
+       
+        document.getElementById('birthdate_input').addEventListener('focus', function(){
+            document.getElementById('birthdate_label').innerHTML = "Birthdate";
+        });
+        document.getElementById('birthdate_input').addEventListener('blur', function(){
+            document.getElementById('birthdate_label').innerHTML = "";
+        });
     </script>
+    
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script src="<?php echo base_url() ?>/assets/js/material-dashboard.min.js?v=3.1.0"></script>
 </body>
 
 </html>

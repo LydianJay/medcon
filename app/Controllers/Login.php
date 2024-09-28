@@ -14,6 +14,7 @@ class Login extends BaseController
         $this->data['signin']           = site_url('');
         $this->data['signup']           = site_url('signup');
         $this->data['web_owner']        = 'NEMSU Students';
+        $this->data['title']            = 'MEDCON';
     }
 
     public function index(): string
