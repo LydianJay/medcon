@@ -61,18 +61,18 @@
                                     <form role="form" action="<?php echo $current_page . '/login' ?>">
                                         <div class="row">
                                             <div class="col">
-                                            
+                                                <label class="form-label my-0">First Name</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label">First Name</label>
+                                                    
                                                     <input type="text" class="form-control">
                                                 </div>
 
                                             </div>
 
                                             <div class="col">
-                                            
+                                                <label class="form-label my-0">Middle Name</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label">Middle Name</label>
+                                                    
                                                     <input type="text" class="form-control">
                                                 </div>
 
@@ -80,41 +80,90 @@
 
 
                                             <div class="col">
+                                                <label class="form-label my-0">Last Name</label>
                                             
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label">Last Name</label>
                                                     <input type="text" class="form-control">
                                                 </div>
 
                                             </div>
-
-
 
                                         </div>
 
                                         <div class="row">
                                             <div class="col">
-                                                <div class="input-group flex-nowrap input-group-outline mb-3">
-                                                    <label class="form-label" id ="birthdate_label"></label>
-                                                    <input type="date" class="form-control is-valid" value ="birthdate" id = "birthdate_input">
+                                                <label class="form-label my-0">Course</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <select class="form-select px-2" id="inputGroupSelect01">
+                                                        <option value="0" selected>Im a faculty</option>
+                                                        <?php for($i = 0; $i < count($courseList); $i++ ) {?>
+                                                            <option <?php echo "value=" . $courseList[$i]->courseID; ?>> 
+                                                                <?php echo $courseList[$i]->courseABR;?>
+                                                            </option>
+                                                            
+                                                        <?php }?>
+                                                    </select>
                                                 </div>
-                                                
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label my-0">Year Level</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <select class="form-select px-2" id="">
+                                                        <?php 
+                                                            for($i = 0; $i <= 5; $i++){
+                                                                if ($i == 0){
+                                                                    echo "<option selected  value='$i'>Faculty</option>";
+                                                                }
+                                                                else {
+                                                                   echo  "<option value='$i'>$i</option>";
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label my-0">Role</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <select class="form-select px-2" id="">
+                                                        <option value="<?php echo $roleList[0]->groupID; ?>" selected>
+                                                            <?php echo $roleList[0]->groupName; ?>
+                                                        </option>
+                                                        
+
+                                                        <?php for($i = 1; $i < count($roleList); $i++) {?>
+                                                            <option value="<?php echo $roleList[$i]->groupID; ?>">
+                                                                <?php echo $roleList[$i]->groupName; ?>
+                                                            </option>
+
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label class="form-label my-0">Current Address</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label my-0">Phone Number</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <input type="text" class="form-control" placeholder="09123456789">
+                                                </div>
                                             </div>
 
                                             <div class="col">
-                                            
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label">Phone Number</label>
-                                                    <input type="text" class="form-control">
+                                                <label class="form-label my-0">Birthdate</label>
+                                                <div class="input-group flex-nowrap input-group-outline mb-3">
+                                                    <input type="date" class="form-control is-valid" value ="birthdate" id = "birthdate_input">
                                                 </div>
-
                                             </div>
-
                                         </div>
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Address</label>
-                                            <input type="text" class="form-control">
-                                        </div>
+                                      
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
@@ -124,7 +173,10 @@
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control">
                                         </div>
-
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
                                         <div class="text-center">
                                             <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                         </div>
@@ -148,15 +200,7 @@
     <script src="<?php echo base_url() ?>/assets/js/core/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-       
-        document.getElementById('birthdate_input').addEventListener('focus', function(){
-            document.getElementById('birthdate_label').innerHTML = "Birthdate";
-        });
-        document.getElementById('birthdate_input').addEventListener('blur', function(){
-            document.getElementById('birthdate_label').innerHTML = "";
-        });
-    </script>
+
     
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
