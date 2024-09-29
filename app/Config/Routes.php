@@ -7,3 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/signup', 'Home::sign_up');
+$routes->post('/register', 'Home::register');

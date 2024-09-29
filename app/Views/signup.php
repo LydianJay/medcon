@@ -58,13 +58,13 @@
                                     <p class="mb-0">Please fill data honestly</p>
                                 </div>
                                 <div class="card-body bg-white">
-                                    <form role="form" action="<?php echo $current_page . '/login' ?>">
+                                    <form role="form" action="<?php echo $register ?>" method="POST">
                                         <div class="row">
                                             <div class="col">
-                                                <label class="form-label my-0">First Name</label>
+                                                <label class="form-label my-0">First Name </label>
                                                 <div class="input-group input-group-outline mb-3">
                                                     
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="fname" required >
                                                 </div>
 
                                             </div>
@@ -73,7 +73,7 @@
                                                 <label class="form-label my-0">Middle Name</label>
                                                 <div class="input-group input-group-outline mb-3">
                                                     
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="mname" required>
                                                 </div>
 
                                             </div>
@@ -83,7 +83,7 @@
                                                 <label class="form-label my-0">Last Name</label>
                                             
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="lname" required>
                                                 </div>
 
                                             </div>
@@ -94,7 +94,7 @@
                                             <div class="col">
                                                 <label class="form-label my-0">Course</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" id="inputGroupSelect01">
+                                                    <select class="form-select px-2" name="course">
                                                         <option value="0" selected>Im a faculty</option>
                                                         <?php for($i = 0; $i < count($courseList); $i++ ) {?>
                                                             <option <?php echo "value=" . $courseList[$i]->courseID; ?>> 
@@ -108,7 +108,7 @@
                                             <div class="col">
                                                 <label class="form-label my-0">Year Level</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" id="">
+                                                    <select class="form-select px-2" name="year" >
                                                         <?php 
                                                             for($i = 0; $i <= 5; $i++){
                                                                 if ($i == 0){
@@ -125,7 +125,7 @@
                                             <div class="col">
                                                 <label class="form-label my-0">Role</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" id="">
+                                                    <select class="form-select px-2" name="role">
                                                         <option value="<?php echo $roleList[0]->groupID; ?>" selected>
                                                             <?php echo $roleList[0]->groupName; ?>
                                                         </option>
@@ -146,20 +146,20 @@
                                             <div class="col-6">
                                                 <label class="form-label my-0">Current Address</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="address" required>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <label class="form-label my-0">Phone Number</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control" placeholder="09123456789">
+                                                    <input type="text" class="form-control" placeholder="09123456789" name="phone" required>
                                                 </div>
                                             </div>
 
                                             <div class="col">
                                                 <label class="form-label my-0">Birthdate</label>
                                                 <div class="input-group flex-nowrap input-group-outline mb-3">
-                                                    <input type="date" class="form-control is-valid" value ="birthdate" id = "birthdate_input">
+                                                    <input type="date" class="form-control is-valid" value ="birthdate" name="birthdate" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,18 +167,18 @@
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control">
+                                            <input type="email" class="form-control" name="emal" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" name="password" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" name="confirmpassword" required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                         </div>
                                     </form>
                                 </div>
