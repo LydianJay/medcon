@@ -74,7 +74,7 @@
 
                                 </div>
                                 <div class="card-body bg-white">
-                                    <form role="form" action="<?php echo $register ?>" method="POST">
+                                    <form role="form" action="<?php echo $registerfaculty ?>" method="POST">
 
 
 
@@ -97,29 +97,26 @@
                                                     <input type="text" class="form-control" name="lname" >
                                                 </div>
 
+                                                <label class="form-label my-0">Job Designation</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label my-0">Current Address</label>
-                                                    <input type="text" class="form-control" name="address" >
+                                                    <select class="form-select px-2" name="group"  >
+                                                        <option value="<?php echo $designation[0]->groupID; ?>" selected> 
+                                                            <?php echo $designation[0]->groupName; ?>
+                                                        </option>
+                                                        <?php 
+                                                            for($i = 1; $i < count($designation); $i++){
+                                                        ?>
+                                                        <option value="<?php echo $designation[$i]->groupID; ?>"> 
+                                                            <?php echo $designation[$i]->groupName; ?>
+                                                        </option>
+                                                        <?php }?>
+                                                    </select>
                                                 </div>
+
+                                                
                                         </div>    
                                         
-                                        <div class="row">
-
-                                            <div class="col">
-                                                <label class="form-label my-0">Phone Number</label>
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone">
-                                                </div>
-                                            </div>
-
-                                            <div class="col">
-                                                <label class="form-label my-0">Birthdate</label>
-                                                <div class="input-group flex-nowrap input-group-outline mb-3">
-                                                    <input type="date" class="form-control" value ="birthdate" name="birthdate" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                      
+                                    
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
