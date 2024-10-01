@@ -82,19 +82,19 @@
                                                 
                                                 <div class="input-group input-group-outline mb-3">
                                                     <label class="form-label my-0">First Name </label>
-                                                    <input type="text" class="form-control" name="fname"  >
+                                                    <input type="text" class="form-control" name="fname"  required>
                                                 </div>
 
                                                 
                                                 <div class="input-group input-group-outline mb-3">
                                                     <label class="form-label my-0">Middle Name</label>
-                                                    <input type="text" class="form-control" name="mname" >
+                                                    <input type="text" class="form-control" name="mname" required>
                                                 </div>
 
                                                 
                                                 <div class="input-group input-group-outline mb-3">
                                                     <label class="form-label my-0">Last Name</label>
-                                                    <input type="text" class="form-control" name="lname" >
+                                                    <input type="text" class="form-control" name="lname" required>
                                                 </div>
 
                                                 <label class="form-label my-0">Job Designation</label>
@@ -120,15 +120,15 @@
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" >
+                                            <input type="email" class="form-control" name="email" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password">
+                                            <input type="password" class="form-control" name="password" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" name="confirm" >
+                                            <input type="password" class="form-control" name="confirm" required>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
