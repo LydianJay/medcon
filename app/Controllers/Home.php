@@ -13,7 +13,7 @@ class Home extends BaseController
         
         $this->db                       = \Config\Database::connect();
         $this->data['current_page']     = site_url('login');
-        $this->data['signin']           = site_url('');
+        $this->data['signin']           = site_url('signin');
         $this->data['signup']           = site_url('signup');
         $this->data['register']         = site_url('register');
         $this->data['option']           = site_url('optionview');
@@ -34,8 +34,11 @@ class Home extends BaseController
 
     public function signin()
     {
-        $username   = $this->request->getPost('username');
+        $email      = $this->request->getPost('email');
         $password   = $this->request->getPost('password');
+        $sha256     = hash('sha256', $password );
+       
+        
     }
 
     public function sign_up()

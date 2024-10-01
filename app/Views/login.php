@@ -148,19 +148,18 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" method="POST" class="text-start" action="<?php echo $current_page . '/login' ?>">
+                                <form role="form" method="POST" class="text-start" action="<?php echo $signin ?>">
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control">
+                                        <label class="form-label" >Email</label>
+                                        <input type="email" class="form-control" name="email" required>
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" class="form-control" name="password" required>
                                     </div>
 
                                     <div class="text-center">
-
-                                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
