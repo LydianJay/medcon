@@ -7,4 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/signup', 'Home::sign_up');
+$routes->get('/optionview', 'Home::optionview');
+$routes->get('/signupfaculty', 'Home::sign_up_faculty');
 $routes->post('/register', 'Home::register');

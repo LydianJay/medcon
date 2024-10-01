@@ -44,13 +44,12 @@
     <main class="main-content my-5">
         <section>
             <div class="page-header min-vh-100">
-                <div class="container-lg">
+                <div class="container ">
                     <div class="row">
-                        
-                        <div class="col-lg-8 col-sm-12 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
+                        <div class="col-lg-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
-                                    <h4 class="font-weight-bolder">Sign Up</h4>
+                                    <h4 class="font-weight-bolder">Faculty Sign Up</h4>
                                     <?php 
                                         $phone_error    = session()->getFlashdata('phone_error');
                                         $pass_error     = session()->getFlashdata('pass_error');
@@ -77,6 +76,8 @@
                                 <div class="card-body bg-white">
                                     <form role="form" action="<?php echo $register ?>" method="POST">
 
+
+
                                         <div class="d-flex flex-column justify-content-evenly">
                                                 
                                                 <div class="input-group input-group-outline mb-3">
@@ -96,76 +97,34 @@
                                                     <input type="text" class="form-control" name="lname" >
                                                 </div>
 
-                                                
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <label class="form-label my-0">Current Address</label>
+                                                    <input type="text" class="form-control" name="address" >
+                                                </div>
                                         </div>    
-
-                                    
-
+                                        
                                         <div class="row">
-                                            <div class="col">
-                                                <label class="form-label my-0">Course</label>
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" name="course" id = "course">
-                                                        <option value="<?php echo $courseList[0]->courseID;?>" selected>
-                                                            <?php echo $courseList[0]->courseABR; ?>
-                                                        </option>
 
-                                                        <?php for($i = 1; $i < count($courseList); $i++ ) {?>
-                                                            <option <?php echo "value=" . $courseList[$i]->courseID; ?>> 
-                                                                <?php echo $courseList[$i]->courseABR;?>
-                                                            </option>
-                                                            
-                                                        <?php }?>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="col">
-                                                <label class="form-label my-0">Year Level</label>
+                                                <label class="form-label my-0">Phone Number</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" name="year" id = "level" >
-                                                        <?php 
-                                                            for($i = 1; $i <= 5; $i++){
-                                                                echo  "<option value='$i'>$i</option>";
-                                                            }
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone">
                                                 </div>
                                             </div>
 
-                                            
-
-                                            
-                                        
-
-                                        </div>
-                                        
-                                        <div class="row">
                                             <div class="col">
                                                 <label class="form-label my-0">Birthdate</label>
                                                 <div class="input-group flex-nowrap input-group-outline mb-3">
                                                     <input type="date" class="form-control" value ="birthdate" name="birthdate" >
                                                 </div>
                                             </div>
-                                            <div class="col">
-                                                <label class="form-label my-0">Phone Number</label>
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control" id="i" placeholder="" name="phone">
-                                                </div>
-                                            </div>
                                         </div>
-                                        
-                                        
+                                      
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
                                             <input type="email" class="form-control" name="email" >
                                         </div>
-
-                                        <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Current Address</label>
-                                            <input type="text" class="form-control" name="address" >
-                                        </div>
-                                        
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control" name="password">

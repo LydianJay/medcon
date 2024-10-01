@@ -164,7 +164,7 @@
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
-                                        <a href="<?php echo $signup ?>" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                                        <a href="<?php echo $option ?>" class="text-primary text-gradient font-weight-bold">Sign up</a>
                                     </p>
                                 </form>
                             </div>
