@@ -144,7 +144,20 @@
                                     </div>
                                    
                                     <h2 class="text-white text-center font-weight-bolder">MEDCON</h2>
-                                    <h3 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h3>
+                                    <h3 class="text-white font-weight-bolder text-center mt-1">Sign in</h3>
+                                    <?php
+                                        $error_auth    = session()->getFlashdata('error_auth'); 
+                                        if($error_auth != null){
+                                    ?>
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <p5 class="text-warning text-center mt-2 mb-0 ">
+                                            <?php echo $error_auth; ?>
+                                        </p5>
+                                    </div>
+
+                                    <?php }?>
+
+                                    
                                 </div>
                             </div>
                             <div class="card-body">

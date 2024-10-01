@@ -12,6 +12,9 @@ class Home extends BaseController
     {
         
         $this->db                       = \Config\Database::connect();
+        $this->data['web_owner']        = 'NEMSU Students';
+        $this->data['title']            = 'MEDCON';
+        $this->session                  = session();
         $this->data['current_page']     = site_url('login');
         $this->data['signin']           = site_url('signin');
         $this->data['signup']           = site_url('signup');
@@ -19,11 +22,8 @@ class Home extends BaseController
         $this->data['option']           = site_url('optionview');
         $this->data['signupfaculty']    = site_url('signupfaculty');
         $this->data['registerfaculty']  = site_url('registerfaculty');
-        $this->data['web_owner']        = 'NEMSU Students';
-        $this->data['title']            = 'MEDCON';
         $this->data['courseList']       = $this->db->table('course')->get()->getResult();
         $this->data['designation']      = $this->db->table('usergroups')->where("level > 0 AND level < 3")->get()->getResult();
-        $this->session = session();
         
     }
 
@@ -37,8 +37,34 @@ class Home extends BaseController
         $email      = $this->request->getPost('email');
         $password   = $this->request->getPost('password');
         $sha256     = hash('sha256', $password );
-       
+
+        $result     = $this->db->table('users')->select('*')->where("email = '$email' AND password = '$sha256' ")->get()->getResult();
         
+
+        if(count($result) < 1) {
+            $this->session->setFlashdata('error_auth', "Incorrect password or email");
+            return redirect()->to(site_url(''));
+        } 
+        else {
+            
+            $data       = $result[0];
+
+            $userdata   = [
+                'firstname'     => $data['fname'],
+                'lastname'      => $data['lname'],
+                'middlename'    => $data['mname'],
+                'birthdate'     => $data['bday'],
+                'group'         => $data['groupID'],
+                'course'        => $data['courseID'],
+                'year'          => $data['year'],
+                'id'            => $data['userID'],
+            ];
+            $this->session->set($userdata);
+
+        }
+
+        
+
     }
 
     public function sign_up()
