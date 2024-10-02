@@ -61,4 +61,10 @@ abstract class BaseController extends Controller
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
     }
+
+    public function getTable($tableName)
+    {
+        $this->db = \Config\Database::connect();
+        return $this->db->table($tableName);
+    }
 }

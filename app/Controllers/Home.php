@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    private $data;
 
     public function __construct()
     {
@@ -19,7 +18,7 @@ class Home extends BaseController
         $this->data['option']           = site_url('optionview');
         $this->data['signupfaculty']    = site_url('signupfaculty');
         $this->data['registerfaculty']  = site_url('registerfaculty');
-        $this->data['courseList']       = $this->db->table('course')->get()->getResult();
+        $this->data['courseList']       = $this->getTable('course')->get()->getResult();
         $this->data['designation']      = $this->db->table('usergroups')->where("level > 0 AND level < 3")->get()->getResult();
     }
 

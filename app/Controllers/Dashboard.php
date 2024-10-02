@@ -42,6 +42,8 @@ class Dashboard extends BaseController
         if (session()->get('firstname') == null) {
             session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
             return redirect()->to(site_url(''));
+        } else {
+            redirect()->to(site_url('appointments'));
         }
     }
 
