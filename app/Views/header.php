@@ -161,7 +161,7 @@
         </div>
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container-fluid mt-1">
+        <div class="container-fluid mt-1 border-bottom border-2">
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item ps-3 d-lg-none d-flex align-items-center justify-content-end">
                     <!-- <p class="p5 text-primary text-center my-0 me-1 text-bold">Panel</p> -->
@@ -173,4 +173,6 @@
                 </li>
             </ul>
         </div>
+
+
         <div class="container-fluid py-4">
