@@ -33,7 +33,10 @@ class Home extends BaseController
         $password   = $this->request->getPost('password');
         $sha256     = hash('sha256', $password);
 
-        $result     = $this->db->table('users')->select('*')->where("email = '$email' AND password = '$sha256' ")->get()->getResult();
+        $result     = $this->db->table('users')->select('*')
+                      ->where("email = '$email' AND password = '$sha256' ")
+                      ->get()
+                      ->getResult();
 
 
         if (count($result) < 1) {
@@ -42,18 +45,28 @@ class Home extends BaseController
         } else {
 
             $data       = $result[0];
-
+            
+            $groupQuery = $this->db->table('usergroups')->select('groupName, level')
+                                    ->where('groupID', $data->groupID)->get()
+                                    ->getResult()[0];
             $userdata   = [
                 'firstname'     => $data->fname,
                 'lastname'      => $data->lname,
                 'middlename'    => $data->mname,
                 'birthdate'     => $data->bday,
+                'address'       => $data->address,
+                'email'         => $data->email,
+                'phone'         => $data->phone,
                 'group'         => $data->groupID,
-                'course'        => $data->courseID,
-                'year'          => $data->year,
                 'id'            => $data->userID,
+                'groupName'     => $groupQuery->groupName,
+                'level'         => $groupQuery->level
             ];
+
+
+
             $this->session->set($userdata);
+            
             return redirect()->to(site_url('dashboard'));
         }
     }

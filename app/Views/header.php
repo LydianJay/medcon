@@ -48,6 +48,11 @@
             .cfs-sm {
                 font-size: var(--bs-btn-font-size);
             }
+            
+            .cimg-sm {
+                max-width:  50px;
+                max-height: 50px;
+            }
         }
 
         @media (min-width: 992px) {
@@ -57,6 +62,11 @@
 
             .cfs-lg {
                 font-size: calc(1.425rem + 1.1vw);
+            }
+
+            .cimg-lg {
+                max-width:  100px;
+                max-height: 100px;
             }
         }
     </style>
@@ -75,54 +85,26 @@
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
+                <?php 
+                    $module = $usermodules;
+                    if(session()->get('level') >= 3){
+                        $module = $adminmodules;
+                    }
+
+                    foreach($module as $m){
+                ?>    
+
                 <li class="nav-item">
-                    <a class="nav-link text-white active bg-gradient-primary" href="#">
+                    <a class="nav-link text-white <?php echo $m['status'] == 1 ? 'active bg-gradient-primary' : '' ?> " href="<?php echo site_url($m['site']) ?>">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">dashboard</i>
+                            <i class="bi <?php echo $m['icon'] ?>"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Dashboard</span>
+                        <span class="nav-link-text ms-1 disabled"><?php echo $m['name'] ?></span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="<?php echo site_url('appointments') ?>">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
-                        </div>
-                        <span class="nav-link-text ms-1 disabled">Appointments</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="#">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">receipt_long</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Billing</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="#">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="#">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-                        </div>
-                        <span class="nav-link-text ms-1">RTL</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="#">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">notifications</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Notifications</span>
-                    </a>
-                </li>
+
+                <?php }?>
+                
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
                 </li>

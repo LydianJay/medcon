@@ -60,6 +60,32 @@ abstract class BaseController extends Controller
 
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
+        
+        $this->data['usermodules']      = [
+            'appointments' => [
+                'name'      => 'Appointments', 
+                'status'    => 1, 
+                'icon'      => 'bi-calendar3',
+                'site'      => 'appointments'
+            ],
+
+            'dental'        => [
+                'name'      => 'Dental Services', 
+                'status'    => 0, 
+                'icon'      => 'bi-calendar3',
+                'site'      => 'appointments'
+            ]
+
+        ];
+
+        $this->data['adminmodules']     = [
+            'appointments' => [
+                'name'      => 'Manage Appointments', 
+                'status'    => 1, 
+                'icon'      => 'bi-calendar3',
+                'site'      => 'appointments'
+            ],
+        ];
     }
 
     public function getTable($tableName)

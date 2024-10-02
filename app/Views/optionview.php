@@ -81,12 +81,12 @@
                                     <div class="container-fluid lg-min-vh-25 border rounded bg-gray-100">
                                         <div class="row">
                                             <div class="col d-flex flex-row justify-content-center border-end">
-                                                <a href="<?php echo $signup; ?>" class="btn stretched-link  ">
+                                                <a href="<?php echo $signup; ?>" class="btn stretched-link">
                                                     <i class="bi fi-lg fi-sm bi-mortarboard-fill"></i>
                                                 </a>
                                             </div>
                                             <div class="col d-flex flex-row justify-content-center">
-                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link  ">
+                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link">
                                                     <i class="bi fi-lg fi-sm bi-people-fill"></i>
                                                 </a>
                                             </div>
