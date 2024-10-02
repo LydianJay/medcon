@@ -10,7 +10,7 @@ class Home extends BaseController
 
     public function __construct()
     {
-        
+
         $this->db                       = \Config\Database::connect();
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
@@ -24,7 +24,6 @@ class Home extends BaseController
         $this->data['registerfaculty']  = site_url('registerfaculty');
         $this->data['courseList']       = $this->db->table('course')->get()->getResult();
         $this->data['designation']      = $this->db->table('usergroups')->where("level > 0 AND level < 3")->get()->getResult();
-        
     }
 
     public function index(): string
@@ -36,17 +35,16 @@ class Home extends BaseController
     {
         $email      = $this->request->getPost('email');
         $password   = $this->request->getPost('password');
-        $sha256     = hash('sha256', $password );
+        $sha256     = hash('sha256', $password);
 
         $result     = $this->db->table('users')->select('*')->where("email = '$email' AND password = '$sha256' ")->get()->getResult();
-        
 
-        if(count($result) < 1) {
+
+        if (count($result) < 1) {
             $this->session->setFlashdata('error_auth', "Incorrect password or email");
             return redirect()->to(site_url(''));
-        } 
-        else {
-            
+        } else {
+
             $data       = $result[0];
 
             $userdata   = [
@@ -60,11 +58,7 @@ class Home extends BaseController
                 'id'            => $data['userID'],
             ];
             $this->session->set($userdata);
-
         }
-
-        
-
     }
 
     public function sign_up()
@@ -72,53 +66,54 @@ class Home extends BaseController
         return view('signup', $this->data);
     }
 
-    public function sign_up_faculty() 
+    public function sign_up_faculty()
     {
         return view('signupfaculty', $this->data);
     }
 
-    public function optionview() 
+    public function optionview()
     {
         return view('optionview', $this->data);
     }
 
-    public function register_faculty() 
+    public function register_faculty()
     {
         $fields = array(
-            "fname",    "mname",    "lname",
-            "group",    "email",    
-            "password", "confirm",
+            "fname",
+            "mname",
+            "lname",
+            "group",
+            "email",
+            "password",
+            "confirm",
         );
 
         $fieldmap = [];
-        
-        foreach($fields as $field) {
+
+        foreach ($fields as $field) {
             $fieldData          = $this->request->getPost($field);
             $fieldmap[$field]   = $fieldData;
         }
         $hasErrors = false;
 
 
-        if(empty($fieldmap['password'])){
+        if (empty($fieldmap['password'])) {
             $hasErrors = true;
             $this->session->setFlashdata('pass_error', "Password is Empty");
-        }
-        else if(strlen($fieldmap['password']) < 8 ) {
+        } else if (strlen($fieldmap['password']) < 8) {
             $hasErrors = true;
             $this->session->setFlashdata('pass_error', "Password too short, minimum of 8 characters");
-        }
-        else if(strcmp($fieldmap['password'], $fieldmap['confirm']) != 0) {
+        } else if (strcmp($fieldmap['password'], $fieldmap['confirm']) != 0) {
             $this->session->setFlashdata('pass_error', "Password Does Not Match!");
             $hasErrors = true;
         }
 
 
-        if($hasErrors) {
+        if ($hasErrors) {
             return redirect()->to(site_url('signupfaculty'));
-        }
-        else {
-            $sha256 = hash('sha256', $fieldmap['password'] );
-            
+        } else {
+            $sha256 = hash('sha256', $fieldmap['password']);
+
             $data = [
                 'fname'     => $fieldmap['fname'],
                 'mname'     => $fieldmap['mname'],
@@ -135,18 +130,26 @@ class Home extends BaseController
 
 
 
-    public function register() 
+    public function register()
     {
         $fields = array(
-            "fname",    "mname",    "lname",
-            "course",   "year",     "role",
-            "address",  "phone",    "birthdate",
-            "email",    "password", "confirm",
+            "fname",
+            "mname",
+            "lname",
+            "course",
+            "year",
+            "role",
+            "address",
+            "phone",
+            "birthdate",
+            "email",
+            "password",
+            "confirm",
         );
 
         $fieldmap = [];
-        
-        foreach($fields as $field) {
+
+        foreach ($fields as $field) {
             $fieldData          = $this->request->getPost($field);
             $fieldmap[$field]   = $fieldData;
         }
@@ -155,36 +158,33 @@ class Home extends BaseController
         $phoneLen = strlen($fieldmap['phone']);
 
         $hasErrors = false;
-        
-        if(empty($fieldmap['password'])){
+
+        if (empty($fieldmap['password'])) {
             $hasErrors = true;
             $this->session->setFlashdata('pass_error', "Password is Empty");
-        }
-        else if(strlen($fieldmap['password']) < 8 ) {
+        } else if (strlen($fieldmap['password']) < 8) {
             $hasErrors = true;
             $this->session->setFlashdata('pass_error', "Password too short, minimum of 8 characters");
-        }
-        else if(strcmp($fieldmap['password'], $fieldmap['confirm']) != 0) {
+        } else if (strcmp($fieldmap['password'], $fieldmap['confirm']) != 0) {
             $this->session->setFlashdata('pass_error', "Password Does Not Match!");
             $hasErrors = true;
         }
 
-        if(empty($fieldmap['course']) || empty($fieldmap['year'])){
+        if (empty($fieldmap['course']) || empty($fieldmap['year'])) {
             $hasErrors = true;
             $this->session->setFlashdata('phone_error', "Invalid Course or Year!");
         }
-        
-        if($phoneLen != 11) {
+
+        if ($phoneLen != 11) {
             $this->session->setFlashdata('phone_error', "Invalid Phone Number!");
             $hasErrors = true;
         }
 
-        if($hasErrors) {
+        if ($hasErrors) {
             return redirect()->to(site_url('signup'));
-        }
-        else {
-            $sha256 = hash('sha256', $fieldmap['password'] );
-            
+        } else {
+            $sha256 = hash('sha256', $fieldmap['password']);
+
             $data = [
                 'fname'     => $fieldmap['fname'],
                 'mname'     => $fieldmap['mname'],

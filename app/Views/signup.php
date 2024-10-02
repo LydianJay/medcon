@@ -36,7 +36,7 @@
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
 
     <!-- Custom -->
-  
+
 </head>
 
 <body class="bg-gray-300">
@@ -46,31 +46,30 @@
             <div class="page-header min-vh-100">
                 <div class="container-lg">
                     <div class="row">
-                        
+
                         <div class="col-lg-8 col-sm-12 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
                                     <h4 class="font-weight-bolder">Sign Up</h4>
-                                    <?php 
-                                        $phone_error    = session()->getFlashdata('phone_error');
-                                        $pass_error     = session()->getFlashdata('pass_error');
+                                    <?php
+                                    $phone_error    = session()->getFlashdata('phone_error');
+                                    $pass_error     = session()->getFlashdata('pass_error');
                                     ?>
-                                    <p class="mb-0 <?php if($phone_error != null) echo 'text-danger' ?>">
-                                    
-                                    <?php 
-                                        
-                                        if ( $phone_error != null ){
+                                    <p class="mb-0 <?php if ($phone_error != null) echo 'text-danger' ?>">
+
+                                        <?php
+
+                                        if ($phone_error != null) {
                                             echo $phone_error;
-                                        }
-                                        else {
+                                        } else {
                                             echo "Please fill the fields";
                                         }
-                                    ?>
+                                        ?>
                                     </p>
 
 
-                                    <?php if($pass_error != null) { ?>
-                                        <p class="mb-0 text-danger">  <?php echo $pass_error; ?>  </p>
+                                    <?php if ($pass_error != null) { ?>
+                                        <p class="mb-0 text-danger"> <?php echo $pass_error; ?> </p>
                                     <?php } ?>
 
                                 </div>
@@ -78,72 +77,72 @@
                                     <form role="form" action="<?php echo $register ?>" method="POST">
 
                                         <div class="d-flex flex-column justify-content-evenly">
-                                                
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label my-0">First Name </label>
-                                                    <input type="text" class="form-control" name="fname"  required>
-                                                </div>
 
-                                                
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label my-0">Middle Name</label>
-                                                    <input type="text" class="form-control" name="mname" required>
-                                                </div>
+                                            <div class="input-group input-group-outline mb-3">
+                                                <label class="form-label my-0">First Name </label>
+                                                <input type="text" class="form-control" name="fname" required>
+                                            </div>
 
-                                                
-                                                <div class="input-group input-group-outline mb-3">
-                                                    <label class="form-label my-0">Last Name</label>
-                                                    <input type="text" class="form-control" name="lname" required>
-                                                </div>
 
-                                                
-                                        </div>    
+                                            <div class="input-group input-group-outline mb-3">
+                                                <label class="form-label my-0">Middle Name</label>
+                                                <input type="text" class="form-control" name="mname" required>
+                                            </div>
 
-                                    
+
+                                            <div class="input-group input-group-outline mb-3">
+                                                <label class="form-label my-0">Last Name</label>
+                                                <input type="text" class="form-control" name="lname" required>
+                                            </div>
+
+
+                                        </div>
+
+
 
                                         <div class="row">
                                             <div class="col">
                                                 <label class="form-label my-0">Course</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" name="course" id = "course">
-                                                        <option value="<?php echo $courseList[0]->courseID;?>" selected>
+                                                    <select class="form-select px-2" name="course" id="course">
+                                                        <option value="<?php echo $courseList[0]->courseID; ?>" selected>
                                                             <?php echo $courseList[0]->courseABR; ?>
                                                         </option>
 
-                                                        <?php for($i = 1; $i < count($courseList); $i++ ) {?>
-                                                            <option <?php echo "value=" . $courseList[$i]->courseID; ?>> 
-                                                                <?php echo $courseList[$i]->courseABR;?>
+                                                        <?php for ($i = 1; $i < count($courseList); $i++) { ?>
+                                                            <option <?php echo "value=" . $courseList[$i]->courseID; ?>>
+                                                                <?php echo $courseList[$i]->courseABR; ?>
                                                             </option>
-                                                            
-                                                        <?php }?>
+
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <label class="form-label my-0">Year Level</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select class="form-select px-2" name="year" id = "level" >
-                                                        <?php 
-                                                            for($i = 1; $i <= 5; $i++){
-                                                                echo  "<option value='$i'>$i</option>";
-                                                            }
+                                                    <select class="form-select px-2" name="year" id="level">
+                                                        <?php
+                                                        for ($i = 1; $i <= 5; $i++) {
+                                                            echo  "<option value='$i'>$i</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
                                             </div>
 
-                                            
 
-                                            
-                                        
+
+
+
 
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col">
                                                 <label class="form-label my-0">Birthdate</label>
                                                 <div class="input-group flex-nowrap input-group-outline mb-3">
-                                                    <input type="date" class="form-control" value ="birthdate" name="birthdate" required>
+                                                    <input type="date" class="form-control" value="birthdate" name="birthdate" required>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -153,8 +152,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        
+
+
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
@@ -165,7 +164,7 @@
                                             <label class="form-label">Current Address</label>
                                             <input type="text" class="form-control" name="address" required>
                                         </div>
-                                        
+
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
                                             <input type="password" class="form-control" name="password" required>
@@ -182,7 +181,7 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="<?php echo $signin ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
                                     </p>
                                 </div>
                             </div>
@@ -198,7 +197,7 @@
     <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
 
-   
+
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
