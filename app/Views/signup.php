@@ -50,7 +50,7 @@
                         <div class="col-lg-8 col-sm-12 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
-                                    <h4 class="font-weight-bolder">Sign Up</h4>
+                                    <h4 class="font-weight-bolder">Student Sign Up</h4>
                                     <?php
                                     $phone_error    = session()->getFlashdata('phone_error');
                                     $pass_error     = session()->getFlashdata('pass_error');
@@ -148,7 +148,7 @@
                                             <div class="col">
                                                 <label class="form-label my-0">Phone Number</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control" id="i" placeholder="" name="phone" required>
+                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone" required>
                                                 </div>
                                             </div>
                                         </div>

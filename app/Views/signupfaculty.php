@@ -115,6 +115,22 @@
 
                                         </div>
 
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="form-label my-0">Birthdate</label>
+                                                <div class="input-group flex-nowrap input-group-outline mb-3">
+                                                    <input type="date" class="form-control" value="birthdate" name="birthdate" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label my-0">Phone Number</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
 
 
                                         <div class="input-group input-group-outline mb-3">

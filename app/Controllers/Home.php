@@ -80,6 +80,8 @@ class Home extends BaseController
             "mname",
             "lname",
             "group",
+            "birthdate",
+            "phone",
             "email",
             "password",
             "confirm",
@@ -118,6 +120,7 @@ class Home extends BaseController
                 'email'     => $fieldmap['email'],
                 'password'  => $sha256,
                 'groupID'   => $fieldmap['group'],
+
             ];
 
             $this->db->table('faculty')->insert($data);
@@ -181,7 +184,7 @@ class Home extends BaseController
             return redirect()->to(site_url('signup'));
         } else {
             $sha256 = hash('sha256', $fieldmap['password']);
-
+            
             $data = [
                 'fname'     => $fieldmap['fname'],
                 'mname'     => $fieldmap['mname'],
@@ -190,14 +193,22 @@ class Home extends BaseController
                 'phone'     => $fieldmap['phone'],
                 'address'   => $fieldmap['address'],
                 'email'     => $fieldmap['email'],
-                'year'      => $fieldmap['year'],
-                'courseID'  => $fieldmap['course'],
                 'password'  => $sha256,
                 'groupID'   => 1,
             ];
 
             $this->db->table('users')->insert($data);
+            
 
+            $id = $this->db->insertID();
+
+            $studentData = [
+                'studentID' => $id,
+                'year'      => $fieldmap['year'],
+                'courseID'  => $fieldmap['course'],
+            ];
+
+            $this->db->table('students')->insert($studentData);
 
             return redirect()->to(site_url(''));
         }
