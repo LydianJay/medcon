@@ -23,6 +23,7 @@
                         <tbody>
                             
                             <?php
+                                $id = 0;
                                 foreach($appointments as $app) {
                             ?>
                             <tr>
@@ -40,7 +41,7 @@
                                 </td>
 
                                 <td class="p-0">
-                                    <a href="#">
+                                    <a href="<?php echo site_url('admin/modify') . '/' . $id; ?>" class="text-info">
                                     <?php
                                         $str = array(
                                             'Pending',
@@ -55,7 +56,7 @@
 
                             </tr>
 
-                            <?php }?>
+                            <?php $id++; }?>
                             
                             
                         </tbody>

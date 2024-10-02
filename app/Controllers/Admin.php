@@ -5,7 +5,6 @@ namespace App\Controllers;
 class Admin extends BaseController
 {
     private $private_data;
-    
     public function __construct() 
     {
         $this->private_data['serviceList']         = $this->getTable('service')->get()->getResult();    
@@ -40,5 +39,49 @@ class Admin extends BaseController
         echo view('footer');
     }
 
+
+    public function modify($id) 
+    {
+        if (session()->get('firstname') == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        }
+        $groupQuery = $this->db->table('usergroups')->select('groupName, level')
+                    ->where('groupID', $this->private_data['appointments'][$id]->groupID)->get()
+                    ->getResult()[0];
+
+        $this->private_data['groupInfo']   = $groupQuery;
+        $this->private_data['current']     = $this->private_data['appointments'][$id];
+        $this->private_data['id']          = $this->private_data['current']->appID;
+        echo view('header', $this->data);
+        echo view('modules/admin/appointments/form', $this->private_data);
+        echo view('footer');
+    }
+
+    public function schedule($id)
+    {
+        if (session()->get('firstname') == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        }
+
+        $sched = $this->request->getPost('schedule');
+
+        if(empty($sched) || $sched == null) {
+            echo 'Set 2'. '<br>' . $id. ' Data';
+            $this->db->table('appointments')->set('status', 2)->where('appID', $id)->update();
+        }
+        else {
+            echo 'Set 1' . '<br>' . $id . ' Data';
+            $date = explode('-', $sched);
+            $actual = $date[1].'/'.$date[2].'/'.$date[0];
+            $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->where('appID', $id)->update();
+        }
+        
+        // [NOTE] check invalidd schedule => schedule only occurs in future
+        return redirect()->to('/admin/appointments');
+        
+
+    }
     
 }
