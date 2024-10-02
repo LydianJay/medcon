@@ -83,7 +83,7 @@ abstract class BaseController extends Controller
                 'name'      => 'Manage Appointments', 
                 'status'    => 1, 
                 'icon'      => 'bi-calendar3',
-                'site'      => 'appointments'
+                'site'      => 'admin/appointments'
             ],
         ];
     }

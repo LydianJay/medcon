@@ -67,7 +67,12 @@ class Home extends BaseController
 
             $this->session->set($userdata);
             
-            return redirect()->to(site_url('dashboard'));
+            if($groupQuery->level <= 1){
+                return redirect()->to(site_url('dashboard'));
+            }
+
+            return redirect()->to(site_url('admin/appointments'));
+
         }
     }
 

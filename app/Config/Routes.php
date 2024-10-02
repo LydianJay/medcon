@@ -12,7 +12,7 @@ $routes->get('/signupfaculty',      'Home::sign_up_faculty');
 $routes->get('/dashboard',          'Dashboard::index');
 $routes->get('/appointments',       'Appointments::index');
 $routes->get('/appointments/form',  'Appointments::form');
-
+$routes->get('/admin/appointments', 'Admin::index');
 
 $routes->post('/register',              'Home::register');
 $routes->post('/registerfaculty',       'Home::register_faculty');
