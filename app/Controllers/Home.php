@@ -48,16 +48,17 @@ class Home extends BaseController
             $data       = $result[0];
 
             $userdata   = [
-                'firstname'     => $data['fname'],
-                'lastname'      => $data['lname'],
-                'middlename'    => $data['mname'],
-                'birthdate'     => $data['bday'],
-                'group'         => $data['groupID'],
-                'course'        => $data['courseID'],
-                'year'          => $data['year'],
-                'id'            => $data['userID'],
+                'firstname'     => $data->fname,
+                'lastname'      => $data->lname,
+                'middlename'    => $data->mname,
+                'birthdate'     => $data->bday,
+                'group'         => $data->groupID,
+                'course'        => $data->courseID,
+                'year'          => $data->year,
+                'id'            => $data->userID,
             ];
             $this->session->set($userdata);
+            return redirect()->to(site_url('dashboard'));
         }
     }
 

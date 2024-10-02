@@ -34,15 +34,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
     <!-- Custom -->
     <style>
-        
-
         @media (max-width: 600px) {
             .fi-sm {
                 font-size: 5em;
@@ -62,9 +60,6 @@
                 font-size: calc(1.425rem + 1.1vw);
             }
         }
-
-        
-                
     </style>
 
 </head>
@@ -76,26 +71,26 @@
             <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        
+
                         <div class="col-lg-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border bg-white">
                                 <div class="card-header bg-white pb-0">
                                     <h1 class="font-weight-bolder text-center mb-0">Are you a?</h1>
                                 </div>
                                 <div class="card-body bg-white lg-mx-5 sm-mx-0 py-5">
-                                    <div class="container-fluid lg-min-vh-25 border rounded bg-gray-100" >
+                                    <div class="container-fluid lg-min-vh-25 border rounded bg-gray-100">
                                         <div class="row">
                                             <div class="col d-flex flex-row justify-content-center border-end">
-                                                <a href="<?php echo $signup; ?>" class="btn stretched-link  "> 
+                                                <a href="<?php echo $signup; ?>" class="btn stretched-link  ">
                                                     <i class="bi fi-lg fi-sm bi-mortarboard-fill"></i>
                                                 </a>
                                             </div>
                                             <div class="col d-flex flex-row justify-content-center">
-                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link  "> 
+                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link  ">
                                                     <i class="bi fi-lg fi-sm bi-people-fill"></i>
                                                 </a>
-                                            </div>  
-                                            
+                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col d-flex flex-row justify-content-center border-end">
@@ -106,12 +101,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="<?php echo $signin ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
                                     </p>
                                 </div>
                             </div>
@@ -127,7 +122,7 @@
     <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
 
-   
+
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
