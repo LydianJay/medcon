@@ -28,6 +28,10 @@ abstract class BaseController extends Controller
      */
     protected $request;
 
+    protected $session;
+    protected $db;
+    protected $data;
+
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -51,8 +55,10 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
+        $this->session      = \Config\Services::session();
+        $this->db           = \Config\Database::connect();
 
-        // E.g.: $this->session = \Config\Services::session();
+        $this->data['web_owner']        = 'NEMSU Students';
+        $this->data['title']            = 'MEDCON';
     }
 }

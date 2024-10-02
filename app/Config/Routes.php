@@ -13,3 +13,4 @@ $routes->get('/dashboard',          'Dashboard::index');
 $routes->post('/register',          'Home::register');
 $routes->post('/registerfaculty',   'Home::register_faculty');
 $routes->post('/signin',            'Home::signin');
+$routes->post('/signout',           'Dashboard::signout');

@@ -4,20 +4,11 @@ namespace App\Controllers;
 
 class Dashboard extends BaseController
 {
-    private $db;
-    private $data;
-    private $session;
-
+    private $sesfield;
     public function __construct()
     {
 
-        $this->db                       = \Config\Database::connect();
-        $this->data['web_owner']        = 'NEMSU Students';
-        $this->data['title']            = 'MEDCON';
-        $this->session                  = session();
-
-
-        $sesfield = array(
+        $this->sesfield = array(
             'firstname',
             'lastname',
             'middlename',
@@ -28,14 +19,35 @@ class Dashboard extends BaseController
             'id',
         );
 
-        foreach ($sesfield as $ses) {
+        foreach ($this->sesfield as $ses) {
             $this->data['userdata'][$ses] = session()->get($ses);
         }
     }
 
+
+
     public function index()
     {
+        if (session()->get('firstname') == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        }
+
         echo view('header', $this->data);
         echo view('footer');
+    }
+
+    public function appointments()
+    {
+        if (session()->get('firstname') == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        }
+    }
+
+    public function signout()
+    {
+        session()->remove($this->sesfield);
+        return redirect()->to(site_url(''));
     }
 }

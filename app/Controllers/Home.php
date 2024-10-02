@@ -4,17 +4,14 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    private $db;
     private $data;
-    private $session;
 
     public function __construct()
     {
 
-        $this->db                       = \Config\Database::connect();
+
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
-        $this->session                  = session();
         $this->data['current_page']     = site_url('login');
         $this->data['signin']           = site_url('signin');
         $this->data['signup']           = site_url('signup');
