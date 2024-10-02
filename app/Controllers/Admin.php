@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
 class Admin extends BaseController
 {
     private $private_data;
@@ -53,6 +57,11 @@ class Admin extends BaseController
         $this->private_data['groupInfo']   = $groupQuery;
         $this->private_data['current']     = $this->private_data['appointments'][$id];
         $this->private_data['id']          = $this->private_data['current']->appID;
+
+        $name = $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname;
+        
+        session()->set('email_name',    $name);
+        session()->set('email_address', $this->private_data['current']->email);
         echo view('header', $this->data);
         echo view('modules/admin/appointments/form', $this->private_data);
         echo view('footer');
@@ -69,13 +78,52 @@ class Admin extends BaseController
 
         if(empty($sched) || $sched == null) {
             echo 'Set 2'. '<br>' . $id. ' Data';
+
+            
+
+
             $this->db->table('appointments')->set('status', 2)->where('appID', $id)->update();
+            
+
+           
+        
         }
         else {
             echo 'Set 1' . '<br>' . $id . ' Data';
             $date = explode('-', $sched);
             $actual = $date[1].'/'.$date[2].'/'.$date[0];
             $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->where('appID', $id)->update();
+
+            try {
+                //Server settings
+                    $this->mail->isSMTP();                                            //Send using SMTP
+                    $this->mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $this->mail->Username   = 'medconnemsu@gmail.com';                     //SMTP username
+                    $this->mail->Password   = 'ampzczzunlrkgbll';                               //SMTP password
+                    $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+                    $this->mail->Port       = 587;                                  // TCP port to connect
+    
+                //Recipients
+                $this->mail->setFrom('medconnemsu@gmail.com', 'medcon');
+                $this->mail->addAddress(session()->get('email_address'), session()->get('email_name'));    // Add a recipient
+                $this->mail->addReplyTo('medconnemsu@gmail.com', 'medcon');
+                // Content
+                $this->mail->isHTML(true);                                       // Set email format to HTML
+                $this->mail->Subject = 'Appoinment Request';
+                $this->mail->Body    = "Your request has been approved! Scheduled at $actual";
+                $this->mail->AltBody = "Your request has been approved! Scheduled at $actual";;
+    
+                $this->mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                session()->setFlashdata('error_auth', "{$this->mail->ErrorInfo}");
+                return redirect()->to(site_url(''));
+                echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+            }
+            
+
+
         }
         
         // [NOTE] check invalidd schedule => schedule only occurs in future

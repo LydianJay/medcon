@@ -9,6 +9,10 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 /**
  * Class BaseController
  *
@@ -27,7 +31,7 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
-
+    protected $mailer;
     protected $session;
     protected $db;
     protected $data;
@@ -58,6 +62,7 @@ abstract class BaseController extends Controller
         $this->session      = \Config\Services::session();
         $this->db           = \Config\Database::connect();
 
+        $this->mail         = new PHPMailer(true);
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
         
