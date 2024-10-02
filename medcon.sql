@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 01, 2024 at 03:59 PM
+-- Generation Time: Oct 02, 2024 at 05:36 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `medcon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+DROP TABLE IF EXISTS `appointments`;
+CREATE TABLE IF NOT EXISTS `appointments` (
+  `appID` int NOT NULL AUTO_INCREMENT,
+  `reqDate` varchar(16) NOT NULL,
+  `schedDate` varchar(16) DEFAULT NULL,
+  `description` varchar(512) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '0',
+  `userID` int NOT NULL,
+  `serviceID` int NOT NULL,
+  PRIMARY KEY (`appID`),
+  KEY `userID` (`userID`,`serviceID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`appID`, `reqDate`, `schedDate`, `description`, `status`, `userID`, `serviceID`) VALUES
+(1, '10/02/2024', '10/05/2024', 'awdawdawdawddaw', 2, 4, 2),
+(2, '10/02/2024', '10/25/2024', 'Sakit akong hart', 2, 4, 4),
+(3, '10/02/2024', '12/10/2024', 'Request kog shabu', 2, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -49,28 +77,25 @@ INSERT INTO `course` (`courseID`, `courseName`, `courseABR`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faculty`
+-- Table structure for table `service`
 --
 
-DROP TABLE IF EXISTS `faculty`;
-CREATE TABLE IF NOT EXISTS `faculty` (
-  `facultyID` int NOT NULL AUTO_INCREMENT,
-  `fname` varchar(32) NOT NULL,
-  `mname` varchar(32) NOT NULL,
-  `lname` varchar(32) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `groupID` int NOT NULL,
-  PRIMARY KEY (`facultyID`),
-  KEY `groupID` (`groupID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE IF NOT EXISTS `service` (
+  `serviceID` int NOT NULL AUTO_INCREMENT,
+  `serviceName` varchar(64) NOT NULL,
+  PRIMARY KEY (`serviceID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `faculty`
+-- Dumping data for table `service`
 --
 
-INSERT INTO `faculty` (`facultyID`, `fname`, `mname`, `lname`, `email`, `password`, `groupID`) VALUES
-(1, 'Lloyd Jay', 'Arpilleda', 'Edradan', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 3);
+INSERT INTO `service` (`serviceID`, `serviceName`) VALUES
+(1, 'Medical Certificate'),
+(2, 'General Checkup'),
+(3, 'Medicine Request'),
+(4, 'General Ailment Treatment');
 
 -- --------------------------------------------------------
 
@@ -87,6 +112,21 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   PRIMARY KEY (`sessionID`),
   KEY `userID` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+DROP TABLE IF EXISTS `students`;
+CREATE TABLE IF NOT EXISTS `students` (
+  `studentID` int NOT NULL,
+  `year` int NOT NULL,
+  `courseID` int NOT NULL,
+  UNIQUE KEY `studentID_2` (`studentID`),
+  KEY `studentID` (`studentID`,`courseID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -130,19 +170,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) NOT NULL,
   `password` varchar(128) NOT NULL,
   `groupID` int NOT NULL,
-  `courseID` int NOT NULL,
-  `year` int NOT NULL,
   PRIMARY KEY (`userID`),
-  KEY `city` (`groupID`),
-  KEY `courseID` (`courseID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `city` (`groupID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`, `courseID`, `year`) VALUES
-(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 1, 1, 1);
+INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`) VALUES
+(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4);
 
 --
 -- Constraints for dumped tables
