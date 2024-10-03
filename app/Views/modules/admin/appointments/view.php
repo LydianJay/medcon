@@ -23,7 +23,7 @@
                         <tbody>
 
                             <?php
-                            $id = 0;
+                          
                             foreach ($appointments as $app) {
                             ?>
                                 <tr>
@@ -64,7 +64,7 @@
 
                                 </tr>
 
-                            <?php $id++;
+                            <?php 
                             } ?>
 
 

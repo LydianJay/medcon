@@ -12,18 +12,5 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="<?php echo base_url() ?>/assets/js/material-dashboard.min.js?v=3.1.0"></script>
 
-<?php
-    $error = session()->getFlashdata('empty_error');
-    if($error != null) {
-?>
-<script>
-    window.alert(" <?php
-        $error
-    ?>");
-
-</script>
-
-<?php }?>
-
 </body>
 </html>

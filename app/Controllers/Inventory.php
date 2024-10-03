@@ -11,8 +11,22 @@ class Inventory extends BaseController
 
     public function __construct() 
     {
-        $this->private_data['table_fields']       = [''];
+        $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date'];
         $this->private_data['medtype']            = ['Tablet', 'Capsule', 'Liquid', 'Other'];
+    }
+
+    private function getinventory()
+    {
+        $this->private_data['query'] = $this->db->table('inventory')->select('*')->join('batch', 'batch.batchID = inventory.batchID', 'inner')->orderBy('genericName', 'ASC')->get()->getResult();
+    }
+
+    private function searchInventory($param)
+    {
+        $this->private_data['query'] = $this->db->table('inventory')->select('*')
+        ->join('batch', 'batch.batchID = inventory.batchID', 'inner')
+        ->like('genericName', $param, 'after')
+        ->orderBy('genericName', 'ASC')->get()->getResult();
+
     }
 
     public function index()
@@ -27,10 +41,17 @@ class Inventory extends BaseController
             return redirect()->to(site_url(''));
         }
 
+        $param                           = $this->request->getGet('search');
+
         $this->data['current_module']    = $this->data['adminmodules']['inventory'];
 
+
+      
+
+        $param == null ? $this->getinventory() : $this->searchInventory($param);
+
         echo view('header', $this->data);
-        echo view('modules/admin/inventory/view');
+        echo view('modules/admin/inventory/view', $this->private_data);
         echo view('footer');
     }
 
@@ -54,6 +75,9 @@ class Inventory extends BaseController
         echo view('modules/admin/inventory/add', $this->private_data);
         echo view('footer');
     }
+
+    
+
 
     public function post_add()
     {

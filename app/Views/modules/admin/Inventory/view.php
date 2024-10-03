@@ -9,12 +9,12 @@
             <div class="card-body">
                 <div class="row border-bottom pb-4">
                     <div class="col-5">
-                        <form action="" method="post">
+                        <form action="<?php echo site_url('admin/inventory')?>" method="get">
                             <div class="d-flex flex-start flex-row align-items-center">
                                 <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                     <label class="form-label">Search</label>
                                     <input type="text" class="form-control" name="search" >
-                                    <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8">
+                                    <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" >
                                         <i class="bi fs-7 bi-search fw-bolder"> 
                                             Search
                                         </i>
@@ -26,20 +26,60 @@
                     </div>
 
                     <div class="col d-flex flex-row justify-content-end align-items-start">
-                        <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>'; ">
+                        <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>';" >
                             <p class="fs-10 fw-bolder my-0">Add Entry</p>
                         </button>
                     </div>
 
                     
                 </div>
-                <div class="table-responsive p-0">
+                <div class="table-responsive p-0 mt-3">
                     <table class="table align-items-center">
                         <thead>
+                            <tr class="text-secondary text-start opacity-7">
+                                <?php
+                                
+                                $type = ['Tablet', 'Capsule', 'Liquid', 'Other'];
 
+                                foreach ($table_field as $field) {
+                                ?>
+                                    <th class="p-0">
+                                        <?php echo $field ?>
+                                    </th>
+                                <?php } ?>
+                            </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $id = 0;
+                            foreach ($query as $app) {
+                            ?>
+                                <tr>
+                                    <td class="ps-0 opacity-7">
+                                        <?php echo $app->genericName; ?>
+                                    </td>
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->brandName; ?>
+                                    </td>
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $type[$app->medType - 1]; ?>
+                                    </td>
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->qty; ?>
+                                    </td>
 
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->recDate; ?>
+                                    </td>
+
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->expDate; ?>
+                                    </td>
+                                </tr>
+
+
+                            <?php $id++;
+                            } ?>
                         </tbody>
                     </table>
                 </div>
