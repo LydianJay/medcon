@@ -9,6 +9,10 @@ use PHPMailer\PHPMailer\Exception;
 class Admin extends BaseController
 {
     private $private_data;
+    private $module;
+
+
+
     public function __construct()
     {
         $this->private_data['serviceList']         = $this->getTable('service')->get()->getResult();
@@ -26,6 +30,8 @@ class Admin extends BaseController
         }
         $this->get_appointments();
     }
+
+
 
     private function get_appointments()
     {
@@ -46,6 +52,7 @@ class Admin extends BaseController
             return redirect()->to(site_url(''));
         }
 
+        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
 
         echo view('header', $this->data);
         echo view('modules/admin/appointments/view', $this->private_data);
@@ -63,6 +70,7 @@ class Admin extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
+
 
 
         $groupQuery = $this->db->table('usergroups')->select('groupName, level')

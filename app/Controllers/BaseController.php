@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
     protected $session;
     protected $db;
     protected $data;
-
+    protected $current_module;
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -69,7 +69,7 @@ abstract class BaseController extends Controller
         $this->data['usermodules']      = [
             'appointments' => [
                 'name'      => 'Appointments',
-                'status'    => 1,
+                'status'    => 0,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'appointments'
             ],
@@ -84,11 +84,48 @@ abstract class BaseController extends Controller
         ];
 
         $this->data['adminmodules']     = [
-            'appointments' => [
+            'appointments'  => [
                 'name'      => 'Manage Appointments',
                 'status'    => 1,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'admin/appointments'
+            ],
+            'inventory'     => [
+                'name'      => 'Manage Inventory',
+                'status'    => 0,
+                'icon'      => 'bi-prescription2',
+                'site'      => 'admin/inventory'
+            ],
+        ];
+    }
+
+    public function initData()
+    {
+        $this->data['usermodules']      = [
+            'appointments' => [
+                'name'      => 'Appointments',
+                'icon'      => 'bi-calendar3',
+                'site'      => 'appointments'
+            ],
+
+            'dental'        => [
+                'name'      => 'Dental Services',
+                'icon'      => 'bi-calendar3',
+                'site'      => 'appointments'
+            ]
+
+        ];
+
+        $this->data['adminmodules']     = [
+            'appointments'  => [
+                'name'      => 'Manage Appointments',
+                'icon'      => 'bi-calendar3',
+                'site'      => 'admin/appointments'
+            ],
+            'inventory'     => [
+                'name'      => 'Manage Inventory',
+                'icon'      => 'bi-prescription2',
+                'site'      => 'admin/inventory'
             ],
         ];
     }

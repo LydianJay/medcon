@@ -8,7 +8,6 @@ class Home extends BaseController
     public function __construct()
     {
 
-
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
         $this->data['current_page']     = site_url('login');
@@ -34,9 +33,9 @@ class Home extends BaseController
         $sha256     = hash('sha256', $password);
 
         $result     = $this->db->table('users')->select('*')
-                      ->where("email = '$email' AND password = '$sha256' ")
-                      ->get()
-                      ->getResult();
+            ->where("email = '$email' AND password = '$sha256' ")
+            ->get()
+            ->getResult();
 
 
         if (count($result) < 1) {
@@ -45,10 +44,10 @@ class Home extends BaseController
         } else {
 
             $data       = $result[0];
-            
+
             $groupQuery = $this->db->table('usergroups')->select('groupName, level')
-                                    ->where('groupID', $data->groupID)->get()
-                                    ->getResult()[0];
+                ->where('groupID', $data->groupID)->get()
+                ->getResult()[0];
             $userdata   = [
                 'firstname'     => $data->fname,
                 'lastname'      => $data->lname,
@@ -66,13 +65,14 @@ class Home extends BaseController
 
 
             $this->session->set($userdata);
-            
-            if($groupQuery->level <= 1){
-                return redirect()->to(site_url('dashboard'));
+
+            if ($groupQuery->level <= 1) {
+
+
+                return redirect()->to(site_url('appointments'));
             }
 
             return redirect()->to(site_url('admin/appointments'));
-
         }
     }
 
@@ -172,7 +172,6 @@ class Home extends BaseController
             $fieldmap[$field]   = $fieldData;
         }
 
-
         $phoneLen = strlen($fieldmap['phone']);
 
         $hasErrors = false;
@@ -202,7 +201,7 @@ class Home extends BaseController
             return redirect()->to(site_url('signup'));
         } else {
             $sha256 = hash('sha256', $fieldmap['password']);
-            
+
             $data = [
                 'fname'     => $fieldmap['fname'],
                 'mname'     => $fieldmap['mname'],
@@ -216,7 +215,6 @@ class Home extends BaseController
             ];
 
             $this->db->table('users')->insert($data);
-            
 
             $id = $this->db->insertID();
 

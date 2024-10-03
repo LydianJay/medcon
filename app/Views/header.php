@@ -48,9 +48,9 @@
             .cfs-sm {
                 font-size: var(--bs-btn-font-size);
             }
-            
+
             .cimg-sm {
-                max-width:  50px;
+                max-width: 50px;
                 max-height: 50px;
             }
         }
@@ -65,7 +65,7 @@
             }
 
             .cimg-lg {
-                max-width:  100px;
+                max-width: 100px;
                 max-height: 100px;
             }
         }
@@ -85,26 +85,31 @@
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
-                <?php 
-                    $module = $usermodules;
-                    if(session()->get('level') >= 3){
-                        $module = $adminmodules;
-                    }
+                <?php
+                $module = &$usermodules;
+                if (session()->get('level') >= 3) {
+                    $module = &$adminmodules;
+                }
 
-                    foreach($module as $m){
-                ?>    
+                $cname = $current_module['name'];
 
-                <li class="nav-item">
-                    <a class="nav-link text-white <?php echo $m['status'] == 1 ? 'active bg-gradient-primary' : '' ?> " href="<?php echo site_url($m['site']) ?>">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="bi <?php echo $m['icon'] ?>"></i>
-                        </div>
-                        <span class="nav-link-text ms-1 disabled"><?php echo $m['name'] ?></span>
-                    </a>
-                </li>
+                foreach ($module as $m) {
 
-                <?php }?>
-                
+                    $isActive = (strcmp($cname, $m['name']) == 0);
+                ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white <?php echo $isActive ? 'active bg-gradient-primary' : '' ?> " href="<?php echo site_url($m['site']) ?>">
+                            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="bi <?php echo $m['icon'] ?>"></i>
+                            </div>
+                            <span class="nav-link-text ms-1 disabled"><?php echo $m['name']; ?></span>
+                        </a>
+                    </li>
+
+                <?php
+                } ?>
+
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
                 </li>
