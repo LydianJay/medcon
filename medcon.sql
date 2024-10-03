@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 02, 2024 at 05:36 PM
--- Server version: 8.3.0
+-- Generation Time: Oct 03, 2024 at 07:54 AM
+-- Server version: 8.0.39
 -- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -38,16 +38,31 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `serviceID` int NOT NULL,
   PRIMARY KEY (`appID`),
   KEY `userID` (`userID`,`serviceID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
 INSERT INTO `appointments` (`appID`, `reqDate`, `schedDate`, `description`, `status`, `userID`, `serviceID`) VALUES
-(1, '10/02/2024', '10/05/2024', 'awdawdawdawddaw', 2, 4, 2),
+(1, '10/02/2024', NULL, 'awdawdawdawddaw', 0, 4, 2),
 (2, '10/02/2024', '10/25/2024', 'Sakit akong hart', 2, 4, 4),
-(3, '10/02/2024', '12/10/2024', 'Request kog shabu', 2, 4, 3);
+(3, '10/02/2024', '12/10/2024', 'Request kog shabu', 2, 4, 3),
+(4, '10/03/2024', '02/10/4244', 'Fuck this shit', 2, 5, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `batch`
+--
+
+DROP TABLE IF EXISTS `batch`;
+CREATE TABLE IF NOT EXISTS `batch` (
+  `batchID` int NOT NULL AUTO_INCREMENT,
+  `recDate` varchar(16) NOT NULL,
+  `expDate` varchar(16) NOT NULL,
+  PRIMARY KEY (`batchID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -73,6 +88,45 @@ INSERT INTO `course` (`courseID`, `courseName`, `courseABR`) VALUES
 (3, 'Bachelor of Science in Computer Engineering', 'BSCpE'),
 (4, 'Bachelor of Science in Hotel and Restaurant Management', 'BSHM'),
 (5, 'Bachelor of Science in Information Technology', 'BS Info Tech');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory`
+--
+
+DROP TABLE IF EXISTS `inventory`;
+CREATE TABLE IF NOT EXISTS `inventory` (
+  `inventoryID` int NOT NULL AUTO_INCREMENT,
+  `medType` tinyint NOT NULL DEFAULT '1' COMMENT '1 - tabs, 2 - caps, liquid, 3 - other',
+  `genericName` varchar(32) NOT NULL,
+  `brandName` varchar(32) DEFAULT NULL,
+  `qty` int NOT NULL,
+  `description` varchar(128) DEFAULT NULL,
+  `batchID` int NOT NULL,
+  PRIMARY KEY (`inventoryID`),
+  KEY `batchID` (`batchID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prescription`
+--
+
+DROP TABLE IF EXISTS `prescription`;
+CREATE TABLE IF NOT EXISTS `prescription` (
+  `prescID` int NOT NULL AUTO_INCREMENT,
+  `issueDate` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `qty` int NOT NULL,
+  `userID` int NOT NULL,
+  `adminID` int NOT NULL,
+  `inventoryID` int NOT NULL,
+  PRIMARY KEY (`prescID`),
+  KEY `userID` (`userID`,`adminID`,`inventoryID`),
+  KEY `prescription_ibfk_1` (`inventoryID`),
+  KEY `prescription_ibfk_3` (`adminID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -128,6 +182,13 @@ CREATE TABLE IF NOT EXISTS `students` (
   KEY `studentID` (`studentID`,`courseID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`studentID`, `year`, `courseID`) VALUES
+(5, 2, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -172,24 +233,33 @@ CREATE TABLE IF NOT EXISTS `users` (
   `groupID` int NOT NULL,
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`) VALUES
-(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4);
+(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4),
+(5, 'Lydian', 'Doofensmirt', 'Kamarov', '1111-10-10', '09123456789', 'Surigao City', 'maturanmark1999@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 1);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `sessions`
+-- Constraints for table `inventory`
 --
-ALTER TABLE `sessions`
-  ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`);
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`batchID`) REFERENCES `batch` (`batchID`);
+
+--
+-- Constraints for table `prescription`
+--
+ALTER TABLE `prescription`
+  ADD CONSTRAINT `prescription_ibfk_1` FOREIGN KEY (`inventoryID`) REFERENCES `inventory` (`inventoryID`),
+  ADD CONSTRAINT `prescription_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `prescription_ibfk_3` FOREIGN KEY (`adminID`) REFERENCES `users` (`userID`);
 
 --
 -- Constraints for table `users`

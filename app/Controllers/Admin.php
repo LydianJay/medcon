@@ -72,6 +72,7 @@ class Admin extends BaseController
         }
 
 
+        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
 
         $groupQuery = $this->db->table('usergroups')->select('groupName, level')
             ->where('groupID', $this->private_data['appointments'][$id]->groupID)->get()
@@ -100,6 +101,8 @@ class Admin extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
+
+        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
 
         $sched = $this->request->getPost('schedule');
 

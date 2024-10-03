@@ -11,66 +11,74 @@
                     <table class="table align-items-center">
                         <thead>
                             <tr class="text-secondary text-start opacity-7">
-                            <?php
-                                foreach($table_field as $field) {
-                            ?>
-                                <th class="p-0">
-                                    <?php echo $field ?>
-                                </th>
-                            <?php }?>
+                                <?php
+                                foreach ($table_field as $field) {
+                                ?>
+                                    <th class="p-0">
+                                        <?php echo $field ?>
+                                    </th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             <?php
-                                $id = 0;
-                                foreach($appointments as $app) {
+                            $id = 0;
+                            foreach ($appointments as $app) {
                             ?>
-                            <tr>
-                                <td class="p-0 mx-1">
-                                    <?php echo strtoupper($app->lname) . ', ' . $app->fname; ?>
-                                </td>
-                                <td class="p-0">
-                                    <?php echo $serviceAssoc[$app->serviceID]; ?>
-                                </td>
-                                <td class="p-0">
-                                    <?php echo $app->reqDate; ?>
-                                </td>
-                                <td class="p-0">
-                                    <?php echo $app->schedDate == null ? 'N/A' : $app->schedDate; ?>
-                                </td>
+                                <tr>
+                                    <td class="p-0 mx-1">
+                                        <?php echo strtoupper($app->lname) . ', ' . $app->fname; ?>
+                                    </td>
+                                    <td class="p-0">
+                                        <?php echo $serviceAssoc[$app->serviceID]; ?>
+                                    </td>
+                                    <td class="p-0">
+                                        <?php echo $app->reqDate; ?>
+                                    </td>
+                                    <td class="p-0">
+                                        <?php echo $app->schedDate == null ? 'N/A' : $app->schedDate; ?>
+                                    </td>
 
-                                <td class="p-0">
-                                    <a href="<?php echo site_url('admin/modify') . '/' . $id; ?>" class="text-info">
                                     <?php
-                                        $str = array(
-                                            'Pending',
-                                            'Scheduled',
-                                            'Fulfilled'
-                                        );
-                                        
-                                        echo $str[$app->status];
+                                    $str = array(
+                                        'Pending',
+                                        'Scheduled',
+                                        'Fulfilled'
+                                    );
+
+                                    $textSettings = [
+                                        'btn-secondary',
+                                        'btn-info',
+                                        'btn-success',
+                                    ];
                                     ?>
-                                    </a>
-                                </td>
 
-                            </tr>
+                                    <td class="p-0 py-2 d-grid gap-2">
 
-                            <?php $id++; }?>
-                            
-                            
+                                        <button type="button" class="btn btn-sm mb-0 <?php echo $textSettings[$app->status]; ?> text-white" onclick="window.location.href='<?php echo site_url('admin/modify') . '/' . $id; ?>'; ">
+                                            <?php echo $str[$app->status]; ?>
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            <?php $id++;
+                            } ?>
+
+
                         </tbody>
                     </table>
 
                 </div>
             </div>
             <div class="card-footer d-sm-none">
-                <p class="text-center fs-5 text-bold text-danger opacity-8 my-0 py-0">ERROR!!! Small display detected!</p>
                 <p class="text-center fs-5 text-bold text-danger opacity-8 my-0 py-0">Rotate your phone to see better</p>
             </div>
-      
+
         </div>
-       
-        
+
+
     </div>
 </div>
