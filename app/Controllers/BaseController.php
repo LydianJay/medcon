@@ -31,7 +31,7 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
-    protected $mailer;
+    protected $mail;
     protected $session;
     protected $db;
     protected $data;
@@ -65,18 +65,18 @@ abstract class BaseController extends Controller
         $this->mail         = new PHPMailer(true);
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
-        
+
         $this->data['usermodules']      = [
             'appointments' => [
-                'name'      => 'Appointments', 
-                'status'    => 1, 
+                'name'      => 'Appointments',
+                'status'    => 1,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'appointments'
             ],
 
             'dental'        => [
-                'name'      => 'Dental Services', 
-                'status'    => 0, 
+                'name'      => 'Dental Services',
+                'status'    => 0,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'appointments'
             ]
@@ -85,8 +85,8 @@ abstract class BaseController extends Controller
 
         $this->data['adminmodules']     = [
             'appointments' => [
-                'name'      => 'Manage Appointments', 
-                'status'    => 1, 
+                'name'      => 'Manage Appointments',
+                'status'    => 1,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'admin/appointments'
             ],
