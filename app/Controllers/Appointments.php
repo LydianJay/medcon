@@ -36,11 +36,8 @@ class Appointments extends BaseController
             return redirect()->to(site_url(''));
         }
 
-        $this->current_module['status']     = 0;
-        $this->current_module               = &$this->module;
-        $this->current_module['status']     = 1;
 
-
+        $this->data['current_module']    = $this->data['usermodules']['appointments'];
         echo view('header', $this->data);
         echo view('modules/students/appointments/view', $this->private_data);
         echo view('footer');
