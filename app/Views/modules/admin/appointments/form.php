@@ -70,7 +70,6 @@
                             <input type="date" class="form-control"  name="schedule" required>
                         </div>
                         <?php } ?>
-                        
                         <button class="btn btn-success">  <?php echo $current->status == 1 ? 'Fulfill' : 'Schedule';  ?></button>
                     </form>
                     <?php } ?>
