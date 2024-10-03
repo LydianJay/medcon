@@ -13,5 +13,5 @@ healthcare is just a few clicks away, ensuring you get the medical support you n
 > Our website has not been properly hosted yet 
 > If you notice our website is down, it is because
 > our server isnt running yet
-> [medcon temporary website](https:://access.lyncxus.online)
+> [medcon temporary website](https://access.lyncxus.online)
 
