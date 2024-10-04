@@ -51,6 +51,7 @@ class Appointments extends BaseController
         }
 
         $this->get_appointments();
+        $this->data['current_module']    = $this->data['usermodules']['appointments'];
         echo view('header', $this->data);
         echo view('modules/students/appointments/form', $this->private_data);
         echo view('footer');
