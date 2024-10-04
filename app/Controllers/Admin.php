@@ -52,7 +52,7 @@ class Admin extends BaseController
     {
         $this->private_data['meds'] = $this->db->table('inventory')->select('*')
         ->join('batch', 'batch.batchID = inventory.batchID', 'inner')
-        ->like('genericName', $param, 'after')->where('qty > ', 0)->limit(25)
+        ->like('genericName', $param, 'after')->where('qty > ', 0)->limit(10)
         ->orderBy('genericName', 'ASC')->get()->getResult();
     }
 
@@ -102,6 +102,8 @@ class Admin extends BaseController
             session()->remove(['added', 'last_added_id']);
         }
 
+        session()->set('apID', $id);    // set appointment ID
+
         $this->private_data['param']       = $id;
         $this->private_data['groupInfo']   = $groupQuery;
         $this->private_data['current']     = $this->private_data['appointments'][$id];
@@ -109,14 +111,13 @@ class Admin extends BaseController
         $name                              = $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname;
         $search                            = $this->request->getGet('search');
         $add_id                            = $this->request->getGet('id');
+        $qty                               = $this->request->getGet('qty');
         $s_cart                            = session()->get('added');
         $s_added                           = [];
 
 
         
         
-
-
 
         if($s_cart != null) {
             $s_added = $s_cart;
@@ -125,9 +126,13 @@ class Admin extends BaseController
         if($add_id != null && !empty($add_id) && session()->get('last_added_id') != $add_id) {
             $itemquery = $this->getMedItem($add_id);
             if(!empty($itemquery)) {
-                $s_added[] = $this->getMedItem($add_id)[0];
-                session()->set('added', $s_added);
-                session()->set('last_added_id', $add_id);
+                if(!in_array($itemquery[0], $s_added )) {
+                    $copy = clone $itemquery[0];
+                    $copy->qty = $qty;
+                    $s_added[] = $copy;
+                    session()->set('added', $s_added);
+                    session()->set('last_added_id', $add_id);
+                }
             }
         }
 
@@ -162,18 +167,36 @@ class Admin extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
-        // session()->remove(['added', 'last_added_id']);
+
         $this->data['current_module']    = $this->data['adminmodules']['appointments'];
         $sched                           = $this->request->getPost('schedule');
         $time                            = $this->request->getPost('time');
 
         if (empty($sched) || $sched == null) {
-            echo 'Set 2' . '<br>' . $id . ' Data';
+            
+            $orderList  = session()->get('added');
+
+            foreach($orderList as $order) { // this just ensures that we have enought items
+                
+                $sqlResult =    $this->db->table('inventory')->where('inventoryID', $order->inventoryID)->
+                                where('qty >=', $order->qty)->get()->getResult();
+                if(empty($sqlResult)) {
+                    session()->remove(['added', 'last_added_id']);
+                    session()->setFlashdata('generic_error', "Not enought $order->genericName in inventory to complete the request");
+                    $id = session()->get('apID');
+                    session()->remove('apID'); // cleanup
+                    return redirect()->to("/admin/modify/$id");
+                }
+            }
+
+            // if it is ensured then proceed to update
+            foreach($orderList as $r) {
+                $this->db->table('inventory')->set('qty', "qty - {$r->qty}", false)->where('inventoryID', $r->inventoryID)->update();
+            }
 
 
             $this->db->table('appointments')->set('status', 2)->where('appID', $id)->update();
         } else {
-            echo 'Set 1' . '<br>' . $id . ' Data';
             $date = explode('-', $sched);
             $actual = $date[1] . '/' . $date[2] . '/' . $date[0];
             $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->set('schedTime', $time)->where('appID', $id)->update();
@@ -205,7 +228,8 @@ class Admin extends BaseController
                 return redirect()->to(site_url(''));
             }
         }
-
+        //clean up
+        session()->remove(['added', 'last_added_id', 'apID']);
         // [NOTE] check invalidd schedule => schedule only occurs in future
         return redirect()->to('/admin/appointments');
     }

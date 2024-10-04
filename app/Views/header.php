@@ -68,6 +68,10 @@
                 max-width: 100px;
                 max-height: 100px;
             }
+            
+            .td-w-lg {
+                width: 1.5rem;
+            }
         }
     </style>
 
