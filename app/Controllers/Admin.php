@@ -40,6 +40,13 @@ class Admin extends BaseController
             ->get()->getResult();
     }
 
+    private function getMedItem($id)
+    {
+        return  $this->db->table('inventory')->select('*')->
+                join('batch', 'batch.batchID = inventory.batchID', 'inner')->
+                where('inventoryID', $id)->get()->getResult();
+    }
+
 
     private function searchInventory($param)
     {
@@ -87,8 +94,13 @@ class Admin extends BaseController
             ->getResult()[0];
 
         $this->private_data['table_field'] = ['Generic Name', 'Brand Name', 
-                                            'Expiration Date', 'Inventory ID', 'Actions'];
+                                            'Expiration Date', 'Inventory ID'];
 
+        $doClear                           = $this->request->getGet('clear');
+
+        if($this->request->getGet('clear') ) {
+            session()->remove(['added', 'last_added_id']);
+        }
 
         $this->private_data['param']       = $id;
         $this->private_data['groupInfo']   = $groupQuery;
@@ -96,12 +108,43 @@ class Admin extends BaseController
         $this->private_data['id']          = $this->private_data['current']->appID;
         $name                              = $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname;
         $search                            = $this->request->getGet('search');
+        $add_id                            = $this->request->getGet('id');
+        $s_cart                            = session()->get('added');
+        $s_added                           = [];
+
+
         
+        
+
+
+
+        if($s_cart != null) {
+            $s_added = $s_cart;
+        }
+       
+        if($add_id != null && !empty($add_id) && session()->get('last_added_id') != $add_id) {
+            $itemquery = $this->getMedItem($add_id);
+            if(!empty($itemquery)) {
+                $s_added[] = $this->getMedItem($add_id)[0];
+                session()->set('added', $s_added);
+                session()->set('last_added_id', $add_id);
+            }
+        }
+
+
+        $this->private_data['cart'] = $s_added;
+
+
+
+
         if($search != null && !empty($search)) {
             $this->searchInventory($search);
         } else {
             $this->searchInventory('');
         }
+
+        
+
         session()->set('email_name',    $name);
         session()->set('email_address', $this->private_data['current']->email);
         echo view('header', $this->data);

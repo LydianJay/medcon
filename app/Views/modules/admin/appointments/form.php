@@ -142,6 +142,9 @@
                                             <?php echo $field ?>
                                         </th>
                                     <?php } ?>
+                                    <th class="py-0 ps-1">
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,9 +189,34 @@
                                             <?php echo $field ?>
                                         </th>
                                     <?php } ?>
+
+        
                                 </tr>
                             </thead>
+                            <tbody>
+                                <?php foreach($cart as $d) {?>
+                                <tr>
+                                    <td class="ps-1 opacity-7">
+                                        <?php echo $d->genericName; ?>
+                                    </td>
+                                    <td class="ps-1 opacity-7">
+                                        <?php echo $d->brandName; ?>
+                                    </td>
+                                    <td class="ps-1 opacity-7">
+                                        <?php echo $d->expDate; ?>
+                                    </td>
+                                    <td class="ps-1 opacity-7">
+                                        <?php echo $d->inventoryID; ?>
+                                    </td>
+                                </tr>
+                                <?php }?>
+                            </tbody>
                         </table>
+                        <button type="button" class="btn btn-sm btn-primary my-0 rounded opacity-8" 
+                        onclick="window.location.href='<?php echo site_url('admin/modify') .'/'. $param . '/?search=&clear=1'; ?>'; "
+                        >
+                            Clear
+                        </button>
 
                     </form>
                 </div>
