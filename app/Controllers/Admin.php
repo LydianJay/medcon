@@ -162,15 +162,13 @@ class Admin extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
-
+        // session()->remove(['added', 'last_added_id']);
         $this->data['current_module']    = $this->data['adminmodules']['appointments'];
-
-        $sched = $this->request->getPost('schedule');
+        $sched                           = $this->request->getPost('schedule');
+        $time                            = $this->request->getPost('time');
 
         if (empty($sched) || $sched == null) {
             echo 'Set 2' . '<br>' . $id . ' Data';
-
-
 
 
             $this->db->table('appointments')->set('status', 2)->where('appID', $id)->update();
@@ -178,36 +176,33 @@ class Admin extends BaseController
             echo 'Set 1' . '<br>' . $id . ' Data';
             $date = explode('-', $sched);
             $actual = $date[1] . '/' . $date[2] . '/' . $date[0];
-            $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->where('appID', $id)->update();
+            $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->set('schedTime', $time)->where('appID', $id)->update();
 
             try {
 
 
-                // $this->mail->isSMTP();                                            //Send using SMTP
-                // $this->mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                // $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                // $this->mail->Username   = 'medconnemsu@gmail.com';                     //SMTP username
-                // $this->mail->Password   = 'ampzczzunlrkgbll';                               //SMTP password
-                // $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-                // $this->mail->Port       = 587;                                  // TCP port to connect
+                $this->mail->isSMTP();                                            //Send using SMTP
+                $this->mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $this->mail->Username   = 'medconnemsu@gmail.com';                     //SMTP username
+                $this->mail->Password   = 'ampzczzunlrkgbll';                               //SMTP password
+                $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+                $this->mail->Port       = 587;                                  // TCP port to connect
 
-                // $this->mail->setFrom('medconnemsu@gmail.com', 'medcon');
-                // $this->mail->addAddress(session()->get('email_address'), session()->get('email_name'));    // Add a recipient
-                // $this->mail->addReplyTo('medconnemsu@gmail.com', 'medcon');
+                $this->mail->setFrom('medconnemsu@gmail.com', 'medcon');
+                $this->mail->addAddress(session()->get('email_address'), session()->get('email_name'));    // Add a recipient
+                $this->mail->addReplyTo('medconnemsu@gmail.com', 'medcon');
+                $msg = "Your request has been approved! Scheduled at $actual $time";
+                $this->mail->isHTML(true);                                       
+                $this->mail->Subject = 'Appoinment Request Scheduled';
+                $this->mail->Body    = $msg;
+                $this->mail->AltBody = $msg;
 
-                // $this->mail->isHTML(true);                                       
-                // $this->mail->Subject = 'Appoinment Request';
-                // $this->mail->Body    = "Your request has been approved! Scheduled at $actual";
-                // $this->mail->AltBody = "Your request has been approved! Scheduled at $actual";;
+                $this->mail->send();
 
-                // $this->mail->send();
-
-
-                echo 'Message has been sent';
             } catch (Exception $e) {
                 session()->setFlashdata('error_auth', "{$this->mail->ErrorInfo}");
                 return redirect()->to(site_url(''));
-                echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
             }
         }
 

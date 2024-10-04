@@ -228,8 +228,6 @@
                     <?php if($current->status <= 1) { ?>
                     <form action="<?php echo site_url('admin/schedule') . '/' . $id?>" method="post">
                         <?php if($current->status == 0) { ?>
-                        
-                
                         <label class="form-label my-0">Schedule Date</label>
                         <div class="input-group flex-nowrap input-group-outline mb-3">
                             <input type="date" class="form-control"  name="schedule" required>
