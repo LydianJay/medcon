@@ -35,10 +35,18 @@ class Admin extends BaseController
 
     private function get_appointments()
     {
-
         $this->private_data['appointments'] = $this->db->table('appointments')->select('*, service.serviceName as sname, users.fname as fname, users.lname as lname')
             ->join('service', 'service.serviceID = appointments.serviceID', 'inner')->join('users', 'users.userID = appointments.userID', 'inner')->orderBy('status', 'ASC')
             ->get()->getResult();
+    }
+
+
+    private function searchInventory($param)
+    {
+        $this->private_data['meds'] = $this->db->table('inventory')->select('*')
+        ->join('batch', 'batch.batchID = inventory.batchID', 'inner')
+        ->like('genericName', $param, 'after')->where('qty > ', 0)->limit(25)
+        ->orderBy('genericName', 'ASC')->get()->getResult();
     }
 
     public function index()
@@ -78,12 +86,22 @@ class Admin extends BaseController
             ->where('groupID', $this->private_data['appointments'][$id]->groupID)->get()
             ->getResult()[0];
 
+        $this->private_data['table_field'] = ['Generic Name', 'Brand Name', 
+                                            'Expiration Date', 'Inventory ID', 'Actions'];
+
+
         $this->private_data['param']       = $id;
         $this->private_data['groupInfo']   = $groupQuery;
         $this->private_data['current']     = $this->private_data['appointments'][$id];
         $this->private_data['id']          = $this->private_data['current']->appID;
-        $name = $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname;
-
+        $name                              = $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname;
+        $search                            = $this->request->getGet('search');
+        
+        if($search != null && !empty($search)) {
+            $this->searchInventory($search);
+        } else {
+            $this->searchInventory('');
+        }
         session()->set('email_name',    $name);
         session()->set('email_address', $this->private_data['current']->email);
         echo view('header', $this->data);

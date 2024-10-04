@@ -116,12 +116,13 @@
             </div>
             <div class="card-footer border-top border-bottom">
 
-                <div class="container-fluid">
+                <div class="container-fluid table-responsive">
+                    <p class="fs-3 text-dark text-start fw-bold mb-0">Medicine List</p>
                     <form action="<?php echo site_url('admin/modify') . '/' . $param?>" method="get">
                         <div class="d-flex flex-start flex-row align-items-center">
                             <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                 <label class="form-label">Search</label>
-                                <input type="text" class="form-control" name="search" >
+                                <input type="text" class="form-control" name="search">
                                 <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" >
                                     <i class="bi fs-7 bi-search fw-bolder"> 
                                         Search
@@ -130,10 +131,69 @@
                                 
                             </div>
                         </div>
+                        
+                        <table class="table align-items-center border-bottom border-2">
+                            <thead>
+                                <tr class="text-secondary text-start opacity-7">
+                                    <?php
+                                    foreach ($table_field as $field) {
+                                    ?>
+                                        <th class="py-0 ps-1">
+                                            <?php echo $field ?>
+                                        </th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($meds as $app) {?>
 
-                        <button class="btn btn-success" type="submit">Add</button>
+                                
+                                <tr>
+                                    <td class="ps-1 opacity-7">
+                                        <?php echo $app->genericName; ?>
+                                    </td>
+                                    <td class="ps-1  opacity-7">
+                                        <?php echo $app->brandName; ?>
+                                    </td>
+                                    <td class="ps-1  opacity-7">
+                                        <?php echo $app->expDate; ?>
+                                    </td>
+                                    <td class="ps-1  opacity-7">
+                                        <?php echo $app->inventoryID;?>
+                                    </td>
+                                    <td class="ps-1 opacity-7">
+                                        <button type="button" class="btn btn-sm btn-outline-primary my-0 rounded opacity-8" 
+                                        onclick="window.location.href='<?php echo site_url('admin/modify') .'/'. $param . '/?search=&id=' . $app->inventoryID ; ?>'; "
+                                        >
+                                            Prescribe
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <?php }?>
+                            </tbody>
+                        </table>
+                        <p class="fs-3 text-dark text-start fw-bold mt-5 mb-0">Prescription</p>
+                        <table class="table align-items-center  border-top">
+                            <thead>
+                                <tr class="text-secondary text-start opacity-7">
+                                    <?php
+                                    foreach ($table_field as $field) {
+                                    ?>
+                                        <th class="py-0 ps-1">
+                                            <?php echo $field ?>
+                                        </th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                        </table>
+
                     </form>
                 </div>
+
+
 
 
                 <div class="container-fluid d-flex flex-row justify-content-start mt-5 border-top pt-5 mx-0 px-0">
