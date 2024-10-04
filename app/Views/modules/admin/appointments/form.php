@@ -117,12 +117,25 @@
             <div class="card-footer border-top border-bottom">
 
                 <div class="container-fluid">
-                    <form action="<?php echo site_url('admin/schedule') . '/' . $id?>" method="get">
+                    <form action="<?php echo site_url('admin/modify') . '/' . $param?>" method="get">
+                        <div class="d-flex flex-start flex-row align-items-center">
+                            <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-control" name="search" >
+                                <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" >
+                                    <i class="bi fs-7 bi-search fw-bolder"> 
+                                        Search
+                                    </i>
+                                </button>
+                                
+                            </div>
+                        </div>
 
+                        <button class="btn btn-success" type="submit">Add</button>
                     </form>
                 </div>
 
-                
+
                 <div class="container-fluid d-flex flex-row justify-content-start mt-5 border-top pt-5 mx-0 px-0">
                     <?php if($current->status <= 1) { ?>
                     <form action="<?php echo site_url('admin/schedule') . '/' . $id?>" method="post">
@@ -139,7 +152,7 @@
                         </div>
                         
                         <?php } ?>
-                        <button class="btn btn-success">  <?php echo $current->status == 1 ? 'Fulfill' : 'Schedule';  ?></button>
+                        <button class="btn btn-success"  type="submit">  <?php echo $current->status == 1 ? 'Fulfill' : 'Schedule';  ?></button>
                     </form>
                     <?php } ?>
                 </div>

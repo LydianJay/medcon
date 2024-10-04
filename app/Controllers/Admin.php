@@ -78,9 +78,7 @@ class Admin extends BaseController
             ->where('groupID', $this->private_data['appointments'][$id]->groupID)->get()
             ->getResult()[0];
 
-
-
-
+        $this->private_data['param']       = $id;
         $this->private_data['groupInfo']   = $groupQuery;
         $this->private_data['current']     = $this->private_data['appointments'][$id];
         $this->private_data['id']          = $this->private_data['current']->appID;
