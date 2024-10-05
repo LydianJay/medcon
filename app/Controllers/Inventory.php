@@ -11,7 +11,7 @@ class Inventory extends BaseController
 
     public function __construct() 
     {
-        $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date'];
+        $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date', 'Inventory ID', 'Actions'];
         $this->private_data['medtype']            = ['Tablet', 'Capsule', 'Liquid', 'Other'];
     }
 
@@ -42,12 +42,11 @@ class Inventory extends BaseController
         }
 
         $param                           = $this->request->getGet('search');
-
+        $this->data['msg']               = session()->get('msg');
         $this->data['current_module']    = $this->data['adminmodules']['inventory'];
 
-
-      
-
+        session()->remove('msg'); // clean up
+        
         $param == null ? $this->getinventory() : $this->searchInventory($param);
 
         echo view('header', $this->data);
@@ -76,7 +75,85 @@ class Inventory extends BaseController
         echo view('footer');
     }
 
-    
+
+
+    public function modify()
+    {
+        $userLevel = session()->get('level');
+        if ($userLevel == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        } else if ($userLevel < 3) {
+            session()->setFlashdata('error_auth', 'Unauthorized Access');
+            return redirect()->to(site_url(''));
+        }
+        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
+        $id                              = $this->request->getGet('id'); 
+        $apply                           = $this->request->getGet('apply');
+        $result     = $this->db->table('inventory')->select('*')->join('batch', 'batch.batchID = inventory.batchID', 'inner')->
+                    where('inventoryID', $id)->get()->getResult()[0];
+
+        $this->private_data['current']        = $result;
+        $this->private_data['id']             = $id;
+        
+        // ===== To Be Used in 'apply()' ===============
+        session()->set('apply_id', $id);
+        session()->set('apply_batch_id', $result->batchID);
+        // =============================================
+
+        echo view('header', $this->data);
+        echo view('modules/admin/inventory/modify', $this->private_data);
+        echo view('footer');
+    }
+
+    public function apply()
+    {
+        $userLevel = session()->get('level');
+        if ($userLevel == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        } else if ($userLevel < 3) {
+            session()->setFlashdata('error_auth', 'Unauthorized Access');
+            return redirect()->to(site_url(''));
+        }
+        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
+        
+        $id         = session()->get('apply_id');
+        $batchID    = session()->get('apply_batch_id');
+
+        $this->private_data['msg'] = 'Modify Success!';
+        $postData = [];
+        $postField = [
+            'generic', 'brand',
+            'type', 'qty', 
+            'date', 'exp',
+            'desc'
+        ];            
+        
+        foreach($postField as $field) {
+            $data               = $this->request->getPost($field);
+            $postData[$field]   = $data; 
+        }
+
+        $inventory = [
+            'medType'       => $postData['type'],
+            'genericName'   => $postData['generic'],
+            'brandName'     => $postData['brand'],
+            'qty'           => $postData['qty'],
+            'description'   => $postData['desc']
+        ];
+
+        $batch = [
+            'recDate' => $postData['date'],
+            'expDate' => $postData['exp']
+        ];
+
+        $this->db->table('inventory')->set($inventory)->where('inventoryID', $id)->update();
+        $this->db->table('batch')->set($batch)->where('batchID', $batchID)->update();
+        session()->remove(['apply_id', 'apply_batch_id']);
+        session()->set('msg', 'Modify Success!');
+        return redirect()->to(site_url('admin/inventory'));
+    }
 
 
     public function post_add()
