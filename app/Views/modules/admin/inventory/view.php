@@ -80,15 +80,26 @@
                                         <p class="fs-7 opacity-7" name="id"> <?php echo $app->inventoryID; ?> </p>
                                     </td>
 
-                                    <td class="ps-1 opacity-7">
-                                    <button type="submit" class="btn btn-sm btn-primary my-0 rounded opacity-10"
+                                    <td class="ps-1">
+                                    <button type="submit" class="btn btn-sm btn-secondary my-0 rounded"
                                         onclick=" 
                                                     window.location.href=`<?php echo site_url('admin/inventory/modify') .'/' . '/?id=' . $app->inventoryID;?>`; 
                                                 "
                                     >
                                         Edit
                                     </button>
-                                </td>
+
+                                    </td>
+
+                                    <td class="ps-1">
+                                        <form method="post" action="<?php echo site_url('admin/inventory/delete'); ?>">
+                                            <!-- Hidden Input used for sending data to POST -->
+                                            <input type="number" name="id" hidden value="<?php echo $app->inventoryID; ?>">
+                                            <button type="submit" class="btn btn-sm btn-danger my-0 rounded">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
 
 

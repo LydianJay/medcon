@@ -27,3 +27,4 @@ $routes->post('/appointments/submit',               'Appointments::submitform');
 $routes->post('/admin/schedule/(:num)',             'Admin::schedule/$1');
 $routes->post('/admin/inventory/addmed',            'Inventory::post_add');
 $routes->post('/admin/inventory/apply',             'Inventory::apply');
+$routes->post('/admin/inventory/delete',            'Inventory::delete');

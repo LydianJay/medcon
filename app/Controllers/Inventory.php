@@ -11,7 +11,7 @@ class Inventory extends BaseController
 
     public function __construct() 
     {
-        $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date', 'Inventory ID', 'Actions'];
+        $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date', 'Inventory ID', '.' ,'.'];
         $this->private_data['medtype']            = ['Tablet', 'Capsule', 'Liquid', 'Other'];
     }
 
@@ -116,7 +116,6 @@ class Inventory extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
-        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
         
         $id         = session()->get('apply_id');
         $batchID    = session()->get('apply_batch_id');
@@ -155,6 +154,30 @@ class Inventory extends BaseController
         return redirect()->to(site_url('admin/inventory'));
     }
 
+
+    public function delete()
+    {
+        $userLevel = session()->get('level');
+        if ($userLevel == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        } else if ($userLevel < 3) {
+            session()->setFlashdata('error_auth', 'Unauthorized Access');
+            return redirect()->to(site_url(''));
+        }
+
+        $id     = $this->request->getPost('id');
+        $entry  = $this->db->table('inventory')->where('inventoryID', $id)->get()->getResult()[0];
+        
+
+        // delete inventory
+        $this->db->table('inventory')->where('inventoryID', $id)->delete();
+        // delete batch
+        $this->db->table('batch')->where('batchID', $entry->batchID)->delete();
+
+        session()->set('msg', 'Deleted an entry!');
+        return redirect()->to(site_url('admin/inventory'));
+    }
 
     public function post_add()
     {
