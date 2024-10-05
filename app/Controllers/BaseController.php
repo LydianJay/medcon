@@ -69,14 +69,12 @@ abstract class BaseController extends Controller
         $this->data['usermodules']      = [
             'appointments' => [
                 'name'      => 'Appointments',
-                'status'    => 0,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'appointments'
             ],
 
             'dental'        => [
                 'name'      => 'Dental Services',
-                'status'    => 0,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'appointments'
             ]
@@ -86,13 +84,11 @@ abstract class BaseController extends Controller
         $this->data['adminmodules']     = [
             'appointments'  => [
                 'name'      => 'Manage Appointments',
-                'status'    => 1,
                 'icon'      => 'bi-calendar3',
                 'site'      => 'admin/appointments'
             ],
             'inventory'     => [
                 'name'      => 'Manage Inventory',
-                'status'    => 0,
                 'icon'      => 'bi-prescription2',
                 'site'      => 'admin/inventory'
             ],
