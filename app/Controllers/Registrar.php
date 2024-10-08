@@ -20,6 +20,13 @@ class Registrar extends BaseController
         where('status', 0)->limit(25)->get()->getResult();
     }
 
+    private function searchStudents($name)
+    {
+        $this->private_data['query'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
+        join('students', 'students.studentID = users.userID')->join('course','course.courseID = students.courseID')->
+        where('status', 0)->where('fname',$name,'after')->limit(25)->get()->getResult();
+    }
+
 
     private function setStudentStatus($id, $status, $newID) 
     {
@@ -54,7 +61,13 @@ class Registrar extends BaseController
         $approveID      = $this->request->getGet('approve');
         $disapproveID   = $this->request->getGet('disapprove');
         $newID          = $this->request->getGet('id');
+        $searchVal      = $this->request->getGet('search');
 
+
+
+        if($searchVal != null && !empty($searchVal)) {
+            $this->searchStudents($searchVal);
+        }
 
         if($approveID != null && !empty($approveID)) {
             $this->setStudentStatus($approveID, 1, $newID);

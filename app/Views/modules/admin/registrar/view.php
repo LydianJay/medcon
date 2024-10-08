@@ -11,12 +11,13 @@
                 <div class="table-responsive px-1 mt-3">
                     <div class="row">
                         <div class="col-lg-5 col-sm-6">
-                            <form action="<?php echo site_url('admin/inventory')?>" method="get">
+                            <form action="<?php echo site_url('admin/registrar')?>" method="get">
                                 <div class="d-flex flex-start flex-row align-items-center">
                                     <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                         <label class="form-label text-nowrap">Search</label>
                                         <input type="text" class="form-control" name="search" >
-                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" >
+                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" 
+                                        >
                                             <i class="bi fs-7 bi-search fw-bolder"> 
                                                 Search
                                             </i>
@@ -27,11 +28,7 @@
                             </form>
                         </div>
 
-                        <div class="col d-flex flex-row justify-content-end align-items-start">
-                            <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>';" >
-                                <p class="fs-7 fw-bolder my-0">Add Entry</p>
-                            </button>
-                        </div>
+                       
                     </div>
                     <table class="table align-items-center">
                         <thead>
