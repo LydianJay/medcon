@@ -41,7 +41,12 @@ class Home extends BaseController
         if (count($result) < 1) {
             $this->session->setFlashdata('error_auth', "Incorrect password or email");
             return redirect()->to(site_url(''));
-        } else {
+        }
+        else if($result[0]->status != 1){
+            $this->session->setFlashdata('error_auth', "Your Account is not approved yet, Please comeback after few hours or contact system administrator");
+            return redirect()->to(site_url(''));
+        } 
+        else {
 
             $data       = $result[0];
 

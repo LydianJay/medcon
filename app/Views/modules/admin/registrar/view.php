@@ -64,20 +64,21 @@
                                         <?php echo $app->courseABR; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
-                                        <?php echo $app->userID; ?>
-                                    </td>
-                                    <td class="ps-0  opacity-7">
                                         <?php echo $app->year; ?>
                                     </td>
+                                    <td class="ps-0  opacity-7">
+                                        <div class="input-group flex-nowrap input-group-outline">
+                                            <input type="number" class="form-control" name="qty" id="<?php echo $app->userID; ?>" value="<?php echo $app->userID; ?>">
+                                        </div>
+                                    </td>
 
-                                   
-                                    
-                                
+
 
                                     <td class="ps-1">
                                     <button type="submit" class="btn btn-sm btn-success my-0 rounded"
                                         onclick=" 
-                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?approve=' . $app->userID;?>`; 
+                                                    let setID = document.getElementById('<?php echo $app->userID; ?>').value;
+                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?approve=' . $app->userID;?>&id=${setID}`; 
                                                 "
                                     >
                                         Approve
@@ -86,7 +87,11 @@
                                     </td>
 
                                     <td class="ps-1">
-                                        <button type="submit" class="btn btn-sm btn-danger my-0 rounded">
+                                        <button type="submit" class="btn btn-sm btn-danger my-0 rounded"
+                                        onclick=" 
+                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?disapprove=' . $app->userID;?>`; 
+                                                "
+                                        >
                                             Disapprove
                                         </button>
                                     </td>

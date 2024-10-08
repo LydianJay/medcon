@@ -10,7 +10,7 @@ class Registrar extends BaseController
     public function __construct()
     {
         $this->getStudents();
-        $this->private_data['table_field'] = ['Last Name', 'First Name', 'Middle Name' ,  'Course', 'Year', 'ID number', ' ', ' '];
+        $this->private_data['table_field'] = ['Last Name', 'First Name', 'Middle Name' ,  'Course', 'Year', 'Set ID number', ' ', ' '];
     }
 
     private function getStudents()
@@ -19,6 +19,24 @@ class Registrar extends BaseController
         join('students', 'students.studentID = users.userID')->join('course','course.courseID = students.courseID')->
         where('status', 0)->limit(25)->get()->getResult();
     }
+
+
+    private function setStudentStatus($id, $status, $newID) 
+    {
+        $this->db->table('users')->set('status', $status)->set('userID', $newID)->where('userID', $id)->update();
+    }
+
+    private function deleteUser($id)
+    {   
+        $this->db->table('users')->where('userID', $id)->delete();
+        $this->db->table('students')->where('studentID', $id)->delete();
+    }
+
+    private function setStudentID($id, $newID)
+    {
+        $this->db->table('students')->set('studentID', $newID)->where('studentID', $id)->update();
+    }
+
 
     public function index()
     {
@@ -30,8 +48,29 @@ class Registrar extends BaseController
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
-
         $this->data['current_module']    = $this->data['adminmodules']['registrar'];
+
+
+        $approveID      = $this->request->getGet('approve');
+        $disapproveID   = $this->request->getGet('disapprove');
+        $newID          = $this->request->getGet('id');
+
+
+        if($approveID != null && !empty($approveID)) {
+            $this->setStudentStatus($approveID, 1, $newID);
+            $this->setStudentID($approveID, $newID);
+            $this->getStudents();
+        }
+
+
+
+        if($disapproveID != null && !empty($disapproveID)){
+            $this->deleteUser($disapproveID);
+            $this->getStudents(); // update table in view
+        }
+
+
+
 
         echo view('header', $this->data);
         echo view('modules/admin/registrar/view', $this->private_data);
