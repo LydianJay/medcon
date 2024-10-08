@@ -75,7 +75,7 @@ abstract class BaseController extends Controller
 
             'dental'        => [
                 'name'      => 'Dental Services',
-                'icon'      => 'bi-calendar3',
+                'icon'      => 'bi-prescription',
                 'site'      => 'appointments'
             ]
 
@@ -94,41 +94,36 @@ abstract class BaseController extends Controller
             ],
 
             'registrar'     => [
-                'name'      => 'Manage User Registration',
+                'name'      => 'Registration Request',
                 'icon'      => 'bi-person-lines-fill',
                 'site'      => 'admin/registrar'
             ],
-        ];
-    }
 
-    public function initData()
-    {
-        $this->data['usermodules']      = [
-            'appointments' => [
-                'name'      => 'Appointments',
-                'icon'      => 'bi-calendar3',
-                'site'      => 'appointments'
+            'users'         => [
+                'name'      => 'View User Info',
+                'icon'      => 'bi-clipboard-pulse',
+                'site'      => 'admin/users'
             ],
 
             'dental'        => [
-                'name'      => 'Dental Services',
-                'icon'      => 'bi-calendar3',
-                'site'      => 'appointments'
-            ]
-
-        ];
-
-        $this->data['adminmodules']     = [
-            'appointments'  => [
-                'name'      => 'Manage Appointments',
-                'icon'      => 'bi-calendar3',
-                'site'      => 'admin/appointments'
+                'name'      => 'Dental',
+                'icon'      => 'bi-prescription',
+                'site'      => 'admin/registrar'
             ],
-            'inventory'     => [
-                'name'      => 'Manage Inventory',
-                'icon'      => 'bi-prescription2',
-                'site'      => 'admin/inventory'
+
+            'clinic'        => [
+                'name'      => 'Clinic Services',
+                'icon'      => 'bi-lungs-fill',
+                'site'      => 'admin/registrar'
             ],
+
+            'announcement'  => [
+                'name'      => 'Announcments',
+                'icon'      => 'bi-paperclip',
+                'site'      => 'admin/registrar'
+            ],
+
+            
         ];
     }
 
