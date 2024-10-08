@@ -32,23 +32,22 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `appID` int NOT NULL AUTO_INCREMENT,
   `reqDate` varchar(16) NOT NULL,
   `schedDate` varchar(16) DEFAULT NULL,
+  `schedTime` varchar(8) DEFAULT NULL,
   `description` varchar(512) NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
   `userID` int NOT NULL,
   `serviceID` int NOT NULL,
   PRIMARY KEY (`appID`),
   KEY `userID` (`userID`,`serviceID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`appID`, `reqDate`, `schedDate`, `description`, `status`, `userID`, `serviceID`) VALUES
-(1, '10/02/2024', NULL, 'awdawdawdawddaw', 0, 4, 2),
-(2, '10/02/2024', '10/25/2024', 'Sakit akong hart', 2, 4, 4),
-(3, '10/02/2024', '12/10/2024', 'Request kog shabu', 2, 4, 3),
-(4, '10/03/2024', '02/10/4244', 'Fuck this shit', 2, 5, 3);
+INSERT INTO `appointments` (`appID`, `reqDate`, `schedDate`, `schedTime`, `description`, `status`, `userID`, `serviceID`) VALUES
+(5, '10/04/2024', '02/24/2024', '15:11', 'General Ailment Treatment and Request Medicine', 2, 1, 4),
+(6, '10/06/2024', NULL, NULL, 'I need a pain reliever for my toothache', 0, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -248,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -261,20 +260,6 @@ INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `addr
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `inventory`
---
-ALTER TABLE `inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`batchID`) REFERENCES `batch` (`batchID`);
-
---
--- Constraints for table `prescription`
---
-ALTER TABLE `prescription`
-  ADD CONSTRAINT `prescription_ibfk_1` FOREIGN KEY (`inventoryID`) REFERENCES `inventory` (`inventoryID`),
-  ADD CONSTRAINT `prescription_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
-  ADD CONSTRAINT `prescription_ibfk_3` FOREIGN KEY (`adminID`) REFERENCES `users` (`userID`);
 
 --
 -- Constraints for table `users`

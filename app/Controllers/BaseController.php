@@ -74,8 +74,8 @@ abstract class BaseController extends Controller
             ],
 
             'dental'        => [
-                'name'      => 'Dental Services',
-                'icon'      => 'bi-calendar3',
+                'name'      => '[IN DEVELOPMENT]',
+                'icon'      => 'bi-door-open',
                 'site'      => 'appointments'
             ]
 
