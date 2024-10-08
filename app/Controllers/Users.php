@@ -18,6 +18,14 @@ class Users extends BaseController
     }
 
 
+    private function getUsersByName($name)
+    {
+        $this->private_data['query'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
+        where('level < ', 3)->where('status', 1)->like('fname', $name, 'first')->
+        limit(15)->get()->getResult();
+    }
+
+
     private function getUserByID($id)
     {
         $info = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->where('level < ', 3)->
@@ -40,9 +48,16 @@ class Users extends BaseController
             return redirect()->to(site_url(''));
         }
         $this->data['current_module']    = $this->data['adminmodules']['users'];
+        $search                              = $this->request->getGet('search');
+        
 
+        if($search != null && !empty($search)){
+            $this->getUsersByName($search);
+        }
+        else {
+            $this->getUsers();
+        }
 
-        $this->getUsers();
 
         echo view('header', $this->data);
         echo view('modules/admin/users/view', $this->private_data);

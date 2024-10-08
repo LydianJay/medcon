@@ -11,7 +11,7 @@
                 <div class="table-responsive px-1 mt-3">
                     <div class="row">
                         <div class="col-lg-5 col-sm-6">
-                            <form action="<?php echo site_url('admin/registrar')?>" method="get">
+                            <form action="<?php echo site_url('admin/users')?>" method="get">
                                 <div class="d-flex flex-start flex-row align-items-center">
                                     <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                         <label class="form-label text-nowrap">Search</label>
