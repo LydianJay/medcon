@@ -9,7 +9,13 @@ class Registrar extends BaseController
 
     public function __construct()
     {
-        
+        $this->getStudents();
+    }
+
+    private function getStudents()
+    {
+        $this->private_data['students'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
+        join('students', 'students.studentID = users.userID')->join('course','course.courseID = students.courseID')->limit(25)->get()->getResult();
     }
 
     public function index()
@@ -26,7 +32,7 @@ class Registrar extends BaseController
         $this->data['current_module']    = $this->data['adminmodules']['registrar'];
 
         echo view('header', $this->data);
-        echo view('modules/admin/registrar/view');
+        echo view('modules/admin/registrar/view', $this->private_data);
         echo view('footer');
     }
 }
