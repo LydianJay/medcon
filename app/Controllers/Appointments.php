@@ -12,7 +12,6 @@ class Appointments extends BaseController
 
     public function __construct()
     {
-        $this->initData();
         $this->module                              = &$this->data['usermodules']['appointments'];
         $this->private_data['serviceList']         = $this->getTable('service')->get()->getResult();
         $this->private_data['username']            = session()->get('lastname') . ' ' . session()->get('firstname') . ' ' . substr(session()->get('middlename'), 0, 1) . '.';

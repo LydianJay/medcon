@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 06, 2024 at 02:18 AM
--- Server version: 8.3.0
+-- Generation Time: Oct 08, 2024 at 01:40 AM
+-- Server version: 8.0.39
 -- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -61,14 +61,14 @@ CREATE TABLE IF NOT EXISTS `batch` (
   `recDate` varchar(16) NOT NULL,
   `expDate` varchar(16) NOT NULL,
   PRIMARY KEY (`batchID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `batch`
 --
 
 INSERT INTO `batch` (`batchID`, `recDate`, `expDate`) VALUES
-(5, '2024-10-02', '2029-07-18');
+(1, '2024-10-08', '2025-06-25');
 
 -- --------------------------------------------------------
 
@@ -112,14 +112,14 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `batchID` int NOT NULL,
   PRIMARY KEY (`inventoryID`),
   KEY `batchID` (`batchID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `inventory`
 --
 
 INSERT INTO `inventory` (`inventoryID`, `medType`, `genericName`, `brandName`, `qty`, `description`, `batchID`) VALUES
-(4, 2, 'Paracetamol', 'Ritemed', 24, 'awdawdawd', 5);
+(1, 1, 'Mefenamic Acid', 'Ritemed', 24, 'Pain Reliever', 1);
 
 -- --------------------------------------------------------
 
@@ -244,6 +244,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) NOT NULL,
   `password` varchar(128) NOT NULL,
   `groupID` int NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

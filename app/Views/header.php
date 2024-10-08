@@ -73,6 +73,22 @@
                 width: 1.5rem;
             }
         }
+
+        tr.clickable {
+            cursor: pointer;
+        }
+
+       
+        tr.clickable:hover {
+            background-color: var(--bs-gray-300); 
+            transition: background-color 0.525s ease; 
+        }
+
+      
+        tr.clickable:hover td {
+            color: var(--bs-gray-800); 
+            font-weight: bold;
+        }
     </style>
 
 </head>
