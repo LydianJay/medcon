@@ -77,7 +77,7 @@
                                     <td class="ps-1">
                                     <button type="submit" class="btn btn-sm btn-success my-0 rounded"
                                         onclick=" 
-                                                    window.location.href=`<?php // echo site_url('admin/inventory/modify') .'/' . '/?id=' . $app->inventoryID;?>`; 
+                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?approve=' . $app->userID;?>`; 
                                                 "
                                     >
                                         Approve
@@ -86,13 +86,9 @@
                                     </td>
 
                                     <td class="ps-1">
-                                        <form method="post" action="<?php // echo site_url('admin/inventory/delete'); ?>">
-                                            <!-- Hidden Input used for sending data to POST -->
-                                            <input type="number" name="id" hidden value="<?php // echo $app->inventoryID; ?>">
-                                            <button type="submit" class="btn btn-sm btn-danger my-0 rounded">
-                                                Disapprove
-                                            </button>
-                                        </form>
+                                        <button type="submit" class="btn btn-sm btn-danger my-0 rounded">
+                                            Disapprove
+                                        </button>
                                     </td>
                                 </tr>
 
