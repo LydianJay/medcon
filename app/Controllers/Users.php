@@ -80,7 +80,7 @@ class Users extends BaseController
 
 
 
-       $this->getUserByID($id);
+        $this->getUserByID($id);
         echo view('header', $this->data);
         echo view('modules/admin/users/more', $this->private_data);
         echo view('footer');
