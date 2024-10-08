@@ -46,8 +46,14 @@
                             <?php
                             foreach ($query as $app) {
                             ?>
-                                <tr>
-                                    <td class="ps-0 opacity-7">
+                                <tr 
+                                    class="clickable"
+
+                                    onclick=" 
+                                                window.location.href=`<?php echo site_url('admin/users') .'/' . '/?id=' . $app->userID;?>`; 
+                                            "
+                                >
+                                    <td class="ps-0 opacity-7 py-1">
                                         <?php echo strtoupper($app->lname); ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
@@ -59,10 +65,13 @@
                                     <td class="ps-0  opacity-7">
                                         <?php echo $app->groupName; ?>
                                     </td>
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->phone; ?>
+                                    </td>
+                                    <td class="ps-0  opacity-7">
+                                        <?php echo $app->email; ?>
+                                    </td>
                                    
-
-
-
                                 </tr>
 
 
