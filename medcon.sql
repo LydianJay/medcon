@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 03, 2024 at 07:54 AM
+-- Generation Time: Oct 08, 2024 at 01:40 AM
 -- Server version: 8.0.39
 -- PHP Version: 8.2.18
 
@@ -62,7 +62,14 @@ CREATE TABLE IF NOT EXISTS `batch` (
   `recDate` varchar(16) NOT NULL,
   `expDate` varchar(16) NOT NULL,
   PRIMARY KEY (`batchID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `batch`
+--
+
+INSERT INTO `batch` (`batchID`, `recDate`, `expDate`) VALUES
+(1, '2024-10-08', '2025-06-25');
 
 -- --------------------------------------------------------
 
@@ -106,7 +113,14 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `batchID` int NOT NULL,
   PRIMARY KEY (`inventoryID`),
   KEY `batchID` (`batchID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`inventoryID`, `medType`, `genericName`, `brandName`, `qty`, `description`, `batchID`) VALUES
+(1, 1, 'Mefenamic Acid', 'Ritemed', 24, 'Pain Reliever', 1);
 
 -- --------------------------------------------------------
 
@@ -231,6 +245,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) NOT NULL,
   `password` varchar(128) NOT NULL,
   `groupID` int NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -239,9 +254,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`) VALUES
-(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4),
-(5, 'Lydian', 'Doofensmirt', 'Kamarov', '1111-10-10', '09123456789', 'Surigao City', 'maturanmark1999@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 1);
+INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`, `status`) VALUES
+(4, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4, 0),
+(5, 'Lydian', 'Doofensmirt', 'Kamarov', '1111-10-10', '09123456789', 'Surigao City', 'maturanmark1999@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 1, 0);
 
 --
 -- Constraints for dumped tables
