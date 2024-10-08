@@ -74,10 +74,28 @@ abstract class BaseController extends Controller
             ],
 
             'dental'        => [
-                'name'      => 'Dental Services',
+                'name'      => 'Dental Page',
                 'icon'      => 'bi-prescription',
                 'site'      => 'appointments'
-            ]
+            ],
+
+            'clinic'        => [
+                'name'      => 'Clinic Services',
+                'icon'      => 'bi-lungs-fill',
+                'site'      => 'appointments'
+            ],
+
+            'announcement'  => [
+                'name'      => 'Announcments',
+                'icon'      => 'bi-paperclip',
+                'site'      => 'appointments'
+            ],
+
+            'account'  => [
+                'name'      => 'My Account',
+                'icon'      => 'bi-person-fill-gear',
+                'site'      => 'appointments'
+            ],
 
         ];
 
@@ -87,6 +105,7 @@ abstract class BaseController extends Controller
                 'icon'      => 'bi-calendar3',
                 'site'      => 'admin/appointments'
             ],
+
             'inventory'     => [
                 'name'      => 'Manage Inventory',
                 'icon'      => 'bi-prescription2',
@@ -106,7 +125,7 @@ abstract class BaseController extends Controller
             ],
 
             'dental'        => [
-                'name'      => 'Dental',
+                'name'      => 'Dental Page',
                 'icon'      => 'bi-prescription',
                 'site'      => 'admin/registrar'
             ],
