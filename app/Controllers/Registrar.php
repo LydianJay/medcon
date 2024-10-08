@@ -10,12 +10,14 @@ class Registrar extends BaseController
     public function __construct()
     {
         $this->getStudents();
+        $this->private_data['table_field'] = ['Last Name', 'First Name', 'Middle Name' ,  'Course', 'Year', 'ID number', ' ', ' '];
     }
 
     private function getStudents()
     {
-        $this->private_data['students'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
-        join('students', 'students.studentID = users.userID')->join('course','course.courseID = students.courseID')->limit(25)->get()->getResult();
+        $this->private_data['query'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
+        join('students', 'students.studentID = users.userID')->join('course','course.courseID = students.courseID')->
+        where('status', 0)->limit(25)->get()->getResult();
     }
 
     public function index()
