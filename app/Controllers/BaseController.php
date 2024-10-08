@@ -92,6 +92,12 @@ abstract class BaseController extends Controller
                 'icon'      => 'bi-prescription2',
                 'site'      => 'admin/inventory'
             ],
+
+            'registrar'     => [
+                'name'      => 'Manage User Registration',
+                'icon'      => 'bi-person-lines-fill',
+                'site'      => 'admin/registrar'
+            ],
         ];
     }
 

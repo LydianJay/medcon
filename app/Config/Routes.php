@@ -17,7 +17,7 @@ $routes->get('/admin/modify/(:num)',                'Admin::modify/$1');
 $routes->get('/admin/inventory',                    'Inventory::index');
 $routes->get('/admin/inventory/add',                'Inventory::add');
 $routes->get('/admin/inventory/modify',             'Inventory::modify');
-
+$routes->get('/admin/registrar',                    'Registrar::index');
 
 $routes->post('/register',                          'Home::register');
 $routes->post('/registerfaculty',                   'Home::register_faculty');
