@@ -50,7 +50,7 @@
                                     class="clickable"
 
                                     onclick=" 
-                                                window.location.href=`<?php echo site_url('admin/users') .'/' . '/?id=' . $app->userID;?>`; 
+                                                window.location.href=`<?php echo site_url('admin/more') . '/' . $app->userID;?>`; 
                                             "
                                 >
                                     <td class="ps-0 opacity-7 py-1">
