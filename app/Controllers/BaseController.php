@@ -76,7 +76,7 @@ abstract class BaseController extends Controller
             'dental'        => [
                 'name'      => 'Dental Page',
                 'icon'      => 'bi-prescription',
-                'site'      => 'appointments'
+                'site'      => 'dental'
             ],
 
             'clinic'        => [

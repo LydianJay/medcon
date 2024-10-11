@@ -20,6 +20,7 @@ $routes->get('/admin/inventory/modify',             'Inventory::modify');
 $routes->get('/admin/registrar',                    'Registrar::index');
 $routes->get('/admin/users',                        'Users::index');
 $routes->get('/admin/more/(:num)',                  'Users::more/$1');
+$routes->get('/dental',                             'Dental::index');
 
 
 $routes->post('/register',                          'Home::register');
