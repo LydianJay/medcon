@@ -21,7 +21,7 @@ $routes->get('/admin/registrar',                    'Registrar::index');
 $routes->get('/admin/users',                        'Users::index');
 $routes->get('/admin/more/(:num)',                  'Users::more/$1');
 $routes->get('/dental',                             'Dental::index');
-
+$routes->get('/admin/dental',                       'Dental::admin');
 
 $routes->post('/register',                          'Home::register');
 $routes->post('/registerfaculty',                   'Home::register_faculty');
