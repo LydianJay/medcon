@@ -22,6 +22,7 @@ $routes->get('/admin/users',                        'Users::index');
 $routes->get('/admin/more/(:num)',                  'Users::more/$1');
 $routes->get('/dental',                             'Dental::index');
 $routes->get('/admin/dental',                       'Dental::admin');
+$routes->get('/admin/dental/add',                   'Dental::add');
 
 $routes->post('/register',                          'Home::register');
 $routes->post('/registerfaculty',                   'Home::register_faculty');
@@ -32,3 +33,4 @@ $routes->post('/admin/schedule/(:num)',             'Admin::schedule/$1');
 $routes->post('/admin/inventory/addmed',            'Inventory::post_add');
 $routes->post('/admin/inventory/apply',             'Inventory::apply');
 $routes->post('/admin/inventory/delete',            'Inventory::delete');
+$routes->post('/admin/dental/postadd',              'Dental::postAdd');

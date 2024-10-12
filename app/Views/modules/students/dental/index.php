@@ -56,7 +56,7 @@
                     <div class="swiper init-swiper">
                     <div class="row">
                         <div class="col">
-                            <p class="h2">Announments</p>
+                            <p class="h2 text-primary">Announments</p>
                         </div>
                     </div>
                     <script type="application/json" class="swiper-config">
@@ -81,28 +81,22 @@
                         }
                     </script>
                     <div class="swiper-wrapper">
+                        <?php foreach($table as $d ) { ?>
+                        
                         <div class="swiper-slide">
                             <div class="card">
                                 <div class="card-header">
-                                    <p class="h2">Announcment #1</p>
+                                    <p class="h2"><?php echo $d->title ?></p>
                                 </div>
 
                                 <div class="card-body">
-
+                                  <?php echo $d->content ?>
                                 </div>
                                 
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <div class="card-header">
-                                    <p class="h2">Announcment #2</p>
-                                </div>
-                                <div class="card-body">
-                                    <p class="p5">Denta health check up from 9 am to 5 pm</p>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        <?php } ?>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

@@ -10,10 +10,10 @@
             </div>
             <div class="card-footer border-top">
                 <div class="d-flex flex-row justify-content-center">
-                    <a href="<?php echo site_url('appointments/form') ?>" class="me-2">
+                    <a href="<?php echo site_url('admin/dental/add') ?>" class="me-2">
                         <i class="bi bi-plus-square-fill"></i>
                     </a>
-                    <a href="<?php echo site_url('appointments/form') ?>">
+                    <a href="<?php echo site_url('admin/dental/add') ?>">
                         <p class="text-center my-0 ">Add Announcement</p>
                     </a>
                 </div>
