@@ -82,7 +82,7 @@ abstract class BaseController extends Controller
             'clinic'        => [
                 'name'      => 'Clinic Services',
                 'icon'      => 'bi-lungs-fill',
-                'site'      => 'appointments'
+                'site'      => 'clinic'
             ],
 
             'announcement'  => [
