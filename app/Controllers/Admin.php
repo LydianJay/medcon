@@ -9,9 +9,6 @@ use PHPMailer\PHPMailer\Exception;
 class Admin extends BaseController
 {
     private $private_data;
-    private $module;
-
-
 
     public function __construct()
     {
@@ -96,7 +93,6 @@ class Admin extends BaseController
         $this->private_data['table_field'] = ['Generic Name', 'Brand Name', 
                                             'Expiration Date', 'Inventory ID'];
 
-        $doClear                           = $this->request->getGet('clear');
 
         if($this->request->getGet('clear') ) {
             session()->remove(['added', 'last_added_id']);

@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 08, 2024 at 01:40 AM
--- Server version: 8.0.39
+-- Generation Time: Oct 15, 2024 at 02:29 PM
+-- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `medcon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcements`
+--
+
+DROP TABLE IF EXISTS `announcements`;
+CREATE TABLE IF NOT EXISTS `announcements` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `content` varchar(256) NOT NULL,
+  `date` varchar(16) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -41,14 +57,6 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   KEY `userID` (`userID`,`serviceID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `appointments`
---
-
-INSERT INTO `appointments` (`appID`, `reqDate`, `schedDate`, `schedTime`, `description`, `status`, `userID`, `serviceID`) VALUES
-(5, '10/04/2024', '02/24/2024', '15:11', 'General Ailment Treatment and Request Medicine', 2, 1, 4),
-(6, '10/06/2024', NULL, NULL, 'I need a pain reliever for my toothache', 0, 2, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -69,6 +77,21 @@ CREATE TABLE IF NOT EXISTS `batch` (
 
 INSERT INTO `batch` (`batchID`, `recDate`, `expDate`) VALUES
 (1, '2024-10-08', '2025-06-25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinic`
+--
+
+DROP TABLE IF EXISTS `clinic`;
+CREATE TABLE IF NOT EXISTS `clinic` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
+  `description` varchar(256) NOT NULL,
+  `status` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -195,13 +218,6 @@ CREATE TABLE IF NOT EXISTS `students` (
   KEY `studentID` (`studentID`,`courseID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`studentID`, `year`, `courseID`) VALUES
-(5, 2, 5);
-
 -- --------------------------------------------------------
 
 --
@@ -247,19 +263,33 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2147483647 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`) VALUES
-(1, 'Medcon', 'Admin', 'Medcon', '1/1/2001', '000000000', 'Cantilan, Surigao Del Sur', 'medconnemsu@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 4),
-(2, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 1);
+INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`, `status`) VALUES
+(1, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4, 1),
+(2147483647, 'Medcon', 'Medcon', 'Nemsu', '1/1/2001', '09123456789', 'Orillaneda Street, Cantilan, Surigao del Sur', 'medconnemsu@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 4, 1);
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`batchID`) REFERENCES `batch` (`batchID`);
+
+--
+-- Constraints for table `prescription`
+--
+ALTER TABLE `prescription`
+  ADD CONSTRAINT `prescription_ibfk_1` FOREIGN KEY (`inventoryID`) REFERENCES `inventory` (`inventoryID`),
+  ADD CONSTRAINT `prescription_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `prescription_ibfk_3` FOREIGN KEY (`adminID`) REFERENCES `users` (`userID`);
 
 --
 -- Constraints for table `users`
