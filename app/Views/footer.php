@@ -13,7 +13,6 @@
 <script src="<?php echo base_url() ?>/assets/js/material-dashboard.min.js?v=3.1.0"></script>
 
 <script>
-    console.log('Fuck');
     <?php if(isset($msg)) {?>
         alert('<?php echo $msg; ?>');
     <?php }?>

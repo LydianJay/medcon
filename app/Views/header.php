@@ -146,7 +146,6 @@
         <div class="container-fluid mt-1 border-bottom border-2">
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item ps-3 d-lg-none d-flex align-items-center justify-content-end">
-                    <!-- <p class="p5 text-primary text-center my-0 me-1 text-bold">Panel</p> -->
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                         <div class="sidenav-toggler-inner">
                             <i class="bi bi-list fs-5 text-bold"></i>

@@ -94,7 +94,7 @@ abstract class BaseController extends Controller
             'account'  => [
                 'name'      => 'My Account',
                 'icon'      => 'bi-person-fill-gear',
-                'site'      => 'appointments'
+                'site'      => 'account'
             ],
 
         ];
@@ -133,7 +133,7 @@ abstract class BaseController extends Controller
             'clinic'        => [
                 'name'      => 'Clinic Services',
                 'icon'      => 'bi-lungs-fill',
-                'site'      => 'admin/registrar'
+                'site'      => 'admin/clinic'
             ],
 
             'announcement'  => [

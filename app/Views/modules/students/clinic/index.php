@@ -57,60 +57,27 @@
     
     
 
-    <!-- Services Section -->
     <section id="services" class="services section light-background">
 
-        <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-        </div><!-- End Section Title -->
+        </div>
 
         <div class="container">
-            <div class="d-flex flex-row justify-content-around flex-wrap">
-                <div class="card mx-1 my-1">
+            <div class="d-flex flex-column justify-content-around flex-nowrap">
+                <?php foreach ($table as $d) { ?>
+                <div class="card mx-1 mb-5">
                     <div class="card-header">
-                        <p class="fs-5 fw-bold">Check Up</p>
+                        <p class="fs-5 fw-bold"><?php echo $d->title; ?></p>
                     </div>
                     <div class="card-body">
-                        Check ups for everyone that needed some healthcare
+                      <?php echo $d->description; ?>
                     </div>
                 </div>
-                <div class="card mx-1 my-1">
-                    <div class="card-header ">
-                        <p class="fs-5 fw-bold">Check Up</p>
-                    </div>
-                    <div class="card-body">
-                        Check ups for everyone that needed some healthcare
-                    </div>
-                </div>
-                <div class="card mx-1 my-1">
-                    <div class="card-header ">
-                        <p class="fs-5 fw-bold">Check Up</p>
-                    </div>
-                    <div class="card-body">
-                        Check ups for everyone that needed some healthcare
-                    </div>
-                </div>
-                <div class="card mx-1 my-1">
-                    <div class="card-header ">
-                        <p class="fs-5 fw-bold">Check Up</p>
-                    </div>
-                    <div class="card-body">
-                        Check ups for everyone that needed some healthcare
-                    </div>
-                </div>
-                <div class="card mx-1 my-1">
-                    <div class="card-header ">
-                        <p class="fs-5 fw-bold">Check Up</p>
-                    </div>
-                    <div class="card-body">
-                        Check ups for everyone that needed some healthcare
-                    </div>
-                </div>
+                <?php } ?>
             </div>
             
             
-
         </div>
 
     </section><!-- /Services Section -->
@@ -150,14 +117,14 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/php-email-form/validate.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/aos/aos.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="<?php echo base_url() ?>onepage/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/php-email-form/validate.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/aos/aos.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/purecounter/purecounter_vanilla.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/glightbox/js/glightbox.min.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/swiper/swiper-bundle.min.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="<?php echo base_url() ?>onepage/assets/thirdparty/isotope-layout/isotope.pkgd.min.js"></script>
 
   <!-- Main JS File -->
   <script src="<?php echo base_url() ?>onepage/assets/js/main.js"></script>
