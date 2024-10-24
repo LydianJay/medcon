@@ -28,7 +28,8 @@ $routes->get('/admin/clinic',                       'Clinic::admin');
 $routes->get('/admin/clinic/add',                   'Clinic::add');
 $routes->get('/account',                            'Account::index');
 
-
+$routes->get('/admin/announcements',                'Announcements::admin');
+$routes->get('/admin/announcements/add',            'Announcements::add');
 
 $routes->post('/register',                          'Home::register');
 $routes->post('/registerfaculty',                   'Home::register_faculty');
@@ -41,4 +42,5 @@ $routes->post('/admin/inventory/apply',             'Inventory::apply');
 $routes->post('/admin/inventory/delete',            'Inventory::delete');
 $routes->post('/admin/dental/postadd',              'Dental::postAdd');
 $routes->post('/admin/clinic/postadd',              'Clinic::postAdd');
+$routes->post('/admin/announcements/postadd',       'Announcements::postAdd');
 $routes->post('/password/update',                   'Account::update');

@@ -86,7 +86,7 @@ abstract class BaseController extends Controller
             ],
 
             'announcement'  => [
-                'name'      => 'Announcments',
+                'name'      => 'Announcements',
                 'icon'      => 'bi-paperclip',
                 'site'      => 'appointments'
             ],
@@ -137,9 +137,9 @@ abstract class BaseController extends Controller
             ],
 
             'announcement'  => [
-                'name'      => 'Announcements',
+                'name'      => 'General Announcements',
                 'icon'      => 'bi-paperclip',
-                'site'      => 'admin/registrar'
+                'site'      => 'admin/announcements'
             ],
 
             

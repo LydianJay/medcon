@@ -41,7 +41,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="<?php echo site_url('appointments') ?>" class="active">Home<br></a></li>
+          <li><a href="<?php echo site_url('appointments') ?>" class="active">Medcon Dashboard<br></a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

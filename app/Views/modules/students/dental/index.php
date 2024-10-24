@@ -38,7 +38,7 @@
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="<?php echo site_url('appointments') ?>" class="active">Home</a></li>
+          <li><a href="<?php echo site_url('appointments') ?>" class="active">Medcon Dashboard</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -50,73 +50,73 @@
     <!-- About Section -->
     <section id="about" class="about section">
 
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2" data-aos="fade-up" data-aos-delay="400">
-                    <div class="swiper init-swiper">
-                    <div class="row">
-                        <div class="col">
-                            <p class="h2 text-primary">Announments</p>
-                        </div>
-                    </div>
-                    <script type="application/json" class="swiper-config">
-                        {
-                        "loop": true,
-                        "speed": 600,
-                        "autoplay": {
-                            "delay": 5000
-                        },
-                        "slidesPerView": "auto",
-                        
-                        "breakpoints": {
-                            "320": {
-                            "slidesPerView": 1,
-                            "spaceBetween": 40
-                            },
-                            "1200": {
-                            "slidesPerView": 1,
-                            "spaceBetween": 1
-                            }
-                        }
-                        }
-                    </script>
-                    <div class="swiper-wrapper">
-                        <?php foreach($table as $d ) { ?>
-                        
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <div class="card-header">
-                                    <p class="h2"><?php echo $d->title ?></p>
-                                </div>
-
-                                <div class="card-body">
-                                  <?php echo $d->content ?>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                        <?php } ?>
-                    </div>
-                    <div class="swiper-pagination"></div>
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2" data-aos="fade-up" data-aos-delay="400">
+            <div class="swiper init-swiper">
+              <div class="row">
+                <div class="col">
+                  <p class="h2 text-primary">Announcements</p>
                 </div>
-            </div>
-            <div class="col-lg-4 order-lg-1">
-                <span class="section-subtitle" data-aos="fade-up">Welcome</span>
-                <h1 class="mb-4" data-aos="fade-up">
-                    Northeastern Mindanao State University Dental Clinic
-                </h1>
-                    <p data-aos="fade-up">
-                        We are proud to offer exceptional dental care exclusively for our university community. Our clinic provides a range of services, from routine check-ups to specialized treatments, ensuring that your oral health is always in great hands.
-                        No appointments needed—walk-ins are welcome! Simply visit us during clinic hours, and our dedicated team will be ready to assist you. Experience top-quality dental care right here at Northeastern Mindanao State University.
-                    </p>
+              </div>
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
 
-                </div>
+                  "breakpoints": {
+                    "320": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 40
+                    },
+                    "1200": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 1
+                    }
+                  }
+                }
+              </script>
+              <div class="swiper-wrapper">
+                <?php foreach ($table as $d) { ?>
+
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <div class="card-header">
+                        <p class="h2"><?php echo $d->title ?></p>
+                      </div>
+
+                      <div class="card-body">
+                        <?php echo $d->content ?>
+                      </div>
+
+                    </div>
+                  </div>
+
+                <?php } ?>
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
+          </div>
+          <div class="col-lg-4 order-lg-1">
+            <span class="section-subtitle" data-aos="fade-up">Welcome</span>
+            <h1 class="mb-4" data-aos="fade-up">
+              Northeastern Mindanao State University Dental Clinic
+            </h1>
+            <p data-aos="fade-up">
+              We are proud to offer exceptional dental care exclusively for our university community. Our clinic provides a range of services, from routine check-ups to specialized treatments, ensuring that your oral health is always in great hands.
+              No appointments needed—walk-ins are welcome! Simply visit us during clinic hours, and our dedicated team will be ready to assist you. Experience top-quality dental care right here at Northeastern Mindanao State University.
+            </p>
+
+          </div>
         </div>
+      </div>
     </section><!-- /About Section -->
 
-    
+
     <!--Announcment -->
     <section id="pricing" class="pricing section light-background">
 
@@ -131,53 +131,53 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card bg-white">
-                <div class="card-header">
-                    <p class="fs-2 fw-bold">Dental Check-ups</p>
-                </div>
-                <div class="card-body">
+              <div class="card-header">
+                <p class="fs-2 fw-bold">Dental Check-ups</p>
+              </div>
+              <div class="card-body">
 
-                    <p class="fs-5 text-justify py-5">
-                        Regular dental check-ups are essential to maintaining good oral health. 
-                        At the Northeastern Mindanao State University Dental Clinic, we offer thorough examinations to assess the overall health of your teeth and gums. 
-                        Our dental cleanings help remove plaque and tartar buildup, reducing the risk of cavities and gum disease.
-                    </p>
+                <p class="fs-5 text-justify py-5">
+                  Regular dental check-ups are essential to maintaining good oral health.
+                  At the Northeastern Mindanao State University Dental Clinic, we offer thorough examinations to assess the overall health of your teeth and gums.
+                  Our dental cleanings help remove plaque and tartar buildup, reducing the risk of cavities and gum disease.
+                </p>
 
-                </div>
+              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card bg-white">
-                <div class="card-header">
-                    <p class="fs-2 fw-bold">Tooth Extraction</p>
-                </div>
-                <div class="card-body py-5">
+              <div class="card-header">
+                <p class="fs-2 fw-bold">Tooth Extraction</p>
+              </div>
+              <div class="card-body py-5">
 
-                    <p class="fs-5 text-justify">
-                        At the Northeastern Mindanao State University Dental Clinic, we understand that having a tooth removed can feel overwhelming, 
-                        but our skilled team ensures the process is as comfortable and painless as possible. 
-                        Tooth extractions are performed when a tooth is severely damaged or decayed, 
-                        or when it's necessary to relieve pain and protect your oral health.
-                    </p>
+                <p class="fs-5 text-justify">
+                  At the Northeastern Mindanao State University Dental Clinic, we understand that having a tooth removed can feel overwhelming,
+                  but our skilled team ensures the process is as comfortable and painless as possible.
+                  Tooth extractions are performed when a tooth is severely damaged or decayed,
+                  or when it's necessary to relieve pain and protect your oral health.
+                </p>
 
-                </div>
+              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card bg-white">
-                <div class="card-header">
-                    <p class="fs-2 fw-bold">Cavity Treatment</p>
-                </div>
-                <div class="card-body py-5">
+              <div class="card-header">
+                <p class="fs-2 fw-bold">Cavity Treatment</p>
+              </div>
+              <div class="card-body py-5">
 
-                    <p class="fs-5 text-justify">
-                        Cavities are a common dental issue, but with early detection and prompt treatment at Northeastern Mindanao State University Dental Clinic, 
-                        we can restore your tooth to full health. Our fillings help repair decayed teeth, preventing further damage and restoring their normal function.
-                        If you’re noticing tooth sensitivity, pain, or visible signs of decay, walk into our clinic for immediate care—no appointment needed!
-                    </p>
+                <p class="fs-5 text-justify">
+                  Cavities are a common dental issue, but with early detection and prompt treatment at Northeastern Mindanao State University Dental Clinic,
+                  we can restore your tooth to full health. Our fillings help repair decayed teeth, preventing further damage and restoring their normal function.
+                  If you’re noticing tooth sensitivity, pain, or visible signs of decay, walk into our clinic for immediate care—no appointment needed!
+                </p>
 
-                </div>
+              </div>
             </div>
           </div>
 
@@ -186,7 +186,7 @@
       </div>
       <div class="row mt-3">
         <div class="d-flex justify-content-center">
-            <p class="fs-5 fw-bold text-secondary">and many more...</p>
+          <p class="fs-5 fw-bold text-secondary">and many more...</p>
         </div>
       </div>
 
@@ -203,13 +203,13 @@
           <div class="widget">
             <h3 class="widget-heading">About Us</h3>
             <p class="mb-4">
-                At our clinic, we believe in creating a comfortable and welcoming environment for every patient. 
-                From regular check-ups and cleanings to extractions and cavity treatments, 
-                we are here to support your dental health with personalized, compassionate care.
+              At our clinic, we believe in creating a comfortable and welcoming environment for every patient.
+              From regular check-ups and cleanings to extractions and cavity treatments,
+              we are here to support your dental health with personalized, compassionate care.
             </p>
           </div>
+        </div>
       </div>
-    </div>
   </footer>
 
   <!-- Scroll Top -->

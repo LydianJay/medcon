@@ -4,7 +4,7 @@
             <div class="card-header p-3 pt-2">
 
                 <div class="text-center pt-1">
-                    <p class="h1 text-bold text-info text-center mt-4">Announcements</p>
+                    <p class="h1 text-bold text-info text-center mt-4">Dental Announcements</p>
                     <h4 class="mb-0 text-bold"><?php echo ($table != null) ? count($table) : '0';?></h4>
                 </div>
             </div>
