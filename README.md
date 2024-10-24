@@ -8,7 +8,7 @@ and book a visit within minutes. Say goodbye to long wait times and complicated 
 healthcare is just a few clicks away, ensuring you get the medical support you need when you need it.
 
 ## Visit Us
-> [medcon temporary website](https://nemsu-medcon.online)
+> [medcon website](https://nemsu-medcon.com)
 
 
 
