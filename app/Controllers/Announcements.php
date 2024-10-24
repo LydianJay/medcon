@@ -19,10 +19,12 @@ class Announcements extends BaseController
             session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
             return redirect()->to(site_url(''));
         }
-
+        $this->data['current_module']    = $this->data['usermodules']['announcement'];
+       
+        $this->getAnnouncements();
 
         echo view('header', $this->data);
-        echo view('modules/students/announcements/view');
+        echo view('modules/students/announcements/view', $this->private_data);
         echo view('footer');
     }
 

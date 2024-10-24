@@ -27,6 +27,8 @@ $routes->get('/clinic',                             'Clinic::index');
 $routes->get('/admin/clinic',                       'Clinic::admin');
 $routes->get('/admin/clinic/add',                   'Clinic::add');
 $routes->get('/account',                            'Account::index');
+$routes->get('/announcements',                      'Announcements::index');
+
 
 $routes->get('/admin/announcements',                'Announcements::admin');
 $routes->get('/admin/announcements/add',            'Announcements::add');
