@@ -8,10 +8,7 @@ and book a visit within minutes. Say goodbye to long wait times and complicated 
 healthcare is just a few clicks away, ensuring you get the medical support you need when you need it.
 
 ## Visit Us
+> [medcon temporary website](https://nemsu-medcon.online)
 
-> [!WARNING]
-> Our website has not been properly hosted yet 
-> If you notice our website is down, it is because
-> our server isnt running yet
-> [medcon temporary website](https://access.lyncxus.online)
+
 
