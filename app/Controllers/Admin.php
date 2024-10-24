@@ -32,7 +32,7 @@ class Admin extends BaseController
 
     private function get_appointments()
     {
-        $this->private_data['appointments'] = $this->db->table('appointments')->select('*, service.serviceName as sname, users.fname as fname, users.lname as lname, appointments.status as status')
+        $this->private_data['appointments'] = $this->db->table('appointments')->select('*, service.serviceName as sname, users.fname as fname, users.lname as lname, appointments.status as status, users.status as stat')
             ->join('service', 'service.serviceID = appointments.serviceID', 'inner')->join('users', 'users.userID = appointments.userID', 'inner')->orderBy('appointments.status', 'ASC')
             ->get()->getResult();
     }
@@ -44,6 +44,15 @@ class Admin extends BaseController
                 where('inventoryID', $id)->get()->getResult();
     }
 
+
+    private function getPrescriptions($userID)
+    {
+        $this->private_data['prescriptions'] = $this->db->table('prescription')
+        ->select('*, prescription.qty as quantity')
+        ->join('users', 'users.userID = prescription.adminID')
+        ->join('inventory', 'prescription.inventoryID = inventory.inventoryID')
+        ->where('prescription.userID',$userID)->get()->getResult();
+    }
 
     private function searchInventory($param)
     {
@@ -145,9 +154,14 @@ class Admin extends BaseController
         }
 
         
+        if($this->private_data['current']->status == 2) {
+            $this->getPrescriptions($this->private_data['current']->userID);
+        }
+
 
         session()->set('email_name',    $name);
         session()->set('email_address', $this->private_data['current']->email);
+        session()->set('userid', $this->private_data['current']->userID);
         echo view('header', $this->data);
         echo view('modules/admin/appointments/form', $this->private_data);
         echo view('footer');
@@ -171,7 +185,8 @@ class Admin extends BaseController
         if (empty($sched) || $sched == null) {
             
             $orderList  = session()->get('added');
-
+            $userID     = session()->get('userid');
+            $adminID    = session()->get('id'); 
             foreach($orderList as $order) { // this just ensures that we have enought items
                 
                 $sqlResult =    $this->db->table('inventory')->where('inventoryID', $order->inventoryID)->
@@ -184,10 +199,21 @@ class Admin extends BaseController
                     return redirect()->to("/admin/modify/$id");
                 }
             }
+            
+           
 
             // if it is ensured then proceed to update
             foreach($orderList as $r) {
                 $this->db->table('inventory')->set('qty', "qty - {$r->qty}", false)->where('inventoryID', $r->inventoryID)->update();
+                $presc = [
+                    'issueDate'     => date('d-m-Y'),
+                    'qty'           => $r->qty,
+                    'userID'        => $userID,
+                    'adminID'       => $adminID,
+                    'inventoryID'   => $r->inventoryID, 
+                ];
+                
+                $this->db->table('prescription')->insert($presc);
             }
 
 
@@ -225,7 +251,7 @@ class Admin extends BaseController
             }
         }
         //clean up
-        session()->remove(['added', 'last_added_id', 'apID']);
+        session()->remove(['added', 'last_added_id', 'apID', 'userid']);
         // [NOTE] check invalidd schedule => schedule only occurs in future
         return redirect()->to('/admin/appointments');
     }
