@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 15, 2024 at 02:29 PM
+-- Generation Time: Oct 29, 2024 at 05:15 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.2.18
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `announcements` (
   `date` varchar(16) NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `serviceID` int NOT NULL,
   PRIMARY KEY (`appID`),
   KEY `userID` (`userID`,`serviceID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -69,14 +69,15 @@ CREATE TABLE IF NOT EXISTS `batch` (
   `recDate` varchar(16) NOT NULL,
   `expDate` varchar(16) NOT NULL,
   PRIMARY KEY (`batchID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `batch`
 --
 
 INSERT INTO `batch` (`batchID`, `recDate`, `expDate`) VALUES
-(1, '2024-10-08', '2025-06-25');
+(1, '2024-10-08', '2025-06-25'),
+(2, '2024-10-24', '2027-06-15');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `clinic` (
   `description` varchar(256) NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -135,14 +136,15 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `batchID` int NOT NULL,
   PRIMARY KEY (`inventoryID`),
   KEY `batchID` (`batchID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `inventory`
 --
 
 INSERT INTO `inventory` (`inventoryID`, `medType`, `genericName`, `brandName`, `qty`, `description`, `batchID`) VALUES
-(1, 1, 'Mefenamic Acid', 'Ritemed', 24, 'Pain Reliever', 1);
+(1, 1, 'Mefenamic Acid', 'Ritemed', 13, 'Pain Reliever', 1),
+(2, 1, 'Paracetamol', 'Biogesic', 189, 'For common colds and headache', 2);
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `prescription` (
   KEY `userID` (`userID`,`adminID`,`inventoryID`),
   KEY `prescription_ibfk_1` (`inventoryID`),
   KEY `prescription_ibfk_3` (`adminID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -218,6 +220,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   KEY `studentID` (`studentID`,`courseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -230,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `usergroups` (
   `groupName` varchar(32) NOT NULL,
   `level` tinyint UNSIGNED NOT NULL DEFAULT '1',
   PRIMARY KEY (`groupID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `usergroups`
@@ -261,6 +264,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(128) NOT NULL,
   `groupID` int NOT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
+  `cor` varchar(256) DEFAULT NULL,
+  `schoolID` varchar(64) NOT NULL,
   PRIMARY KEY (`userID`),
   KEY `city` (`groupID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -269,9 +274,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`, `status`) VALUES
-(1, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4, 1),
-(2, 'Medcon', 'Medcon', 'Nemsu', '1/1/2001', '09123456789', 'Orillaneda Street, Cantilan, Surigao del Sur', 'medconnemsu@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 4, 1);
+INSERT INTO `users` (`userID`, `fname`, `lname`, `mname`, `bday`, `phone`, `address`, `email`, `password`, `groupID`, `status`, `cor`, `schoolID`) VALUES
+(1, 'Medcon', 'Medcon', 'Nemsu', '1/1/2001', '09123456789', 'Orillaneda Street, Cantilan, Surigao del Sur', 'medconnemsu@gmail.com', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 4, 1, NULL, ''),
+(2, 'Lloyd Jay', 'Edradan', 'Arpilleda', '2002-02-20', '09157784831', 'Baybay Rose, Boulevard', 'lloydjayedradan@gmail.com', 'f7a8d6df1f6ece2df489262191405997390765de23b04abd809fb19f59606383', 4, 1, NULL, '24123123');
 
 --
 -- Constraints for dumped tables
