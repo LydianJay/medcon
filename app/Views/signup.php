@@ -74,7 +74,7 @@
 
                                 </div>
                                 <div class="card-body bg-white">
-                                    <form role="form" action="<?php echo $register ?>" method="POST">
+                                    <form role="form" action="<?php echo $register ?>" enctype="multipart/form-data" method="POST">
 
                                         <div class="d-flex flex-column justify-content-evenly">
 
@@ -154,6 +154,10 @@
                                         </div>
 
 
+                                        <label class="form-label my-0">COR Image</label>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <input type="file" class="form-control" name="file" accept="image/*" required>
+                                        </div>
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>

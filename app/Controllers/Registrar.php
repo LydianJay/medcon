@@ -27,10 +27,25 @@ class Registrar extends BaseController
         where('status', 0)->where('fname',$name,'after')->limit(25)->get()->getResult();
     }
 
+    private function getUserByID($id)
+    {
+        $info = $this->getTable('users')
+        ->join('usergroups', 'users.groupID = usergroups.groupID')
+        ->where('level < ', 3)
+        ->where('userID', $id)
+        ->get()
+        ->getResult()[0];
+
+        if ($info->level == 0) {
+            $this->private_data['schoolinfo'] = $this->db->table('students')->join('course', 'course.courseID = students.courseID')->where('studentID', $id)->get()->getResult()[0];
+        }
+        $this->private_data['info'] = $info;
+    }
+
 
     private function setStudentStatus($id, $status, $newID) 
     {
-        $this->db->table('users')->set('status', $status)->set('userID', $newID)->where('userID', $id)->update();
+        $this->db->table('users')->set('status', $status)->set('schoolID', $newID)->where('userID', $id)->update();
     }
 
     private function deleteUser($id)
@@ -41,7 +56,7 @@ class Registrar extends BaseController
 
     private function setStudentID($id, $newID)
     {
-        $this->db->table('students')->set('studentID', $newID)->where('studentID', $id)->update();
+        $this->db->table('users')->set('schoolID', $newID)->where('userID', $id)->update();
     }
 
 
@@ -87,6 +102,32 @@ class Registrar extends BaseController
 
         echo view('header', $this->data);
         echo view('modules/admin/registrar/view', $this->private_data);
+        echo view('footer');
+    }
+
+
+    public function more($id)
+    {
+        $userLevel = session()->get('level');
+        if ($userLevel == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        } else if ($userLevel < 3) {
+            session()->setFlashdata('error_auth', 'Unauthorized Access');
+            return redirect()->to(site_url(''));
+        }
+        $this->data['current_module']    = $this->data['adminmodules']['registrar'];
+
+        
+
+        $this->getUserByID($id);
+
+        $filepath = $this->private_data['info']->fname . $this->private_data['info']->mname . $this->private_data['info']->lname;
+        $hash = hash('md5', $filepath);
+        $this->private_data['cor'] = base_url('uploads/COR/' . $hash . '.' . 'png');
+
+        echo view('header', $this->data);
+        echo view('modules/admin/registrar/more', $this->private_data);
         echo view('footer');
     }
 }

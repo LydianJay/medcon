@@ -168,6 +168,7 @@ class Home extends BaseController
             "email",
             "password",
             "confirm",
+            "file"
         );
 
         $fieldmap = [];
@@ -205,6 +206,17 @@ class Home extends BaseController
         if ($hasErrors) {
             return redirect()->to(site_url('signup'));
         } else {
+            $file = $this->request->getFile('file');
+            if($file == null){
+                echo 'Is null!';
+            }
+            else {
+                $username = $fieldmap['fname'] . $fieldmap['mname'] . $fieldmap['lname'];
+                $filename = hash('md5', $username);
+               
+                $file->move('uploads/COR', $filename . '.'. 'png');
+            }
+            
             $sha256 = hash('sha256', $fieldmap['password']);
 
             $data = [

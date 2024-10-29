@@ -18,6 +18,8 @@ $routes->get('/admin/inventory',                    'Inventory::index');
 $routes->get('/admin/inventory/add',                'Inventory::add');
 $routes->get('/admin/inventory/modify',             'Inventory::modify');
 $routes->get('/admin/registrar',                    'Registrar::index');
+$routes->get('/admin/registrar/more/(:num)',        'Registrar::more/$1');
+
 $routes->get('/admin/users',                        'Users::index');
 $routes->get('/admin/more/(:num)',                  'Users::more/$1');
 $routes->get('/dental',                             'Dental::index');

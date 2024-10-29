@@ -68,7 +68,7 @@
                 max-width: 100px;
                 max-height: 100px;
             }
-            
+
             .td-w-lg {
                 width: 1.5rem;
             }
@@ -78,15 +78,31 @@
             cursor: pointer;
         }
 
-       
+
         tr.clickable:hover {
-            background-color: var(--bs-gray-300); 
-            transition: background-color 0.525s ease; 
+            background-color: var(--bs-gray-300);
+            transition: background-color 0.525s ease;
         }
 
-      
+
         tr.clickable:hover td {
-            color: var(--bs-gray-800); 
+            color: var(--bs-gray-800);
+            font-weight: bold;
+        }
+
+        td.clickable {
+            cursor: pointer;
+        }
+
+
+        td.clickable:hover {
+            background-color: var(--bs-gray-300);
+            transition: background-color 0.525s ease;
+        }
+
+
+        td.clickable:hover td {
+            color: var(--bs-gray-800);
             font-weight: bold;
         }
     </style>
@@ -130,7 +146,7 @@
                 <?php
                 } ?>
 
-                
+
 
             </ul>
         </div>

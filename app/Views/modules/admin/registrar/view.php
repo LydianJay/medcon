@@ -7,28 +7,27 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="table-responsive px-1 mt-3">
                     <div class="row">
                         <div class="col-lg-5 col-sm-6">
-                            <form action="<?php echo site_url('admin/registrar')?>" method="get">
+                            <form action="<?php echo site_url('admin/registrar') ?>" method="get">
                                 <div class="d-flex flex-start flex-row align-items-center">
                                     <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                         <label class="form-label text-nowrap">Search</label>
-                                        <input type="text" class="form-control" name="search" >
-                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" 
-                                        >
-                                            <i class="bi fs-7 bi-search fw-bolder"> 
+                                        <input type="text" class="form-control" name="search">
+                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8">
+                                            <i class="bi fs-7 bi-search fw-bolder">
                                                 Search
                                             </i>
                                         </button>
-                                        
+
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                       
+
                     </div>
                     <table class="table align-items-center">
                         <thead>
@@ -48,13 +47,13 @@
                             foreach ($query as $app) {
                             ?>
                                 <tr>
-                                    <td class="ps-0 opacity-7">
-                                        <?php echo strtoupper($app->lname); ?>
+                                    <td class=" ps-0 opacity-7 clickable" onclick="window.location.href=`<?php echo site_url('admin/registrar/more') . '/' . $app->userID; ?>`;">
+                                        <?php echo $app->lname; ?>
                                     </td>
-                                    <td class="ps-0  opacity-7">
+                                    <td class=" ps-0 opacity-7 clickable" onclick="window.location.href=`<?php echo site_url('admin/registrar/more') . '/' . $app->userID; ?>`;">
                                         <?php echo $app->fname; ?>
                                     </td>
-                                    <td class="ps-0  opacity-7">
+                                    <td class="ps-0  opacity-7 clickable" onclick="window.location.href=`<?php echo site_url('admin/registrar/more') . '/' . $app->userID; ?>`;">
                                         <?php echo $app->mname; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
@@ -65,40 +64,38 @@
                                     </td>
                                     <td class="ps-0  opacity-7">
                                         <div class="input-group flex-nowrap input-group-outline">
-                                            <input type="number" class="form-control" name="qty" id="<?php echo $app->userID; ?>" value="<?php echo $app->userID; ?>">
+                                            <input type="number" class="form-control" name="qty" id="<?php echo $app->userID; ?>" value="<?php echo $app->userID; ?>" max="2147483647">
                                         </div>
                                     </td>
 
 
 
                                     <td class="ps-1">
-                                    <button type="submit" class="btn btn-sm btn-success my-0 rounded"
-                                        onclick=" 
+                                        <button type="submit" class="btn btn-sm btn-success my-0 rounded"
+                                            onclick=" 
                                                     let setID = document.getElementById('<?php echo $app->userID; ?>').value;
-                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?approve=' . $app->userID;?>&id=${setID}`; 
-                                                "
-                                    >
-                                        Approve
-                                    </button>
+                                                    window.location.href=`<?php echo site_url('admin/registrar') . '/' . '/?approve=' . $app->userID; ?>&id=${setID}`; 
+                                                ">
+                                            Approve
+                                        </button>
 
                                     </td>
 
                                     <td class="ps-1">
                                         <button type="submit" class="btn btn-sm btn-danger my-0 rounded"
-                                        onclick=" 
-                                                    window.location.href=`<?php echo site_url('admin/registrar') .'/' . '/?disapprove=' . $app->userID;?>`; 
-                                                "
-                                        >
+                                            onclick=" 
+                                                    window.location.href=`<?php echo site_url('admin/registrar') . '/' . '/?disapprove=' . $app->userID; ?>`; 
+                                                ">
                                             Disapprove
                                         </button>
                                     </td>
                                 </tr>
 
 
-                            <?php 
+                            <?php
                             } ?>
 
-                           
+
                         </tbody>
                     </table>
                 </div>
