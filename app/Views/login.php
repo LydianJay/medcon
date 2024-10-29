@@ -18,11 +18,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/small-logo.png">
+    <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/small-logo.png">
     <title>
-        <?php 
-            echo $title;
+        <?php
+        echo $title;
         ?>
     </title>
     <!--     Fonts and icons     -->
@@ -35,7 +35,9 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
@@ -112,14 +114,25 @@
             --bs-link-hover-color: #3e6094;
             --bs-code-color: #d63384;
             --bs-highlight-bg: #fcf8e3;
-            }
-            .text-gradient.text-primary {
-                background-image: linear-gradient(195deg, #bea7af, #1b57d8);
-            }
+        }
 
-            .bg-gradient-primary {
-                background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
-            }
+        .text-gradient.text-primary {
+            background-image: linear-gradient(195deg, #bea7af, #1b57d8);
+        }
+
+        .bg-gradient-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+
+        .hero-background {
+            background-image: url("<?php echo base_url() . 'assets/img/background.jpg' ?>");
+        }
+
+        .img-footer {
+            width: 100px;
+            height: 100px;
+            mix-blend-mode: normal;
+        }
     </style>
 
 
@@ -127,7 +140,7 @@
 
 <body class="bg-gray-200">
     <main class="main-content  mt-0">
-        <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
+        <div class="page-header align-items-start min-vh-100 hero-background">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container my-auto">
                 <div class="row">
@@ -138,32 +151,32 @@
                                     <div class="row">
                                         <div class="col-4"></div>
                                         <div class="col-4 justify-content-center">
-                                            <img src="<?php echo base_url() . 'assets/img/NEMSU.png' ?>" alt="Nemsu Logo" class="img-thumbnail mx-auto">
+                                            <img src="<?php echo base_url() . 'assets/img/big-logo.png' ?>" alt="Nemsu Logo" class="img-thumbnail mx-auto">
                                         </div>
                                         <div class="col-4"></div>
                                     </div>
-                                   
+
                                     <h2 class="text-white text-center font-weight-bolder">MEDCON</h2>
                                     <h3 class="text-white font-weight-bolder text-center mt-1">Sign in</h3>
                                     <?php
-                                        $error_auth    = session()->getFlashdata('error_auth'); 
-                                        if($error_auth != null){
+                                    $error_auth    = session()->getFlashdata('error_auth');
+                                    if ($error_auth != null) {
                                     ?>
-                                    <div class="d-flex flex-row justify-content-center">
-                                        <p5 class="text-warning text-center mt-2 mb-0 ">
-                                            <?php echo $error_auth; ?>
-                                        </p5>
-                                    </div>
+                                        <div class="d-flex flex-row justify-content-center">
+                                            <p5 class="text-warning text-center mt-2 mb-0 ">
+                                                <?php echo $error_auth; ?>
+                                            </p5>
+                                        </div>
 
-                                    <?php }?>
+                                    <?php } ?>
 
-                                    
+
                                 </div>
                             </div>
                             <div class="card-body">
                                 <form role="form" method="POST" class="text-start" action="<?php echo $signin ?>">
                                     <div class="input-group input-group-outline my-3">
-                                        <label class="form-label" >Email</label>
+                                        <label class="form-label">Email</label>
                                         <input type="email" class="form-control" name="email" required>
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
@@ -184,20 +197,35 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer position-absolute bottom-2 py-2 w-100">
-                <div class="container">
-                    <div class="row align-items-center justify-content-lg-between">
-                        <div class="col-12 col-md-6 my-auto">
-                            <div class="copyright text-center text-sm text-white text-lg-start">
-                                © <script>
-                                    document.write(new Date().getFullYear())
-                                </script>,
-                                made with by
-                                <a href="#" class="font-weight-bold text-white" target="_blank"><?php echo $web_owner ?></a>
-
+            <footer class="footer position-absolute bottom-2 w-100">
+                <div class="container-fluid d-lg-block d-none px-5">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="flex-column d-flex">
+                            <div class="d-flex flex-row align-items-center">
+                                <i class="bi bi-geo-alt-fill opacity-10 me-1 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">Cantilan, Surigao del Sur 8317</p>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <i class="bi bi-telephone-fill opacity-10 me-1 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">086-212-2723</p>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <i class="bi bi-globe-americas opacity-10 me-1 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">www.nemsu.edu.ph</p>
                             </div>
                         </div>
 
+                        <div class="flex-row d-flex">
+                            <div class="justify-content-center">
+                                <img src="<?php echo base_url() . 'assets/img/alpas.png' ?>" alt="alpas" class="mx-auto img-footer">
+                            </div>
+                            <div class="justify-content-center">
+                                <img src="<?php echo base_url() . 'assets/img/alpas2.png' ?>" alt="alpas" class="mx-auto img-footer">
+                            </div>
+                            <div class="justify-content-center">
+                                <img src="<?php echo base_url() . 'assets/img/alpas3.png' ?>" alt="alpas" class="mx-auto img-footer">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </footer>

@@ -18,8 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/small-logo.png">
+    <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/small-logo.png">
     <title>
         <?php echo $title; ?>
     </title>
@@ -105,6 +105,16 @@
             color: var(--bs-gray-800);
             font-weight: bold;
         }
+
+        .hero-background {
+            background-image: url("<?php echo base_url() . 'assets/img/background.jpg' ?>");
+        }
+
+        .img-footer {
+            width: 100px;
+            height: 100px;
+            mix-blend-mode: normal;
+        }
     </style>
 
 </head>
@@ -114,7 +124,7 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-                <img src="<?php echo base_url() ?>/assets/img/NEMSU.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src="<?php echo base_url() ?>/assets/img/big-logo.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold text-white">MEDCON</span>
             </a>
         </div>
