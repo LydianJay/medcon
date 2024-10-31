@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Twilio\Rest\Client;
+
 class Home extends BaseController
 {
 
@@ -21,8 +23,10 @@ class Home extends BaseController
         $this->data['designation']      = $this->db->table('usergroups')->where("level > 0 AND level < 3")->get()->getResult();
     }
 
-    public function index(): string
+    public function index()
     {
+       
+
         return view('login', $this->data);
     }
 
@@ -168,7 +172,9 @@ class Home extends BaseController
             "email",
             "password",
             "confirm",
-            "file"
+            "file",
+            "ename",
+            "ephone",
         );
 
         $fieldmap = [];
@@ -178,7 +184,8 @@ class Home extends BaseController
             $fieldmap[$field]   = $fieldData;
         }
 
-        $phoneLen = strlen($fieldmap['phone']);
+        $phoneLen   = strlen($fieldmap['phone']);
+        $ephoneLen  = strlen($fieldmap['ephone']);
 
         $hasErrors = false;
 
@@ -198,7 +205,7 @@ class Home extends BaseController
             $this->session->setFlashdata('phone_error', "Invalid Course or Year!");
         }
 
-        if ($phoneLen != 11) {
+        if ($phoneLen != 11 || $ephoneLen != 11) {
             $this->session->setFlashdata('phone_error', "Invalid Phone Number!");
             $hasErrors = true;
         }
@@ -227,8 +234,11 @@ class Home extends BaseController
                 'phone'     => $fieldmap['phone'],
                 'address'   => $fieldmap['address'],
                 'email'     => $fieldmap['email'],
+                
                 'password'  => $sha256,
                 'groupID'   => 1,
+                'cNum'      => $fieldmap['ephone'],
+                'cPerson'   => $fieldmap['ename'],
             ];
 
             $this->db->table('users')->insert($data);
@@ -243,6 +253,7 @@ class Home extends BaseController
 
             $this->db->table('students')->insert($studentData);
 
+            $this->sendSMS($fieldmap['phone'], 'Hi, You have been registered to medcon, please wait for your account to be approved');
             return redirect()->to(site_url(''));
         }
     }

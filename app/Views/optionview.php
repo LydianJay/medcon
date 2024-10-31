@@ -75,7 +75,6 @@
                         <div class="col-lg-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border bg-white">
                                 <div class="card-header bg-white pb-0">
-                                    <h1 class="font-weight-bolder text-center mb-0">Are you a?</h1>
                                 </div>
                                 <div class="card-body bg-white lg-mx-5 sm-mx-0 py-5">
                                     <div class="container-fluid lg-min-vh-25 border rounded bg-gray-100">

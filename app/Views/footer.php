@@ -2,7 +2,8 @@
 
 
 </main>
-<footer class="footer position-absolute bottom-2 w-100">
+
+<footer class="footer bottom-2 w-100">
     <div class="container-fluid px-7 d-lg-block d-none px-5">
         <div class="d-flex flex-row justify-content-between">
             <div class="ms-10 flex-column d-flex align-items-start">

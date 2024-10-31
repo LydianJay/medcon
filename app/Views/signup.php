@@ -138,6 +138,8 @@
 
                                         </div>
 
+
+
                                         <div class="row">
                                             <div class="col">
                                                 <label class="form-label my-0">Birthdate</label>
@@ -153,6 +155,25 @@
                                             </div>
                                         </div>
 
+
+                                        <div class="row border-top border-1 mt-2">
+                                            <p class="fs-5 text-dark opacity-7 mb-1 ">Guardian Contact Information</p>
+                                        </div>
+
+                                        <div class="row border-bottom border-1 mb-3">
+                                            <div class="col">
+                                                <label class="form-label my-0">Guardian Name</label>
+                                                <div class="input-group flex-nowrap input-group-outline mb-3">
+                                                    <input type="text" class="form-control" name="ename" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label my-0">Phone Number</label>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <input type="text" class="form-control" placeholder="09123456789" name="ephone" required>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <label class="form-label my-0">COR Image</label>
                                         <div class="input-group input-group-outline mb-3">

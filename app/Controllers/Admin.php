@@ -161,7 +161,11 @@ class Admin extends BaseController
 
         session()->set('email_name',    $name);
         session()->set('email_address', $this->private_data['current']->email);
-        session()->set('userid', $this->private_data['current']->userID);
+        session()->set('userid',        $this->private_data['current']->userID);
+        session()->set('econtactName',  $this->private_data['current']->cPerson);
+        session()->set('econtact',      $this->private_data['current']->cNum);
+        session()->set('sphone',        $this->private_data['current']->phone);
+        session()->set('sname',         $this->private_data['current']->fname . ' ' . $this->private_data['current']->lname );
         echo view('header', $this->data);
         echo view('modules/admin/appointments/form', $this->private_data);
         echo view('footer');
@@ -223,6 +227,11 @@ class Admin extends BaseController
             $actual = $date[1] . '/' . $date[2] . '/' . $date[0];
             $this->db->table('appointments')->set('status', 1)->set('schedDate', $actual)->set('schedTime', $time)->where('appID', $id)->update();
 
+            $econtactName   = session()->get('econtactName');
+            $econtactNum    = session()->get('econtact');
+            $phonenum       = session()->get('sphone');
+            $name           = session()->get('sname');
+
             try {
 
 
@@ -243,7 +252,9 @@ class Admin extends BaseController
                 $this->mail->Body    = $msg;
                 $this->mail->AltBody = $msg;
 
+                $this->sendSMS($econtactNum, "This is NEMSU-MEDCON and we are to inform you $econtactName that $name has been scheduled for an appointment in NEMSU's clinic");
                 $this->mail->send();
+                $this->sendSMS($phonenum, "Good day $name this is from NEMSU-MEDCON, we are glad to inform you that your appoinment has been approved, please come to this date $actual $time in our clinic at NEMSU for your appoinment");
 
             } catch (Exception $e) {
                 session()->setFlashdata('error_auth', "{$this->mail->ErrorInfo}");
@@ -251,7 +262,14 @@ class Admin extends BaseController
             }
         }
         //clean up
-        session()->remove(['added', 'last_added_id', 'apID', 'userid']);
+        session()->remove(['added', 
+        'last_added_id', 'apID', 'userid', 
+        'email_name', 'email_address',
+        'econtactName',
+            'sphone',
+            'sname',
+            'econtact',
+    ]);
         // [NOTE] check invalidd schedule => schedule only occurs in future
         return redirect()->to('/admin/appointments');
     }

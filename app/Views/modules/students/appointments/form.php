@@ -3,7 +3,7 @@
         <div class="card mx-lg-10 px-lg-5">
             <div class="card-header my-0 py-0 border-bottom" >
                 <div class="d-flex justify-content-center mt-5">
-                    <img src="<?php echo base_url() . 'assets/img/NEMSU.png' ?>" alt="Nemsu Logo" class="img-thumbnail cimg-lg cimg-sm">
+                    <img src="<?php echo base_url() . 'assets/img/nemsu-logo.png' ?>" alt="Nemsu Logo" class="img-thumbnail cimg-lg cimg-sm">
                 </div>
                 <p class="text-center text-bold fs-5 mt-1 mb-0">North Eastern Mindanao State University</p>
                 <p class="text-center text-bold fs-10 py-0">Orillaneda Street, Cantilan, Surigao del Sur</p>
