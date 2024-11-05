@@ -54,7 +54,7 @@ class Home extends BaseController
 
             $data       = $result[0];
 
-            $groupQuery = $this->db->table('usergroups')->select('groupName, level')
+            $groupQuery = $this->db->table('usergroups')->select('groupName, level, groupID')
                 ->where('groupID', $data->groupID)->get()
                 ->getResult()[0];
             $userdata   = [
@@ -68,10 +68,29 @@ class Home extends BaseController
                 'group'         => $data->groupID,
                 'id'            => $data->userID,
                 'groupName'     => $groupQuery->groupName,
-                'level'         => $groupQuery->level
+                'groupID'       => $groupQuery->groupID,
+                'level'         => $groupQuery->level,
             ];
 
+            switch($groupQuery->groupID) {
 
+                case 1:
+                    $this->data['module_name'] = 'usermodules';
+                    break;
+                case 2:
+                    $this->data['module_name'] = 'usermodules';
+                    break;
+                case 3:
+                    $this->data['module_name'] = 'doctormodules';
+                    break;
+                case 4:
+                    $this->data['module_name'] = 'adminmodules';
+                    break;
+                case 5:
+                    $this->data['module_name'] = 'dentistmodules';
+                    break;
+
+            }
 
             $this->session->set($userdata);
 

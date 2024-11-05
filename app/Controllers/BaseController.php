@@ -65,6 +65,7 @@ abstract class BaseController extends Controller
         $this->mail         = new PHPMailer(true);
         $this->data['web_owner']        = 'NEMSU Students';
         $this->data['title']            = 'MEDCON';
+        $this->data['module_name']      = 'usermodules';
 
         $this->data['usermodules']      = [
             'appointments' => [
@@ -144,6 +145,41 @@ abstract class BaseController extends Controller
 
             
         ];
+
+
+        $this->data['doctormodules']     = [
+               
+            'users'         => [
+                'name'      => 'View User Info',
+                'icon'      => 'bi-clipboard-pulse',
+                'site'      => 'admin/users'
+            ],
+
+            'clinic'        => [
+                'name'      => 'Clinic Services',
+                'icon'      => 'bi-lungs-fill',
+                'site'      => 'admin/clinic'
+            ],
+
+            'announcement'  => [
+                'name'      => 'General Announcements',
+                'icon'      => 'bi-paperclip',
+                'site'      => 'admin/announcements'
+            ],
+
+
+        ];
+
+        $this->data['dentistmodules']     = [
+
+            'dental'        => [
+                'name'      => 'Dental Page',
+                'icon'      => 'bi-prescription',
+                'site'      => 'admin/dental'
+            ],
+
+
+        ];
     }
 
 
@@ -173,5 +209,18 @@ abstract class BaseController extends Controller
     {
         $this->db = \Config\Database::connect();
         return $this->db->table($tableName);
+    }
+
+    public function auth($subname) 
+    {
+        $userLevel = session()->get('level');
+        if ($userLevel == null) {
+            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+            return redirect()->to(site_url(''));
+        } else if ($userLevel < 3) {
+            session()->setFlashdata('error_auth', 'Unauthorized Access');
+            return redirect()->to(site_url(''));
+        }
+        $this->data['current_module']    = $this->data[$this->data['module_name']][$subname];
     }
 }

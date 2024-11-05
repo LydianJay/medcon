@@ -133,8 +133,24 @@
             <ul class="navbar-nav">
                 <?php
                 $module = &$usermodules;
-                if (session()->get('level') >= 3) {
-                    $module = &$adminmodules;
+               
+
+                switch(session()->get('groupID')) {
+                    case 1:
+                        $module = &$usermodules;
+                        break;
+                    case 2:
+                        $module = &$usermodules;
+                        break;
+                    case 3:
+                        $module = &$doctormodules;
+                        break;
+                    case 4:
+                        $module = &$adminmodules;
+                        break;
+                    case 5:
+                        $module = &$dentistmodules;
+                        break;
                 }
 
                 $cname = $current_module['name'];

@@ -64,16 +64,16 @@ class Admin extends BaseController
 
     public function index()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        // $userLevel = session()->get('level');
+        // if ($userLevel == null) {
+        //     session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
+        //     return redirect()->to(site_url(''));
+        // } else if ($userLevel < 3) {
+        //     session()->setFlashdata('error_auth', 'Unauthorized Access');
+        //     return redirect()->to(site_url(''));
+        // }
+        $this->auth('appointments');
 
-        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
 
         echo view('header', $this->data);
         echo view('modules/admin/appointments/view', $this->private_data);
