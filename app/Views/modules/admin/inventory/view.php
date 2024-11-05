@@ -7,29 +7,49 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="table-responsive px-1 mt-3">
                     <div class="row">
-                        <div class="col-lg-5 col-sm-6">
-                            <form action="<?php echo site_url('admin/inventory')?>" method="get">
+                        <div class="col-lg-8 col-sm-6">
+                            <form action="<?php echo site_url('admin/inventory') ?>" method="get">
                                 <div class="d-flex flex-start flex-row align-items-center">
                                     <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                         <label class="form-label text-nowrap">Search</label>
-                                        <input type="text" class="form-control" name="search" >
-                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8" >
-                                            <i class="bi fs-7 bi-search fw-bolder"> 
+                                        <input type="text" class="form-control" name="search">
+                                        <button type="submit" class="btn btn-outline-primary my-0 ms-2 rounded opacity-8">
+                                            <i class="bi fs-7 bi-search fw-bolder">
                                                 Search
                                             </i>
                                         </button>
-                                        
+
                                     </div>
+                                    <div class="input-group flex-nowrap input-group-outline mb-3 ms-3 border-1">
+
+                                        <div class="row">
+
+                                            <select class="form-select px-4" name="expiration">
+                                                <option value="1" selected>
+                                                    Good
+                                                </option>
+                                                <option value="0">
+                                                    Expired
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </form>
                         </div>
 
+
                         <div class="col d-flex flex-row justify-content-end align-items-start">
-                            <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>';" >
-                                <p class="fs-7 fw-bolder my-0">Add Entry</p>
+
+
+
+                            <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>';">
+                                <p class="fs-7 fw-bolder my-0">Add</p>
                             </button>
                         </div>
                     </div>
@@ -37,7 +57,7 @@
                         <thead>
                             <tr class="text-secondary text-start opacity-7">
                                 <?php
-                                
+
                                 $type = ['Tablet', 'Capsule', 'Liquid', 'Other'];
 
                                 foreach ($table_field as $field) {
@@ -52,11 +72,35 @@
 
                             <?php
                             $id = 0;
+
+
+                            $currentDate = explode('-', date('Y-m-d'));
+                            $currentDateIntVal = 0;
+                            $currentIdx = count($currentDate) - 1;
+
+                            for ($i=0; $i < count($currentDate); $i++) {
+                                $currentDateIntVal += (($i + 1) ** 10) * intval( $currentDate[$currentIdx - $i]);
+                            }
+                            
+
                             foreach ($query as $app) {
+                                $expDate = explode('-', $app->expDate);
+                                $expDateIntVal = 0;
+                                $expIdx = count($expDate) - 1;
+                                for ($i = 0; $i < count($expDate); $i++) {
+                                    $expDateIntVal += (($i + 1) ** 10) * intval( $expDate[$expIdx - $i]);
+                                }
+
+                                if($currentDateIntVal >= $expDateIntVal) continue;
+                                // if ($currentDate[2] > $expDate[2]) continue;
+
                             ?>
                                 <tr>
                                     <td class="ps-0 opacity-7">
-                                        <?php echo $app->genericName; ?>
+                                        <?php 
+                                            // echo $currentDateIntVal . ' ' . $expDateIntVal;
+                                            echo $app->genericName;
+                                        ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
                                         <?php echo $app->brandName; ?>
@@ -75,19 +119,18 @@
                                     <td class="ps-0  opacity-7">
                                         <?php echo $app->expDate; ?>
                                     </td>
-                                    
+
                                     <td class="ps-0  opacity-7">
                                         <p class="fs-7 opacity-7" name="id"> <?php echo $app->inventoryID; ?> </p>
                                     </td>
 
                                     <td class="ps-1">
-                                    <button type="submit" class="btn btn-sm btn-secondary my-0 rounded"
-                                        onclick=" 
-                                                    window.location.href=`<?php echo site_url('admin/inventory/modify') .'/' . '/?id=' . $app->inventoryID;?>`; 
-                                                "
-                                    >
-                                        Edit
-                                    </button>
+                                        <button type="submit" class="btn btn-sm btn-secondary my-0 rounded"
+                                            onclick=" 
+                                                    window.location.href=`<?php echo site_url('admin/inventory/modify') . '/' . '/?id=' . $app->inventoryID; ?>`; 
+                                                ">
+                                            Edit
+                                        </button>
 
                                     </td>
 
@@ -106,7 +149,7 @@
                             <?php $id++;
                             } ?>
 
-                           
+
                         </tbody>
                     </table>
                 </div>

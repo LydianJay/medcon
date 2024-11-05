@@ -22,6 +22,7 @@ class Inventory extends BaseController
 
     private function searchInventory($param)
     {
+        
         $this->private_data['query'] = $this->db->table('inventory')->select('*')
         ->join('batch', 'batch.batchID = inventory.batchID', 'inner')
         ->like('genericName', $param, 'after')
