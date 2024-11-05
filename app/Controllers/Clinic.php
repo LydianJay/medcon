@@ -83,11 +83,21 @@ class Clinic extends BaseController
 
         $title      = $this->request->getPost('title');
         $content    = $this->request->getPost('content');
+        $file       = $this->request->getFile('file');
+        $filename   = hash('md5', $title);
+        if ($file == null) {
+            echo 'Is null!';
+        } else {
+            
+            
+            $file->move('uploads/Clinic', $filename . '.' . 'png');
+        }
         
         $sql = [
             'title'         => $title,
             'description'   => $content,
             'status'        => 1,
+            'img'           => $filename,
         ];
 
         $this->getTable('clinic')->insert($sql);
