@@ -49,7 +49,7 @@
                         <div class="col-lg-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
-                                    <h4 class="font-weight-bolder">Faculty Sign Up</h4>
+                                    <h4 class="font-weight-bolder">Faculty Register</h4>
                                     <?php
                                     $phone_error    = session()->getFlashdata('phone_error');
                                     $pass_error     = session()->getFlashdata('pass_error');
@@ -73,7 +73,7 @@
 
                                 </div>
                                 <div class="card-body bg-white">
-                                    <form role="form" action="<?php echo $registerfaculty ?>" method="POST">
+                                    <form role="form" action="<?php echo $registerfaculty ?>" enctype="multipart/form-data" method="POST">
 
 
 
@@ -131,11 +131,18 @@
                                         </div>
 
 
-
+                                        <label class="form-label my-0">Attach Image</label>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <input type="file" class="form-control" name="file" accept="image/*" required>
+                                        </div>
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
                                             <input type="email" class="form-control" name="email" required>
+                                        </div>
+                                        <div class="input-group input-group-outline mb-3">
+                                            <label class="form-label">Address</label>
+                                            <input type="text" class="form-control" name="address" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
@@ -146,14 +153,14 @@
                                             <input type="password" class="form-control" name="confirm" required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Login</a>
                                     </p>
                                 </div>
                             </div>

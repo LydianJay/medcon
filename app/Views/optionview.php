@@ -105,7 +105,7 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Log in</a>
                                     </p>
                                 </div>
                             </div>

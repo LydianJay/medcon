@@ -157,7 +157,7 @@
                                     </div>
 
                                     <h2 class="text-white text-center font-weight-bolder">MEDCON</h2>
-                                    <h3 class="text-white font-weight-bolder text-center mt-1">Sign in</h3>
+                                    <h3 class="text-white font-weight-bolder text-center mt-1">Log In</h3>
                                     <?php
                                     $error_auth    = session()->getFlashdata('error_auth');
                                     if ($error_auth != null) {
@@ -185,11 +185,11 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Log in</button>
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
-                                        <a href="<?php echo $option ?>" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                                        <a href="<?php echo $option ?>" class="text-primary text-gradient font-weight-bold">Register</a>
                                     </p>
                                 </form>
                             </div>

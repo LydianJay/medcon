@@ -12,9 +12,9 @@
                 </div>
                 <p class="text-center text-bold fs-5 mt-1 mb-0">North Eastern Mindanao State University</p>
                 <p class="text-center text-bold fs-10 py-0">Orillaneda Street, Cantilan, Surigao del Sur</p>
-                
+
                 <p class="h2 text-center mb-2 mt-5">User Personal Information</p>
-                
+
                 <div class="table-responsive">
                     <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2">
 
@@ -49,7 +49,7 @@
                         </div>
 
 
-                        
+
                         <div class="row mb-3">
                             <div class="col">
                                 <div class="d-flex flex-row border border-outline-secondary p-2">
@@ -64,36 +64,48 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <!-- If a student -->
                         <?php
-                            if($info->groupID == 1) {
+                        if ($info->groupID == 1) {
                         ?>
-                        
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="d-flex flex-row border border-outline-secondary p-2">
-                                    <p class="fs-8 text-bold my-0 text-nowrap">Course:</p>
-                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $schoolinfo->courseName ?></p>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-flex flex-row border border-outline-secondary p-2">
-                                    <p class="fs-8 text-bold my-0 text-nowrap">Year:</p>
-                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $schoolinfo->year ?></p>
-                                </div>
-                            </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="d-flex flex-row border border-outline-secondary p-2">
+                                        <p class="fs-8 text-bold my-0 text-nowrap">Course:</p>
+                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $schoolinfo->courseName ?></p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex flex-row border border-outline-secondary p-2">
+                                        <p class="fs-8 text-bold my-0 text-nowrap">Year:</p>
+                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $schoolinfo->year ?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        <?php } else { ?>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <p class="fs-8 text-bold my-0 text-nowrap">Profile Image:</p>
+
+                                    <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
+                                        <img src="<?php echo $cor ?>" class="img-fluid" alt="COR">
+                                    </div>
+                                </div>
+                            </div>
 
                         <?php } ?>
 
                     </div>
                 </div>
             </div>
-            
-      
+
+
         </div>
     </div>
 </div>

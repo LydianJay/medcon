@@ -50,7 +50,7 @@
                         <div class="col-lg-8 col-sm-12 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
-                                    <h4 class="font-weight-bolder">Student Sign Up</h4>
+                                    <h4 class="font-weight-bolder">Student Register</h4>
                                     <?php
                                     $phone_error    = session()->getFlashdata('phone_error');
                                     $pass_error     = session()->getFlashdata('pass_error');
@@ -186,7 +186,7 @@
                                         </div>
 
                                         <div class="input-group input-group-outline mb-3">
-                                            <label class="form-label">Current Address</label>
+                                            <label class="form-label">Address</label>
                                             <input type="text" class="form-control" name="address" required>
                                         </div>
 
@@ -199,14 +199,14 @@
                                             <input type="password" class="form-control" name="confirm" required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1 bg-white">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a href="<?php echo site_url(''); ?>" class="text-primary text-gradient font-weight-bold">Log in</a>
                                     </p>
                                 </div>
                             </div>

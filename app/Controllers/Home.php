@@ -108,10 +108,12 @@ class Home extends BaseController
             "lname",
             "group",
             "birthdate",
+            "address",
             "phone",
             "email",
             "password",
             "confirm",
+            "file",
         );
 
         $fieldmap = [];
@@ -138,6 +140,17 @@ class Home extends BaseController
         if ($hasErrors) {
             return redirect()->to(site_url('signupfaculty'));
         } else {
+
+            $file = $this->request->getFile('file');
+            if ($file == null) {
+                echo 'Is null!';
+            } else {
+                $username = $fieldmap['fname'] . $fieldmap['mname'] . $fieldmap['lname'];
+                $filename = hash('md5', $username);
+
+                $file->move('uploads/Faculty', $filename . '.' . 'png');
+            }
+
             $sha256 = hash('sha256', $fieldmap['password']);
 
             $data = [
@@ -147,10 +160,13 @@ class Home extends BaseController
                 'email'     => $fieldmap['email'],
                 'password'  => $sha256,
                 'groupID'   => $fieldmap['group'],
-
+                'address'   => $fieldmap['address'],
+                'bday'      => $fieldmap['birthdate'],
+                'phone'     => $fieldmap['phone'],
+                'status'    => 1,
             ];
 
-            $this->db->table('faculty')->insert($data);
+            $this->db->table('users')->insert($data);
             return redirect()->to(site_url(''));
         }
     }

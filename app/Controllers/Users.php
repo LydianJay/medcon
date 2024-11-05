@@ -81,6 +81,9 @@ class Users extends BaseController
 
 
         $this->getUserByID($id);
+        $filepath = $this->private_data['info']->fname . $this->private_data['info']->mname . $this->private_data['info']->lname;
+        $hash = hash('md5', $filepath);
+        $this->private_data['cor'] = base_url('uploads/Faculty/' . $hash . '.' . 'png');
         echo view('header', $this->data);
         echo view('modules/admin/users/more', $this->private_data);
         echo view('footer');
