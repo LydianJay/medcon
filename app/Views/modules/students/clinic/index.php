@@ -35,7 +35,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="<?php echo site_url('clinic') ?>" class="logo d-flex align-items-center me-auto">
-        <img src="<?php echo base_url() ?>/assets/img/NEMSU.png" alt="">
+        <img src="<?php echo base_url() ?>/assets/img/nemsu-logo.png" alt="">
         <h1 class="sitename">Medcon Clinic</h1>
       </a>
 
@@ -52,39 +52,44 @@
 
   <main class="main">
 
-    
 
-    
-    
+
+
+
 
     <section id="services" class="services section light-background">
 
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Services</h2>
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+      </div>
+
+      <div class="container">
+        <div class="d-flex flex-column justify-content-around flex-nowrap">
+          <?php foreach ($table as $d) { ?>
+            <div class="card mx-1 mb-5">
+              <div class="card-header">
+                <p class="fs-5 fw-bold"><?php echo $d->title; ?></p>
+              </div>
+              <div class="card-body">
+                <div class="d-flex flex-row p-2 justify-content-center">
+                  <img src="<?php echo base_url('uploads/Clinic/' . hash('md5', $d->title) . '.' . 'png') ?>" class="img-fluid" alt="Img">
+                </div>
+              </div>
+              <div class="card-footer">
+                <?php echo $d->description; ?>
+              </div>
+            </div>
+          <?php } ?>
         </div>
 
-        <div class="container">
-            <div class="d-flex flex-column justify-content-around flex-nowrap">
-                <?php foreach ($table as $d) { ?>
-                <div class="card mx-1 mb-5">
-                    <div class="card-header">
-                        <p class="fs-5 fw-bold"><?php echo $d->title; ?></p>
-                    </div>
-                    <div class="card-body">
-                      <?php echo $d->description; ?>
-                    </div>
-                </div>
-                <?php } ?>
-            </div>
-            
-            
-        </div>
+
+      </div>
 
     </section><!-- /Services Section -->
 
-    
 
-   
+
+
   </main>
 
   <footer id="footer" class="footer light-background">
@@ -96,18 +101,18 @@
             <span class="sitename">Medcon Clinic</span>
           </a>
           <p>
-            Whether you're feeling unwell, need a check-up, or require immediate medical attention, 
-            our team of trained healthcare professionals is here to assist you. 
+            Whether you're feeling unwell, need a check-up, or require immediate medical attention,
+            our team of trained healthcare professionals is here to assist you.
             We offer a variety of services, including first aid, health assessments, consultations, and basic treatments for common illnesses and injuries.
           </p>
-          
+
         </div>
 
-      
+
 
       </div>
     </div>
-   
+
   </footer>
 
   <!-- Scroll Top -->
