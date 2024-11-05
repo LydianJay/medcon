@@ -9,6 +9,7 @@ class Users extends BaseController
 
     public function __construct()
     {
+        $this->data['module_name'] = session()->get('module_name');
         $this->private_data['table_field'] = ['Last Name', 'First Name', 'Middle Name' , 'Designation', 'Contact No.', 'Email'];
     }
 
@@ -39,18 +40,9 @@ class Users extends BaseController
 
     public function index()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['users'];
-        $search                              = $this->request->getGet('search');
-        
+        $this->auth('users');
 
+        $search = $this->request->getGet('search');
         if($search != null && !empty($search)){
             $this->getUsersByName($search);
         }
@@ -67,15 +59,7 @@ class Users extends BaseController
 
     public function more($id)
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['users'];
+        $this->auth('users');
 
 
 

@@ -71,36 +71,48 @@ class Home extends BaseController
                 'groupID'       => $groupQuery->groupID,
                 'level'         => $groupQuery->level,
             ];
+            $this->session->set($userdata);
 
             switch($groupQuery->groupID) {
 
                 case 1:
-                    $this->data['module_name'] = 'usermodules';
+                    $this->data['module_name']      = 'usermodules';
+                    $this->data['current_module']   = $this->data[$this->data['module_name']]['appointments'];
+                    session()->set('module_name', 'usermodules');
+                    return redirect()->to(site_url('appointments'));
                     break;
                 case 2:
-                    $this->data['module_name'] = 'usermodules';
+                    $this->data['module_name']      = 'usermodules';
+                    $this->data['current_module']   = $this->data[$this->data['module_name']]['appointments'];
+                    session()->set('module_name', 'usermodules');
+                    return redirect()->to(site_url('appointments'));
                     break;
                 case 3:
-                    $this->data['module_name'] = 'doctormodules';
+                    $this->data['module_name']      = 'doctormodules';
+                    $this->data['current_module']   = $this->data[$this->data['module_name']]['users'];
+                    session()->set('module_name', 'doctormodules');
+                    return redirect()->to(site_url('admin/users'));
                     break;
                 case 4:
-                    $this->data['module_name'] = 'adminmodules';
+                    $this->data['module_name']      = 'adminmodules';
+                    $this->data['current_module']   = $this->data[$this->data['module_name']]['appointments'];
+                    session()->set('module_name', 'adminmodules');
+                    return redirect()->to(site_url('admin/appointments'));
                     break;
                 case 5:
-                    $this->data['module_name'] = 'dentistmodules';
+                    $this->data['module_name']      = 'dentistmodules';
+                    $this->data['current_module']   = $this->data[$this->data['module_name']]['dental'];
+                    session()->set('module_name', 'dentistmodules');
+                    return redirect()->to(site_url('admin/dental'));
                     break;
 
             }
 
-            $this->session->set($userdata);
+            
 
-            if ($groupQuery->level <= 1) {
+            
 
-
-                return redirect()->to(site_url('appointments'));
-            }
-
-            return redirect()->to(site_url('admin/appointments'));
+            
         }
     }
 

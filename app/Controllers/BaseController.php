@@ -221,6 +221,7 @@ abstract class BaseController extends Controller
             session()->setFlashdata('error_auth', 'Unauthorized Access');
             return redirect()->to(site_url(''));
         }
-        $this->data['current_module']    = $this->data[$this->data['module_name']][$subname];
+        $module_name = session()->get('module_name');
+        $this->data['current_module']    = $this->data[$module_name][$subname];
     }
 }

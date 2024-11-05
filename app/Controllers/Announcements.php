@@ -32,15 +32,8 @@ class Announcements extends BaseController
 
     public function admin()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['announcement'];
+       
+        $this->auth('announcement');
         $this->getAnnouncements();
         echo view('header', $this->data);
         echo view('modules/admin/announcements/view',$this->private_data);
@@ -50,15 +43,7 @@ class Announcements extends BaseController
 
     public function add()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['announcement'];
+        $this->auth('announcement');
 
 
 
@@ -69,14 +54,7 @@ class Announcements extends BaseController
 
     public function postAdd()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        $this->auth('announcement');
 
         $title      = $this->request->getPost('title');
         $content    = $this->request->getPost('content');

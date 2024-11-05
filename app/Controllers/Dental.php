@@ -32,17 +32,9 @@ class Dental extends BaseController
 
     public function add()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['dental'];
+        
 
-
+        $this->auth('dental');
 
         echo view('header', $this->data);
         echo view('modules/admin/dental/form');
@@ -52,14 +44,7 @@ class Dental extends BaseController
 
     public function postAdd()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        $this->auth('dental');
 
         $title      = $this->request->getPost('title');
         $date       = $this->request->getPost('date');
@@ -79,15 +64,7 @@ class Dental extends BaseController
     
     public function admin()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['dental'];
+        $this->auth('dental');
 
         $this->getAnnouncements();
         echo view('header', $this->data);

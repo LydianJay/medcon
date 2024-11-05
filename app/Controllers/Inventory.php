@@ -33,19 +33,11 @@ class Inventory extends BaseController
     public function index()
     {
 
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        $this->auth('inventory');
+
 
         $param                           = $this->request->getGet('search');
         $this->data['msg']               = session()->get('msg');
-        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
-
         session()->remove('msg'); // clean up
         
         $param == null ? $this->getinventory() : $this->searchInventory($param);
@@ -59,15 +51,8 @@ class Inventory extends BaseController
     public function add() 
     {
 
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
+        $this->auth('inventory');
+
 
         
 
@@ -80,15 +65,8 @@ class Inventory extends BaseController
 
     public function modify()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
+        $this->auth('inventory');
+
         $id                              = $this->request->getGet('id'); 
         $apply                           = $this->request->getGet('apply');
         $result     = $this->db->table('inventory')->select('*')->join('batch', 'batch.batchID = inventory.batchID', 'inner')->
@@ -109,14 +87,8 @@ class Inventory extends BaseController
 
     public function apply()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        $this->auth('inventory');
+
         
         $id         = session()->get('apply_id');
         $batchID    = session()->get('apply_batch_id');
@@ -158,14 +130,7 @@ class Inventory extends BaseController
 
     public function delete()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
+        $this->auth('inventory');
 
         $id     = $this->request->getPost('id');
         $entry  = $this->db->table('inventory')->where('inventoryID', $id)->get()->getResult()[0];
@@ -182,15 +147,8 @@ class Inventory extends BaseController
 
     public function post_add()
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-        $this->data['current_module']    = $this->data['adminmodules']['inventory'];
+        $this->auth('inventory');
+
 
 
 

@@ -64,14 +64,7 @@ class Admin extends BaseController
 
     public function index()
     {
-        // $userLevel = session()->get('level');
-        // if ($userLevel == null) {
-        //     session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-        //     return redirect()->to(site_url(''));
-        // } else if ($userLevel < 3) {
-        //     session()->setFlashdata('error_auth', 'Unauthorized Access');
-        //     return redirect()->to(site_url(''));
-        // }
+       
         $this->auth('appointments');
 
 
@@ -83,17 +76,7 @@ class Admin extends BaseController
 
     public function modify($id)
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-
-
-        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
+        $this->auth('appointments');
 
         $groupQuery = $this->db->table('usergroups')->select('groupName, level')
             ->where('groupID', $this->private_data['appointments'][$id]->groupID)->get()
@@ -173,16 +156,7 @@ class Admin extends BaseController
 
     public function schedule($id)
     {
-        $userLevel = session()->get('level');
-        if ($userLevel == null) {
-            session()->setFlashdata('error_auth', 'Invalid Session. Please Log In!');
-            return redirect()->to(site_url(''));
-        } else if ($userLevel < 3) {
-            session()->setFlashdata('error_auth', 'Unauthorized Access');
-            return redirect()->to(site_url(''));
-        }
-
-        $this->data['current_module']    = $this->data['adminmodules']['appointments'];
+        $this->auth('appointments');
         $sched                           = $this->request->getPost('schedule');
         $time                            = $this->request->getPost('time');
 
