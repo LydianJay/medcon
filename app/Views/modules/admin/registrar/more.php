@@ -75,7 +75,7 @@
                                 <div class="col">
                                     <div class="d-flex flex-row border border-outline-secondary p-2">
                                         <p class="fs-8 text-bold my-0 text-nowrap">Course:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $schoolinfo->courseName ?></p>
+                                        <p class="fs-10 my-0 ms-1 "><?php echo $schoolinfo->courseName ?></p>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -86,15 +86,34 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-flex flex-row border border-outline-secondary p-2">
+                                        <p class="fs-8 text-bold my-0 text-nowrap">School ID:</p>
+                                        <input type="number" class="form-control py-0 ms-1 fs-10" id="id" value="<?php echo $info->schoolID ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-sm btn-success my-0 rounded"
+                                        onclick=" 
+                                                    let setID = document.getElementById('id').value;
+                                                    window.location.href=`<?php echo site_url('admin/registrar') . '/' . '/?approve=' . $info->userID; ?>&id=${setID}`; 
+                                                ">
+                                        Set
+                                    </button>
+                                </div>
+                            </div>
 
                             <div class="row mb-3">
+
                                 <div class="col">
                                     <p class="fs-8 text-bold my-0 text-nowrap">COR:</p>
-
                                     <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
                                         <img src="<?php echo $cor ?>" class="img-fluid" alt="COR">
                                     </div>
                                 </div>
+
+
                             </div>
 
 

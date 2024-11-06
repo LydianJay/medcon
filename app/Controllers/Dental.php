@@ -49,11 +49,20 @@ class Dental extends BaseController
         $title      = $this->request->getPost('title');
         $date       = $this->request->getPost('date');
         $content    = $this->request->getPost('content');
-        
+        $file       = $this->request->getFile('file');
+
+        $filename   = hash('md5', $title);
+        if ($file == null) {
+            echo 'Is null!';
+        } else {
+            $file->move('uploads/Dental', $filename . '.' . 'png');
+        }
+
         $sql = [
             'title'     => $title,
             'date'      => $date,
             'content'   => $content,
+            'img'       => $filename,
             'status'    => 1,
         ];
 

@@ -25,7 +25,14 @@
   <!-- Main CSS File -->
   <link href="<?php echo base_url() ?>/assets/css/main.css" rel="stylesheet">
 
-
+  <style>
+    .img-custom {
+      width: 100px;
+      height: 100px;
+      max-width: 100px;
+      max-height: 100px;
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -33,7 +40,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top border border-bottom">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
       <a href="<?php echo site_url('dental') ?>" class="logo d-flex align-items-center">
-        <img src="<?php echo base_url() ?>/assets/img/NEMSU.png" alt="">
+        <img src="<?php echo base_url() ?>/assets/img/nemsu-logo.png" alt="nemsu">
         <h1 class="sitename">Medcon Dental</h1>
       </a>
       <nav id="navmenu" class="navmenu">
@@ -88,8 +95,12 @@
                       <div class="card-header">
                         <p class="h2"><?php echo $d->title ?></p>
                       </div>
-
                       <div class="card-body">
+                        <div class="d-flex flex-row p-2 justify-content-center">
+                          <img src="<?php echo base_url('uploads/Dental/' . hash('md5', $d->title) . '.' . 'png') ?>" class="img-fluid img-custom " alt="Img">
+                        </div>
+                      </div>
+                      <div class="card-footer">
                         <?php echo $d->content ?>
                       </div>
 

@@ -26,7 +26,15 @@
 
   <!-- Main CSS File -->
   <link href="<?php echo base_url() ?>onepage/assets/css/main.css" rel="stylesheet">
+  <style>
+    .img-custom {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+    }
 
+  </style>
 </head>
 
 <body class="index-page">
@@ -72,7 +80,7 @@
               </div>
               <div class="card-body">
                 <div class="d-flex flex-row p-2 justify-content-center">
-                  <img src="<?php echo base_url('uploads/Clinic/' . hash('md5', $d->title) . '.' . 'png') ?>" class="img-fluid" alt="Img">
+                  <img src="<?php echo base_url('uploads/Clinic/' . hash('md5', $d->title) . '.' . 'png') ?>" class="img-fluid img-custom " alt="Img">
                 </div>
               </div>
               <div class="card-footer">
