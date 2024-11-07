@@ -126,4 +126,11 @@ nb-configuration.xml
 /phpunit*.xml
 
 
-/public/uploads
+public/uploads/Clinic/*
+!public/uploads/Clinic/.gitkeep
+public/uploads/COR/*
+!public/uploads/COR/.gitkeep
+public/uploads/Dental/*
+!public/uploads/Dental/.gitkeep
+public/uploads/Faculty/*
+!public/uploads/Faculty/.gitkeep

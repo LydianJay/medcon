@@ -38,6 +38,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <!-- html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Custom -->
     <style>
         @media (max-width: 600px) {
@@ -115,6 +118,17 @@
             height: 100px;
             mix-blend-mode: normal;
         }
+
+        .underline-input {
+            border: none;
+            border-bottom: 1.5px solid #000;
+            padding: 0.5px 0;
+            outline: none;
+            width: 28%;
+            text-align: center;
+        }
+
+        
     </style>
 
 </head>
@@ -133,9 +147,9 @@
             <ul class="navbar-nav">
                 <?php
                 $module = &$usermodules;
-               
 
-                switch(session()->get('groupID')) {
+
+                switch (session()->get('groupID')) {
                     case 1:
                         $module = &$usermodules;
                         break;

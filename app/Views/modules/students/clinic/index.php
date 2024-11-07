@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="icon">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -28,12 +28,11 @@
   <link href="<?php echo base_url() ?>onepage/assets/css/main.css" rel="stylesheet">
   <style>
     .img-custom {
-        width: 100px;
-        height: 100px;
-        max-width: 100px;
-        max-height: 100px;
+      width: 100px;
+      height: 100px;
+      max-width: 100px;
+      max-height: 100px;
     }
-
   </style>
 </head>
 

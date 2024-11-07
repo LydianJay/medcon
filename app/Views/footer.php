@@ -20,6 +20,40 @@
     <?php if (isset($msg)) { ?>
         alert('<?php echo $msg; ?>');
     <?php } ?>
+
+
+    document.getElementById('download').addEventListener('click', async function() {
+        console.log('Clicked!');
+        let elem = document.getElementById('pdfContent');
+
+
+        let fname = "appointment-form";
+        let fileName = fname.concat('.pdf');
+
+        var opt = {
+            margin: 0,
+            pagebreak: {
+                mode: ['avoid-all', 'css', 'legacy']
+            },
+            filename: fileName,
+            image: {
+                type: 'png'
+            },
+            html2canvas: {
+                scale: 2,
+                scrollY: 0,
+                scrollX: 0
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'p'
+            }
+        };
+        await html2pdf().set(opt).from(elem).toPdf().save();
+    });
+
+    
 </script>
 
 </body>

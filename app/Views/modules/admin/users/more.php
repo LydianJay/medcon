@@ -65,7 +65,14 @@
                             </div>
                         </div>
 
-
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="d-flex flex-row border border-outline-secondary p-2">
+                                    <p class="fs-8 text-bold my-0 text-nowrap">ID:</p>
+                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $info->schoolID ?></p>
+                                </div>
+                            </div>
+                        </div>
                         <!-- If a student -->
                         <?php
                         if ($info->groupID == 1) {
@@ -87,12 +94,12 @@
                             </div>
 
 
+
                         <?php } else { ?>
 
                             <div class="row mb-3">
                                 <div class="col">
                                     <p class="fs-8 text-bold my-0 text-nowrap">Profile Image:</p>
-
                                     <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
                                         <img src="<?php echo $cor ?>" class="img-fluid" alt="COR">
                                     </div>

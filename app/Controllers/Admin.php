@@ -21,6 +21,14 @@ class Admin extends BaseController
             'Schedule',
             'Status',
         ];
+
+        $this->private_data['table_field2']         = [
+            'Generic Name',
+            'Quantity',
+            'Issue Date',
+            'Issued By',
+        ];
+
         $this->private_data['serviceAssoc']        = [];
         foreach ($this->private_data['serviceList'] as $service) {
             $this->private_data['serviceAssoc'][$service->serviceID] = $service->serviceName;
