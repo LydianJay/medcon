@@ -197,21 +197,21 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer position-absolute bottom-2 w-100">
-                <div class="container-fluid d-lg-block d-none px-5">
-                    <div class="d-flex flex-row justify-content-between">
+            <footer class="footer position-absolute bottom-0 w-100 " style="background-color: rgba(255, 255, 255, 0.25);">
+                <div class="container-fluid d-lg-block d-none px-5 ">
+                    <div class="d-flex flex-row justify-content-between opacity-10">
                         <div class="flex-column d-flex">
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-geo-alt-fill opacity-10 me-1 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">Cantilan, Surigao del Sur 8317</p>
+                                <i class="bi bi-geo-alt-fill me-1 opacity-8 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">Cantilan, Surigao del Sur 8317</p>
                             </div>
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-telephone-fill opacity-10 me-1 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">086-212-2723</p>
+                                <i class="bi bi-telephone-fill opacity-8 me-1 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">086-212-2723</p>
                             </div>
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-globe-americas opacity-10 me-1 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-7">www.nemsu.edu.ph</p>
+                                <i class="bi bi-globe-americas opacity-8 me-1 text-white"></i>
+                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">www.nemsu.edu.ph</p>
                             </div>
                         </div>
 

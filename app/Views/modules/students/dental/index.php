@@ -7,8 +7,8 @@
   <title><?php echo $title; ?></title>
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() ?>/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<?php echo base_url() ?>/assets/img/favicon.png">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="icon">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -27,10 +27,10 @@
 
   <style>
     .img-custom {
-      width: 100px;
-      height: 100px;
-      max-width: 100px;
-      max-height: 100px;
+      width: 150px;
+      height: 150px;
+      max-width: 150px;
+      max-height: 150px;
     }
   </style>
 </head>

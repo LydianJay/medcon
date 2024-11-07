@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="icon">
-  <link href="<?php echo base_url() . 'assets/img/small-logo.png' ?>" rel="apple-touch-icon">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png'?>" rel="icon">
+  <link href="<?php echo base_url() . 'assets/img/small-logo.png'?>" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
