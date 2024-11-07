@@ -42,7 +42,7 @@
             html2canvas: {
                 scale: 2,
                 scrollY: 0,
-                scrollX: 0
+                scrollX: 0,
             },
             jsPDF: {
                 unit: 'mm',

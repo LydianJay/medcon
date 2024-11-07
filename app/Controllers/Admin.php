@@ -23,9 +23,10 @@ class Admin extends BaseController
         ];
 
         $this->private_data['table_field2']         = [
-            'Generic Name',
+            'Medicine',
             'Quantity',
-            'Issue Date',
+            'Request Date',
+            'Date Issued',
             'Issued By',
         ];
 

@@ -8,8 +8,6 @@
             </div>
             <div id="pdfContent" class="px-2">
                 <!-- Start PDF content -->
-
-
                 <div class="card-body">
                     <div class="d-flex justify-content-center mt-5">
                         <img src="<?php echo base_url() . 'assets/img/nemsu-logo.png' ?>" alt="Nemsu Logo" class="cimg-lg cimg-sm border-none">
@@ -78,6 +76,11 @@
                                 </div>
                             </div>
 
+
+
+
+
+
                             <?php
                             $str2 = array(
                                 'text-secondary',
@@ -110,7 +113,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <div class="d-flex flex-row border border-outline-secondary p-2">
+                                        <p class="fs-8 text-bold my-0 text-nowrap">ID:</p>
+                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->schoolID ?></p>
+                                    </div>
+                                </div>
 
+                            </div>
                             <div class="row">
                                 <div class="text-start fs-5 mb-2">Patient Note:</div>
                                 <div class="text-justify fs-6">
@@ -298,6 +309,9 @@
                                                 <td class="p-0 mx-1">
                                                     <?php echo $prec->issueDate; ?>
                                                 </td>
+                                                <td class="p-0 mx-1">
+                                                    <?php echo $current->reqDate; ?>
+                                                </td>
 
                                                 <td class="p-0 mx-1">
                                                     <?php echo $prec->fname . ' ' . $prec->lname ?>
@@ -314,7 +328,7 @@
                                 </table>
 
 
-                                <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+                                <div class="d-flex flex-column align-items-center justify-content-center mt-8">
                                     <input type="text" class="underline-input">
                                     <p class="fs-10 fw-bold text-dark text-start m-0 opacity-5">Signature over Printed Name</p>
                                 </div>
@@ -324,12 +338,6 @@
 
                             </div>
 
-
-
-
-
-
-
                         <?php } ?>
 
                     </div>
@@ -337,7 +345,9 @@
 
                 <!-- END PDF Content -->
             </div>
-            <div class="container d-flex flex-row justify-content-center mt-5">
-                <button type="button" class="btn btn-primary btn-sm " id="download">DOWNLOAD PDF</button>
-            </div>
+
+        </div>
+
+        <div class="container d-flex flex-row justify-content-center mt-1">
+            <button type="button" class="btn btn-primary btn-sm " id="download">DOWNLOAD PDF</button>
         </div>
