@@ -129,8 +129,8 @@
         }
 
         .img-footer {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             mix-blend-mode: normal;
         }
     </style>
@@ -138,8 +138,8 @@
 
 </head>
 
-<body class="bg-gray-200">
-    <main class="main-content  mt-0">
+<body class="bg-gray-200 mb-1">
+    <main class="main-content mt-0">
         <div class="page-header align-items-start min-vh-100 hero-background">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container my-auto">
@@ -203,15 +203,15 @@
                         <div class="flex-column d-flex">
                             <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-geo-alt-fill me-1 opacity-8 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">Cantilan, Surigao del Sur 8317</p>
+                                <p class="fs-10 fw-bold text-white my-0 opacity-8">Cantilan, Surigao del Sur 8317</p>
                             </div>
                             <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-telephone-fill opacity-8 me-1 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">086-212-2723</p>
+                                <p class="fs-10 fw-bold text-white my-0 opacity-8">086-212-2723</p>
                             </div>
                             <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-globe-americas opacity-8 me-1 text-white"></i>
-                                <p class="fs-5 fw-bolder text-white my-0 opacity-8">www.nemsu.edu.ph</p>
+                                <p class="fs-10 fw-bold text-white my-0 opacity-8">www.nemsu.edu.ph</p>
                             </div>
                         </div>
 

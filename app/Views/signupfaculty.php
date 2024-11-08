@@ -49,7 +49,7 @@
                         <div class="col-lg-8 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-auto">
                             <div class="card card-plain border">
                                 <div class="card-header bg-white">
-                                    <h4 class="font-weight-bolder">Faculty Register</h4>
+                                    <h4 class="font-weight-bolder">Faculty/Staff Register</h4>
                                     <?php
                                     $phone_error    = session()->getFlashdata('phone_error');
                                     $pass_error     = session()->getFlashdata('pass_error');

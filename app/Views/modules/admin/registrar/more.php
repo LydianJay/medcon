@@ -90,7 +90,7 @@
                                 <div class="col">
                                     <div class="d-flex flex-row border border-outline-secondary p-2">
                                         <p class="fs-8 text-bold my-0 text-nowrap">School ID:</p>
-                                        <input type="number" class="form-control py-0 ms-1 fs-10" id="id" value="<?php echo $info->schoolID ?>" required>
+                                        <input type="text" class="form-control py-0 ms-1 fs-10" id="id" value="<?php echo $info->schoolID ?>" required>
                                     </div>
                                 </div>
                                 <div class="col">
