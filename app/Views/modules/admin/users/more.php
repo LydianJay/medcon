@@ -11,7 +11,7 @@
                     <img src="<?php echo base_url() . 'assets/img/nemsu-logo.png' ?>" alt="Nemsu Logo" class="img-thumbnail cimg-lg cimg-sm">
                 </div>
                 <p class="text-center text-bold fs-5 mt-1 mb-0">North Eastern Mindanao State University</p>
-                <p class="text-center text-bold fs-10 py-0">Orillaneda Street, Cantilan, Surigao del Sur</p>
+                <p class="text-center text-bold fs-10 py-0">Cantilan Campus</p>
 
                 <p class="h2 text-center mb-2 mt-5">User Personal Information</p>
 

@@ -6,7 +6,7 @@
                     <img src="<?php echo base_url() . 'assets/img/nemsu-logo.png' ?>" alt="Nemsu Logo" class="img-thumbnail cimg-lg cimg-sm">
                 </div>
                 <p class="text-center text-bold fs-5 mt-1 mb-0">North Eastern Mindanao State University</p>
-                <p class="text-center text-bold fs-10 py-0">Orillaneda Street, Cantilan, Surigao del Sur</p>
+                <p class="text-center text-bold fs-10 py-0">Cantilan Campus</p>
                 
 
                 <p class="h2 text-center mb-2 mt-5">Appointment Form</p>
@@ -92,7 +92,7 @@
                                     <textarea class="form-control" rows="10" name="description" placeholder="request kog tambal kay sakit akong heart :> "></textarea>
                                 </div>
                                 <div class="text-center mt-2 d-flex flex-row justify-content-center">
-                                    <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-lg-25 w-sm-50 mt-1 mb-0">Submit Request</button>
+                                    <button type="submit" class="btn btn-sm bg-gradient-primary btn-lg w-lg-25 w-sm-50 mt-1 mb-0">Submit Request</button>
                                 </div>
                             </div>
                         </form>

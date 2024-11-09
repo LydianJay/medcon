@@ -26,11 +26,20 @@
   <link href="<?php echo base_url() ?>/assets/css/main.css" rel="stylesheet">
 
   <style>
-    .img-custom {
-      width: 150px;
-      height: 150px;
-      max-width: 150px;
-      max-height: 150px;
+    @media (max-width: 600px) {
+      .img-custom {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .img-custom {
+        width: 350px;
+        height: 300px;
+      }
     }
   </style>
 </head>

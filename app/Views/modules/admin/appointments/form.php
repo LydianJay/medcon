@@ -13,7 +13,7 @@
                         <img src="<?php echo base_url() . 'assets/img/nemsu-logo.png' ?>" alt="Nemsu Logo" class="cimg-lg cimg-sm border-none">
                     </div>
                     <p class="text-center text-bold fs-5 mt-1 mb-0">North Eastern Mindanao State University</p>
-                    <p class="text-center text-bold fs-10 py-0">Orillaneda Street, Cantilan, Surigao del Sur</p>
+                    <p class="text-center text-bold fs-10 py-0">Cantilan Campus</p>
 
 
                     <p class="h2 text-center mb-2 mt-5"><?php echo $current->status == 2 ? 'Accomplishment Report' : 'Appointment Form' ?></p>
@@ -347,7 +347,8 @@
             </div>
 
         </div>
-
+        <?php if ($current->status == 2) { ?>
         <div class="container d-flex flex-row justify-content-center mt-1">
             <button type="button" class="btn btn-primary btn-sm " id="download">DOWNLOAD PDF</button>
         </div>
+        <?php } ?>

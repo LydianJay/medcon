@@ -24,7 +24,7 @@
                             <div class="row mb-0 mt-4">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label my-0">Password</label>
+                                        <label class="form-label my-0">New Password</label>
                                         <input type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
@@ -32,7 +32,7 @@
                             <div class="row mb-0 mt-4">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label my-0">Confirm Password</label>
+                                        <label class="form-label my-0">Confirm New Password</label>
                                         <input type="password" class="form-control" name="confirm" required>
                                     </div>
                                 </div>

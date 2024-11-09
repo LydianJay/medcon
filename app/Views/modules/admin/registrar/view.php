@@ -64,7 +64,7 @@
                                     </td>
                                     <td class="ps-0  opacity-7">
                                         <div class="input-group flex-nowrap input-group-outline">
-                                            <input type="number" class="form-control" name="qty" id="<?php echo $app->userID; ?>" value="<?php echo $app->userID; ?>" max="2147483647">
+                                            <input type="text" class="form-control" name="qty" id="<?php echo $app->userID; ?>" value="<?php echo $app->userID; ?>">
                                         </div>
                                     </td>
 
