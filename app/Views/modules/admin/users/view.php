@@ -54,7 +54,7 @@
                                             "
                                 >
                                     <td class="ps-0 opacity-7 py-1">
-                                        <?php echo strtoupper($app->lname); ?>
+                                        <?php echo $app->lname; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
                                         <?php echo $app->fname; ?>

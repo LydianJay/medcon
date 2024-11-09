@@ -96,7 +96,7 @@
                                                 <a href="<?php echo $signup; ?>" class="btn stretched-link cfs-sm cfs-lg text-gray py-0">Student</a>
                                             </div>
                                             <div class="col d-flex flex-row justify-content-center">
-                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link cfs-sm cfs-lg text-gray py-0">Faculty</a>
+                                                <a href="<?php echo $signupfaculty; ?>" class="btn stretched-link cfs-sm cfs-lg text-gray py-0">Faculty/Staff</a>
                                             </div>
                                         </div>
                                     </div>

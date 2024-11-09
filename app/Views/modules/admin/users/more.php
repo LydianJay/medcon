@@ -22,7 +22,7 @@
                             <div class="col">
                                 <div class="d-flex flex-row border border-outline-secondary p-2">
                                     <p class="fs-8 text-bold my-0 text-nowrap">User Name:</p>
-                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo strtoupper($info->lname) . ', ' . $info->fname . ' ' . $info->mname ?></p>
+                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $info->lname . ', ' . $info->fname . ' ' . $info->mname ?></p>
                                 </div>
                             </div>
                             <div class="col">

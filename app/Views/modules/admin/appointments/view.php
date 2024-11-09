@@ -28,7 +28,7 @@
                             ?>
                                 <tr>
                                     <td class="p-0 mx-1">
-                                        <?php echo strtoupper($app->lname) . ', ' . $app->fname; ?>
+                                        <?php echo $app->lname . ', ' . $app->fname; ?>
                                     </td>
                                     <td class="p-0">
                                         <?php echo $serviceAssoc[$app->serviceID]; ?>
