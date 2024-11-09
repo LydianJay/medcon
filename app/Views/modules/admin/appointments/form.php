@@ -25,7 +25,13 @@
                     <?php } ?>
                     <div class="">
                         <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2">
-
+                            <?php
+                            $str2 = array(
+                                'text-secondary',
+                                'text-info',
+                                'text-success'
+                            );
+                            ?>
                             <div class="row mb-3 mt-4">
                                 <div class="col">
                                     <div class="d-flex flex-row border border-outline-secondary p-2">
@@ -48,54 +54,14 @@
                                         <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->address ?></p>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Email:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->email ?></p>
-                                    </div>
-                                </div>
+
+
                             </div>
 
 
 
 
-
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Phone:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->phone ?></p>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Birthdate:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->bday ?></p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <?php
-                            $str2 = array(
-                                'text-secondary',
-                                'text-info',
-                                'text-success'
-                            );
-                            ?>
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Service Type:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $serviceAssoc[$current->serviceID] ?></p>
-                                    </div>
-                                </div>
+                            <div class="row">
                                 <div class="col">
                                     <div class="d-flex flex-row border border-outline-secondary p-2">
                                         <p class="fs-8 text-bold my-0 text-nowrap">Status:</p>
@@ -108,28 +74,10 @@
                                             );
                                             echo $str[$current->status];
                                             ?>
-
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-6">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">ID:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->schoolID ?></p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="text-start fs-5 mb-2">Patient Note:</div>
-                                <div class="text-justify fs-6">
-                                    <?php echo $current->description ?>
-                                </div>
-                            </div>
-
-
 
 
                         </div>
@@ -333,13 +281,41 @@
                                     <p class="fs-10 fw-bold text-dark text-start m-0 opacity-5">Signature over Printed Name</p>
                                 </div>
 
-
-
-
                             </div>
 
                         <?php } ?>
 
+                    </div>
+
+                    <div class="container-fluid d-lg-block d-none px-5 mt-5">
+                        <div class="d-flex flex-row justify-content-between opacity-10">
+                            <div class="flex-column d-flex">
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="bi bi-geo-alt-fill me-1 opacity-8 text-dark"></i>
+                                    <p class="fs-10 fw-bold text-dark my-0 opacity-8">Cantilan, Surigao del Sur 8317</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="bi bi-telephone-fill opacity-8 me-1 text-dark"></i>
+                                    <p class="fs-10 fw-bold text-dark my-0 opacity-8">086-212-2723</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <i class="bi bi-globe-americas opacity-8 me-1 text-dark"></i>
+                                    <p class="fs-10 fw-bold text-dark my-0 opacity-8">www.nemsu.edu.ph</p>
+                                </div>
+                            </div>
+
+                            <div class="flex-row d-flex">
+                                <div class="justify-content-center">
+                                    <img src="<?php echo base_url() . 'assets/img/alpas.png' ?>" alt="alpas" class="mx-auto img-footer">
+                                </div>
+                                <div class="justify-content-center">
+                                    <img src="<?php echo base_url() . 'assets/img/alpas2.png' ?>" alt="alpas" class="mx-auto img-footer">
+                                </div>
+                                <div class="justify-content-center">
+                                    <img src="<?php echo base_url() . 'assets/img/alpas3.png' ?>" alt="alpas" class="mx-auto img-footer">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -348,7 +324,7 @@
 
         </div>
         <?php if ($current->status == 2) { ?>
-        <div class="container d-flex flex-row justify-content-center mt-1">
-            <button type="button" class="btn btn-primary btn-sm " id="download">DOWNLOAD PDF</button>
-        </div>
+            <div class="container d-flex flex-row justify-content-center mt-1">
+                <button type="button" class="btn btn-primary btn-sm " id="download">DOWNLOAD PDF</button>
+            </div>
         <?php } ?>

@@ -56,6 +56,13 @@
                 max-width: 50px;
                 max-height: 50px;
             }
+
+            .img-custom {
+                width: 100px;
+                height: 100px;
+                max-width: 100px;
+                max-height: 100px;
+            }
         }
 
         @media (min-width: 992px) {
@@ -74,6 +81,11 @@
 
             .td-w-lg {
                 width: 1.5rem;
+            }
+
+            .img-custom {
+                width: 350px;
+                height: 300px;
             }
         }
 
@@ -114,8 +126,8 @@
         }
 
         .img-footer {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             mix-blend-mode: normal;
         }
 
@@ -127,8 +139,6 @@
             width: 28%;
             text-align: center;
         }
-
-        
     </style>
 
 </head>
