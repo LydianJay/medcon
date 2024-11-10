@@ -11,7 +11,7 @@
                 <div class="table-responsive px-1 mt-3">
                     <div class="row">
                         <div class="col-lg-8 col-sm-6">
-                            <form action="<?php echo site_url('admin/inventory') ?>" method="get">
+                            <form action="<?php echo site_url('admin/inventory') ?>" method="get" id="form">
                                 <div class="d-flex flex-start flex-row align-items-center">
                                     <div class="input-group flex-nowrap input-group-outline mb-3 border-1">
                                         <label class="form-label text-nowrap">Search</label>
@@ -27,11 +27,11 @@
 
                                         <div class="row">
 
-                                            <select class="form-select px-4" name="expiration">
-                                                <option value="1" selected>
+                                            <select class="form-select px-4" name="expiration" onchange="go()">
+                                                <option value="1" <?php if ($selection == 1) echo 'selected'; ?>>
                                                     Good
                                                 </option>
-                                                <option value="0">
+                                                <option value="0" <?php if ($selection == 0) echo 'selected'; ?>>
                                                     Expired
                                                 </option>
                                             </select>
@@ -39,15 +39,11 @@
                                     </div>
 
                                 </div>
-
                             </form>
                         </div>
 
 
                         <div class="col d-flex flex-row justify-content-end align-items-start">
-
-
-
                             <button type="button" class="btn mb-0 btn-sm btn-outline-info opacity-8 me-2" onclick="window.location.href='<?php echo site_url('admin/inventory/add'); ?>';">
                                 <p class="fs-7 fw-bolder my-0">Add</p>
                             </button>
@@ -78,28 +74,31 @@
                             $currentDateIntVal = 0;
                             $currentIdx = count($currentDate) - 1;
 
-                            for ($i=0; $i < count($currentDate); $i++) {
-                                $currentDateIntVal += (($i + 1) ** 10) * intval( $currentDate[$currentIdx - $i]);
+                            for ($i = 0; $i < count($currentDate); $i++) {
+                                $currentDateIntVal += (($i + 1) ** 10) * intval($currentDate[$currentIdx - $i]);
                             }
-                            
+
 
                             foreach ($query as $app) {
                                 $expDate = explode('-', $app->expDate);
                                 $expDateIntVal = 0;
                                 $expIdx = count($expDate) - 1;
                                 for ($i = 0; $i < count($expDate); $i++) {
-                                    $expDateIntVal += (($i + 1) ** 10) * intval( $expDate[$expIdx - $i]);
+                                    $expDateIntVal += (($i + 1) ** 10) * intval($expDate[$expIdx - $i]);
                                 }
 
-                                if($currentDateIntVal >= $expDateIntVal) continue;
-                                // if ($currentDate[2] > $expDate[2]) continue;
-
+                                if($selection == 1 || $selection == '1') {
+                                    if ($currentDateIntVal >= $expDateIntVal) continue;
+                                }
+                                else {
+                                    if ($currentDateIntVal < $expDateIntVal) continue;
+                                }
                             ?>
                                 <tr>
                                     <td class="ps-0 opacity-7">
-                                        <?php 
-                                            // echo $currentDateIntVal . ' ' . $expDateIntVal;
-                                            echo $app->genericName;
+                                        <?php
+                                        // echo $currentDateIntVal . ' ' . $expDateIntVal;
+                                        echo $app->genericName;
                                         ?>
                                     </td>
                                     <td class="ps-0  opacity-7">

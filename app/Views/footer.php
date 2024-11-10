@@ -22,6 +22,15 @@
     <?php } ?>
 
 
+
+    function go() {
+        let form = document.getElementById('form');
+        console.log('Selection Clicked');
+        form.submit();
+    }
+
+
+
     document.getElementById('download').addEventListener('click', async function() {
         console.log('Clicked!');
         let elem = document.getElementById('pdfContent');
@@ -52,8 +61,6 @@
         };
         await html2pdf().set(opt).from(elem).toPdf().save();
     });
-
-    
 </script>
 
 </body>

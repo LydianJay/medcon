@@ -185,9 +185,9 @@ class Home extends BaseController
             $sha256 = hash('sha256', $fieldmap['password']);
 
             $data = [
-                'fname'     => $fieldmap['fname'],
-                'mname'     => $fieldmap['mname'],
-                'lname'     => $fieldmap['lname'],
+                'fname'     => ucwords($fieldmap['fname']),
+                'mname'     => ucwords($fieldmap['mname']),
+                'lname'     => ucwords($fieldmap['lname']),
                 'email'     => $fieldmap['email'],
                 'password'  => $sha256,
                 'groupID'   => $fieldmap['group'],

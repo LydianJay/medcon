@@ -12,7 +12,8 @@ class Inventory extends BaseController
     public function __construct() 
     {
         $this->private_data['table_field']       = ['Generic Name', 'Brand Name', 'Type', 'Quantity', 'Date Received', 'Expiration Date', 'Inventory ID', '.' ,'.'];
-        $this->private_data['medtype']            = ['Tablet', 'Capsule', 'Liquid', 'Other'];
+        $this->private_data['medtype']           = ['Tablet', 'Capsule', 'Liquid', 'Other'];
+        $this->private_data['selection']         = 1;
     }
 
     private function getinventory()
@@ -37,7 +38,10 @@ class Inventory extends BaseController
 
 
         $param                           = $this->request->getGet('search');
-        $this->data['msg']               = session()->get('msg');
+        $expiration                      = $this->request->getGet('expiration');
+
+        $this->data['msg']                  = session()->get('msg');
+        $this->private_data['selection']    = $expiration;
         session()->remove('msg'); // clean up
         
         $param == null ? $this->getinventory() : $this->searchInventory($param);

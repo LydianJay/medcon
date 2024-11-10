@@ -262,7 +262,7 @@
                                                 </td>
 
                                                 <td class="p-0 mx-1">
-                                                    <?php echo $prec->fname . ' ' . $prec->lname ?>
+                                                    Nemsu Clinic
                                                 </td>
                                             </tr>
 
@@ -278,7 +278,7 @@
 
                                 <div class="d-flex flex-column align-items-center justify-content-center mt-8">
                                     <input type="text" class="underline-input">
-                                    <p class="fs-10 fw-bold text-dark text-start m-0 opacity-5">Signature over Printed Name</p>
+                                    <p class="fs-10 fw-bold text-dark text-start m-0 opacity-5">School Nurse</p>
                                 </div>
 
                             </div>

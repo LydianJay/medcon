@@ -203,7 +203,7 @@
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
                 <form action="<?php echo site_url('signout'); ?>" method="POST">
-                    <button class="btn bg-gradient-primary w-100" type="submit">Sign Out</button>
+                    <button class="btn bg-gradient-primary w-100" type="submit">Log Out</button>
                 </form>
             </div>
         </div>
