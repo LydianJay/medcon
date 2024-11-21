@@ -136,7 +136,7 @@
             border-bottom: 1.5px solid #000;
             padding: 0.5px 0;
             outline: none;
-            width: 28%;
+            width: 35%;
             text-align: center;
         }
     </style>

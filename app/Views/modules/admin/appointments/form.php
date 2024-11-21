@@ -47,37 +47,9 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Address:</p>
-                                        <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo $current->address ?></p>
-                                    </div>
-                                </div>
-
-
-                            </div>
 
 
 
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="d-flex flex-row border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap">Status:</p>
-                                        <p class="fs-10 fw-bold my-0 ms-1 text-nowrap <?php echo $str2[$current->status] ?>">
-                                            <?php
-                                            $str = array(
-                                                'Pending',
-                                                'Scheduled',
-                                                'Fulfilled'
-                                            );
-                                            echo $str[$current->status];
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
 
 
                         </div>
@@ -262,7 +234,7 @@
                                                 </td>
 
                                                 <td class="p-0 mx-1">
-                                                    Nemsu Clinic
+                                                    NEMSU Clinic
                                                 </td>
                                             </tr>
 
@@ -276,7 +248,7 @@
                                 </table>
 
 
-                                <div class="d-flex flex-column align-items-center justify-content-center mt-8">
+                                <div class="d-flex flex-column align-items-center justify-content-center mt-8 mb-5">
                                     <input type="text" class="underline-input">
                                     <p class="fs-10 fw-bold text-dark text-start m-0 opacity-5">School Nurse</p>
                                 </div>
