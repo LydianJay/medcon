@@ -36,8 +36,8 @@ app.baseURL = 'https://nemsu-medcon.com'
 
 database.default.hostname = localhost
 database.default.database = medcon
-database.default.username = lydianjay
-database.default.password = 132268nikolai
+database.default.username = 
+database.default.password = 
 database.default.DBDriver = MySQLi
 database.default.DBPrefix =
 database.default.port = 3306
