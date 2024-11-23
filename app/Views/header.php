@@ -89,6 +89,14 @@
             }
         }
 
+        .bg-gradient-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+
+        .bg-primary {
+            background-color: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+
         tr.clickable {
             cursor: pointer;
         }
