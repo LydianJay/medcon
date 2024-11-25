@@ -81,19 +81,19 @@
 
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label my-0">First Name </label>
-                                                <input type="text" class="form-control" name="fname" required>
+                                                <input type="text" class="form-control" name="fname" value="<?php echo isset($_SESSION['fname']) ? $_SESSION['fname'] : ''  ?>" required>
                                             </div>
 
 
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label my-0">Middle Name</label>
-                                                <input type="text" class="form-control" name="mname" required>
+                                                <input type="text" class="form-control" name="mname" value="<?php echo isset($_SESSION['mname']) ? $_SESSION['mname'] : ''  ?>" required>
                                             </div>
 
 
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label my-0">Last Name</label>
-                                                <input type="text" class="form-control" name="lname" required>
+                                                <input type="text" class="form-control" name="lname" value="<?php echo isset($_SESSION['lname']) ? $_SESSION['lname'] : ''  ?>" required>
                                             </div>
 
                                             <label class="form-label my-0">Job Designation</label>
@@ -119,13 +119,13 @@
                                             <div class="col">
                                                 <label class="form-label my-0">Birthdate</label>
                                                 <div class="input-group flex-nowrap input-group-outline mb-3">
-                                                    <input type="date" class="form-control" value="birthdate" name="birthdate" required>
+                                                    <input type="date" class="form-control" value="birthdate" name="birthdate" value="<?php echo isset($_SESSION['birthdate']) ? $_SESSION['birthdate'] : ''  ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <label class="form-label my-0">Phone Number</label>
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone" required>
+                                                    <input type="text" class="form-control" id="i" placeholder="09123456789" name="phone" value="<?php echo isset($_SESSION['phone']) ? $_SESSION['phone'] : ''  ?>" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,19 +139,19 @@
 
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email" required>
+                                            <input type="email" class="form-control" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''  ?>" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Address</label>
-                                            <input type="text" class="form-control" name="address" required>
+                                            <input type="text" class="form-control" name="address" value="<?php echo isset($_SESSION['address']) ? $_SESSION['address'] : ''  ?>" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" required>
+                                            <input type="password" class="form-control" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" name="confirm" required>
+                                            <input type="password" class="form-control" name="confirm" value="<?php echo isset($_SESSION['confirm']) ? $_SESSION['confirm'] : ''  ?>" required>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>

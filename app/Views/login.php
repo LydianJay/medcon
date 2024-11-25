@@ -237,13 +237,9 @@
     <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
+        <?php if (isset($msg)) { ?>
+            alert('<?php echo $msg; ?>');
+        <?php } ?>
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

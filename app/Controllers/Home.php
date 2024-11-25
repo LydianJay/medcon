@@ -119,11 +119,15 @@ class Home extends BaseController
 
     public function sign_up()
     {
+
         return view('signup', $this->data);
     }
 
     public function sign_up_faculty()
     {
+
+        
+
         return view('signupfaculty', $this->data);
     }
 
@@ -161,6 +165,7 @@ class Home extends BaseController
         }
         $hasErrors = false;
 
+        session()->set($fieldmap);
 
         if (empty($fieldmap['password'])) {
             $hasErrors = true;
@@ -206,6 +211,7 @@ class Home extends BaseController
             $this->db->table('users')->insert($data);
             $this->sendSMS($fieldmap['phone'], 'Hi, You have been registered to medcon, please wait for your account to be approved');
             $this->session->setFlashdata('msg', "Account Registered, Please wait for approval!");
+            session()->remove($fields);
             return redirect()->to(site_url(''));
         }
     }
@@ -243,6 +249,7 @@ class Home extends BaseController
         $ephoneLen  = strlen($fieldmap['ephone']);
 
         $hasErrors = false;
+        session()->set($fieldmap);
 
         if (empty($fieldmap['password'])) {
             $hasErrors = true;
@@ -310,6 +317,7 @@ class Home extends BaseController
 
             $this->sendSMS($fieldmap['phone'], 'Hi, You have been registered to medcon, please wait for your account to be approved');
             $this->session->setFlashdata('msg', "Account Registered, Please wait for approval!");
+            session()->remove($fields);
             return redirect()->to(site_url(''));
         }
     }
