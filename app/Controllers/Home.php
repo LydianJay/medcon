@@ -25,8 +25,9 @@ class Home extends BaseController
 
     public function index()
     {
-       
 
+
+        $this->data['msg'] = session()->getFlashdata('msg');
         return view('login', $this->data);
     }
 
@@ -133,6 +134,11 @@ class Home extends BaseController
 
     public function register_faculty()
     {
+
+
+
+
+
         $fields = array(
             "fname",
             "mname",
@@ -198,6 +204,8 @@ class Home extends BaseController
             ];
 
             $this->db->table('users')->insert($data);
+            $this->sendSMS($fieldmap['phone'], 'Hi, You have been registered to medcon, please wait for your account to be approved');
+            $this->session->setFlashdata('msg', "Account Registered, Please wait for approval!");
             return redirect()->to(site_url(''));
         }
     }
@@ -301,6 +309,7 @@ class Home extends BaseController
             $this->db->table('students')->insert($studentData);
 
             $this->sendSMS($fieldmap['phone'], 'Hi, You have been registered to medcon, please wait for your account to be approved');
+            $this->session->setFlashdata('msg', "Account Registered, Please wait for approval!");
             return redirect()->to(site_url(''));
         }
     }

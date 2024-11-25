@@ -131,7 +131,8 @@
                                         </div>
 
 
-                                        <label class="form-label my-0">Attach Image</label>
+                                        <label class="form-label my-0">Attach ID <span class="text-secondary opacity-5"> max size: 18mb </span> </label>
+
                                         <div class="input-group input-group-outline mb-3">
                                             <input type="file" class="form-control" name="file" accept="image/*" required>
                                         </div>
