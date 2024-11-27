@@ -267,6 +267,17 @@
             border-top-color: var(--bs-success);
             box-shadow: inset 0 1px var(--bs-success);
         }
+
+
+        .input-group.input-group-outline.is-focused .form-label,
+        .input-group.input-group-outline.is-filled .form-label {
+            width: 100%;
+            height: 100%;
+            font-size: 0.6875rem !important;
+            color: var(--bs-info);
+            display: flex;
+            line-height: 1.25 !important;
+        }
     </style>
 
 </head>
