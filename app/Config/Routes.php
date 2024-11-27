@@ -47,4 +47,5 @@ $routes->post('/admin/inventory/delete',            'Inventory::delete');
 $routes->post('/admin/dental/postadd',              'Dental::postAdd');
 $routes->post('/admin/clinic/postadd',              'Clinic::postAdd');
 $routes->post('/admin/announcements/postadd',       'Announcements::postAdd');
-$routes->post('/password/update',                   'Account::update');
+$routes->post('/password/update',                   'Account::updateCredentials');
+$routes->post('/password/updateinfo',               'Account::update');

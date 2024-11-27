@@ -7,12 +7,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <p class="h2 text-center mb-2 mt-5">Update Account information</p>
+                <p class="h2 text-center mb-2 mt-5 mb-5">Update Account Data</p>
                 <div class="table-responsive">
+                    <div class="container-fluid">
+                        <p class="fs-3 fw-bold">Update Personal Information</p>
+                    </div>
                     <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2 px-1 mt-2">
-
-                        <form action="<?php echo site_url('password/update'); ?>" method="post" enctype="multipart/form-data">
-                            <div class="row mb-0 mt-4">
+                        <form action="<?php echo site_url('password/updateinfo'); ?>" method="post" enctype="multipart/form-data">
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3 <?php echo isset($address) ? 'is-filled' : '' ?>">
                                         <label class="form-label my-0">New Address</label>
@@ -20,7 +22,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0 mt-4">
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3 <?php echo isset($address) ? 'is-filled' : '' ?>">
                                         <label class="form-label my-0">New Phone</label>
@@ -28,15 +30,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0 mt-4">
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <label class="form-label my-0">Profile Picture <span class="text-secondary opacity-5"> max size: 18mb </span> </label>
                                     <div class="input-group input-group-outline mb-3">
-                                        <input type="file" class="form-control" name="file" accept="image/*" required>
+                                        <input type="file" class="form-control" name="file" accept="image/*">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0 mt-4">
+                            <div class="d-flex flex-row justify-content-center">
+                                <button type="submit" class="btn btn-success btm-sm">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container-fluid">
+                        <p class="fs-3 fw-bold">Update Credentials</p>
+                    </div>
+                    <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2 px-1 mt-2">
+                        <div class="container-fluid">
+                            <p class="fs-7 text-info">REMINDER: password must contains characters and number and atleast 8 characters</p>
+                        </div>
+                        <form action="<?php echo site_url('password/update'); ?>" method="post">
+
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">Old Password</label>
@@ -44,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0 mt-4">
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">New Password</label>
@@ -52,7 +68,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-0 mt-4">
+
+                            <div class="row mb-0 mt-2">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">Confirm New Password</label>
