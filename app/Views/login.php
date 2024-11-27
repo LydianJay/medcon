@@ -195,6 +195,15 @@
             display: flex;
             line-height: 1.25 !important;
         }
+
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked,
+        .form-check:not(.form-switch) .form-check-input[type="radio"]:checked {
+            border-color: var(--bs-info);
+        }
+
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+            background: var(--bs-info);
+        }
     </style>
 
 
@@ -243,7 +252,14 @@
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="password" class="form-control" name="password" id="password" required>
+                                    </div>
+
+                                    <div class="form-check ps-0">
+                                        <input class="form-check-input" type="checkbox" name="check" onclick="show_password();">
+                                        <label class="form-check-label">
+                                            Show password
+                                        </label>
                                     </div>
 
                                     <div class="text-center">
@@ -302,6 +318,16 @@
         <?php if (isset($msg)) { ?>
             alert('<?php echo $msg; ?>');
         <?php } ?>
+
+        function show_password() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
