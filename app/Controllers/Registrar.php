@@ -16,7 +16,7 @@ class Registrar extends BaseController
     private function getStudents()
     {
         $this->private_data['query'] = $this->getTable('users')->join('usergroups', 'users.groupID = usergroups.groupID')->
-        join('students', 'students.studentID = students.studentID')->join('course','course.courseID = course.courseID')->
+        
         where('status', 0)->limit(25)->get()->getResult();
     }
 
