@@ -174,6 +174,12 @@ class Admin extends BaseController
             $orderList  = session()->get('added');
             $userID     = session()->get('userid');
             $adminID    = session()->get('id'); 
+
+            if($orderList == null || !isset($orderList)) {
+                $this->db->table('appointments')->set('status', 2)->where('appID', $id)->update();
+                return redirect()->to('/admin/appointments');
+            }
+
             foreach($orderList as $order) { // this just ensures that we have enought items
                 
                 $sqlResult =    $this->db->table('inventory')->where('inventoryID', $order->inventoryID)->
