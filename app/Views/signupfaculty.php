@@ -58,13 +58,14 @@
 
 
 
+
         .input-group.input-group-outline.is-focused .form-label {
-            color: var(--bs-primary) !important;
+            color: var(--bs-dark) !important;
             border-top-color: transparent !important;
         }
 
         .input-group.input-group-outline.is-focused .form-label+.form-control {
-            color: var(--bs-primary) !important;
+            color: var(--bs-dark) !important;
             border-top-color: transparent !important;
         }
 
@@ -73,7 +74,7 @@
         .input-group.input-group-outline.is-filled .form-label+.form-control {
             border-color: var(--bs-success) !important;
             border-top-color: transparent !important;
-            color: var(--bs-success) !important;
+            color: var(--bs-dark) !important;
 
             box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
         }
