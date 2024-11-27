@@ -166,7 +166,7 @@
         }
 
         .text-gradient.text-primary {
-            background-image: linear-gradient(195deg, #bea7af, #1b57d8);
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
         }
 
         .bg-gradient-primary {
@@ -239,8 +239,7 @@
 
         .input-group.input-group-outline.is-focused .form-label+.form-control {
             border-color: var(--bs-success) !important;
-            border-top-color: var(--bs-success) !important;
-            border-width: 2.2px;
+            border-top-color: transparent !important;
             outline: none;
             box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
         }
@@ -249,12 +248,21 @@
 
         .input-group.input-group-outline.is-focused .form-label {
             color: var(--bs-primary) !important;
-            border-color: var(--bs-success) !important;
+            border-top-color: transparent !important;
         }
+
+        .input-group.input-group-outline.is-focused .form-label+.form-control {
+            color: var(--bs-primary) !important;
+            border-top-color: transparent !important;
+        }
+
+
 
         .input-group.input-group-outline.is-filled .form-label+.form-control {
             border-color: var(--bs-success) !important;
             border-top-color: transparent !important;
+            color: var(--bs-success) !important;
+
             box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
         }
 

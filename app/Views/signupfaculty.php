@@ -36,7 +36,88 @@
     <link id="pagestyle" href="<?php echo base_url() ?>/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
 
     <!-- Custom -->
+    <style>
+        .input-group.input-group-outline .form-control {
+            background: none;
+            border: 1px solid var(--bs-primary);
+            border-radius: 0.375rem;
+            border-top-left-radius: 0.375rem !important;
+            border-bottom-left-radius: 0.375rem !important;
+            padding: 0.625rem 0.75rem !important;
+            line-height: 1.3 !important;
+        }
 
+
+
+        .input-group.input-group-outline.is-focused .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: transparent !important;
+            outline: none;
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label {
+            color: var(--bs-primary) !important;
+            border-top-color: transparent !important;
+        }
+
+        .input-group.input-group-outline.is-focused .form-label+.form-control {
+            color: var(--bs-primary) !important;
+            border-top-color: transparent !important;
+        }
+
+
+
+        .input-group.input-group-outline.is-filled .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: transparent !important;
+            color: var(--bs-success) !important;
+
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label:before,
+        .input-group.input-group-outline.is-focused .form-label:after,
+        .input-group.input-group-outline.is-filled .form-label:before,
+        .input-group.input-group-outline.is-filled .form-label:after {
+            border-top-color: var(--bs-success);
+            box-shadow: inset 0 1px var(--bs-success);
+        }
+
+
+        .input-group.input-group-outline.is-focused .form-label,
+        .input-group.input-group-outline.is-filled .form-label {
+            width: 100%;
+            height: 100%;
+            font-size: 0.6875rem !important;
+            color: var(--bs-info);
+            display: flex;
+            line-height: 1.25 !important;
+        }
+
+
+        .input-group.input-group-outline .form-control {
+            background: none;
+            border: 1px solid #1a2dd8;
+            border-radius: 0.375rem;
+            border-top-left-radius: 0.375rem !important;
+            border-bottom-left-radius: 0.375rem !important;
+            padding: 0.625rem 0.75rem !important;
+            line-height: 1.3 !important;
+        }
+
+        .text-gradient.text-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+
+        .bg-gradient-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-300">
