@@ -134,3 +134,5 @@ public/uploads/Dental/*
 !public/uploads/Dental/.gitkeep
 public/uploads/Faculty/*
 !public/uploads/Faculty/.gitkeep
+public/uploads/Profile/*
+!public/upload/Profile/.gitkeep

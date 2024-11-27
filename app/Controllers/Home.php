@@ -205,7 +205,7 @@ class Home extends BaseController
                 'address'   => $fieldmap['address'],
                 'bday'      => $fieldmap['birthdate'],
                 'phone'     => $fieldmap['phone'],
-                'status'    => 1,
+                'status'    => 0,
             ];
 
             $this->db->table('users')->insert($data);

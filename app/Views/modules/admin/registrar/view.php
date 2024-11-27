@@ -57,10 +57,10 @@
                                         <?php echo $app->mname; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
-                                        <?php echo $app->courseABR; ?>
+                                        <?php echo isset($app->courseABR) ? $app->courseABR : 'N/A'; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
-                                        <?php echo $app->year; ?>
+                                        <?php echo isset($app->year) ? $app->year : 'N/A'; ?>
                                     </td>
                                     <td class="ps-0  opacity-7">
                                         <div class="input-group flex-nowrap input-group-outline">
