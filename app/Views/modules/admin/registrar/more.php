@@ -18,7 +18,10 @@
                 <div class="table-responsive">
                     <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2">
 
+                        
+
                         <div class="row mb-3 mt-4">
+
                             <div class="col">
                                 <div class="d-flex flex-row border border-outline-secondary p-2">
                                     <p class="fs-8 text-bold my-0 text-nowrap">User Name:</p>
@@ -118,6 +121,9 @@
 
 
                         <?php } ?>
+
+
+
 
                     </div>
                 </div>

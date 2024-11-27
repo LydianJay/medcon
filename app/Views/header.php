@@ -287,6 +287,28 @@
             display: flex;
             line-height: 1.25 !important;
         }
+
+        /* Checkbox */
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+            background: #000000;
+        }
+
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked, .form-check:not(.form-switch) .form-check-input[type="radio"]:checked {
+            border-color: #025a66;
+        }
+        .form-check-input {
+            appearance: checkbox;
+        }
+        .form-check-input[type="checkbox"]:disabled {
+            background-color: #0dcaf0;
+        }
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"], .form-check:not(.form-switch) .form-check-input[type="radio"] {
+            border: 1px solid #d1d7e1;
+            margin-top: 0.25rem;
+            position: static;
+        }
+
+        
     </style>
 
 </head>

@@ -18,6 +18,17 @@
                 <div class="table-responsive">
                     <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2">
 
+                        <div class="row mb-3">
+
+                            <div class="col-6 mx-auto">
+                                <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
+                                    <img src="<?php echo $profile ?>" class="img-custom" alt="Profile Picture Not Available">
+                                </div>
+                            </div>
+
+
+                        </div>
+
                         <div class="row mb-3 mt-4">
                             <div class="col">
                                 <div class="d-flex flex-row border border-outline-secondary p-2">

@@ -14,17 +14,17 @@
                         <form action="<?php echo site_url('password/update'); ?>" method="post" enctype="multipart/form-data">
                             <div class="row mb-0 mt-4">
                                 <div class="col">
-                                    <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline mb-3 <?php echo isset($address) ? 'is-filled' : '' ?>">
                                         <label class="form-label my-0">New Address</label>
-                                        <input type="text" class="form-control" name="address" required>
+                                        <input type="text" class="form-control" name="address" required value="<?php echo $address ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-0 mt-4">
                                 <div class="col">
-                                    <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline mb-3 <?php echo isset($address) ? 'is-filled' : '' ?>">
                                         <label class="form-label my-0">New Phone</label>
-                                        <input type="text" class="form-control" name="phone" required>
+                                        <input type="text" class="form-control" name="phone" value="<?php echo $phone ?>" required>
                                     </div>
                                 </div>
                             </div>

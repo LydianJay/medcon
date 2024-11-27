@@ -20,8 +20,10 @@ class Account extends BaseController
             return redirect()->to(site_url(''));
         }
 
-        $this->data['current_module']    = $this->data['usermodules']['account'];
-        $this->private_data['msg'] = session()->getFlashdata('msg');
+        $this->data['current_module']       = $this->data['usermodules']['account'];
+        $this->private_data['address']      = session()->get('address');
+        $this->private_data['phone']        = session()->get('phone');
+        $this->private_data['msg']          = session()->getFlashdata('msg');
 
         echo view('header', $this->data);
         echo view('modules/students/account/form', $this->private_data);
