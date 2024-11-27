@@ -38,6 +38,8 @@ class Account extends BaseController
         
         $password   = $this->request->getPost('password');
         $confirm    = $this->request->getPost('confirm');
+        $phone      = $this->request->getPost('phone');
+        $address    = $this->request->getPost('address');
         $old        = hash('sha256', $this->request->getPost('old'));
         $id         = session()->get('id');
         
@@ -54,6 +56,13 @@ class Account extends BaseController
         }
         else {
             $sha256     = hash('sha256', $password);
+
+            $update = [
+                'password' => $sha256,
+                'address' => $address,
+                'phone' => $phone,
+            ];
+            
             $this->getTable('users')->set('password', $sha256)->where('userID', $id)->update();
             session()->setFlashdata('msg', 'Password updated!');
             return redirect()->to(site_url('account'));

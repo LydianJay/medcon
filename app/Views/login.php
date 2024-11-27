@@ -133,6 +133,52 @@
             height: 80px;
             mix-blend-mode: normal;
         }
+
+        .input-group.input-group-outline .form-control {
+            background: none;
+            border: 1px solid var(--bs-primary);
+            border-radius: 0.375rem;
+            border-top-left-radius: 0.375rem !important;
+            border-bottom-left-radius: 0.375rem !important;
+            padding: 0.625rem 0.75rem !important;
+            line-height: 1.3 !important;
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: var(--bs-success) !important;
+            border-width: 2.2px;
+            outline: none;
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+        
+        
+        .input-group.input-group-outline.is-focused .form-label {
+            color: var(--bs-primary)  !important;
+            border-color: var(--bs-success) !important;
+        }
+
+        .input-group.input-group-outline.is-filled .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: transparent !important;
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+        
+       
+        .input-group.input-group-outline.is-focused .form-label:before,
+        .input-group.input-group-outline.is-focused .form-label:after,
+        .input-group.input-group-outline.is-filled .form-label:before,
+        .input-group.input-group-outline.is-filled .form-label:after {
+            border-top-color: var(--bs-success);
+            box-shadow: inset 0 1px var(--bs-success);
+        }
+
+
+        
     </style>
 
 

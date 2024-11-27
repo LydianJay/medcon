@@ -89,12 +89,88 @@
             }
         }
 
-        .bg-gradient-primary {
-            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+
+
+
+        :root {
+            --bs-blue: #63B3ED;
+            --bs-indigo: #596CFF;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #F56565;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #FBD38D;
+            --bs-green: #81E6D9;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-gray-100: #f8f9fa;
+            --bs-gray-200: #f0f2f5;
+            --bs-gray-300: #dee2e6;
+            --bs-gray-400: #ced4da;
+            --bs-gray-500: #adb5bd;
+            --bs-gray-600: #6c757d;
+            --bs-gray-700: #495057;
+            --bs-gray-800: #343a40;
+            --bs-gray-900: #212529;
+            /* --bs-primary: #e91e63; */
+            --bs-primary: #1a2dd8;
+            --bs-secondary: #7b809a;
+            --bs-success: #4CAF50;
+            --bs-info: #1A73E8;
+            --bs-warning: #fb8c00;
+            --bs-danger: #F44335;
+            --bs-light: #f0f2f5;
+            --bs-dark: #344767;
+            --bs-white: #fff;
+            --bs-dark-blue: #1A237E;
+            --bs-primary-rgb: 125, 25, 25;
+            --bs-secondary-rgb: , 128, 154;
+            --bs-success-rgb: 76, 175, 80;
+            --bs-info-rgb: 26, 115, 232;
+            --bs-warning-rgb: 251, 140, 0;
+            --bs-danger-rgb: 244, 67, 53;
+            --bs-light-rgb: 240, 242, 245;
+            --bs-dark-rgb: 52, 71, 103;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-dark-blue-rgb: 26, 35, 126;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-black-rgb: 0, 0, 0;
+            --bs-body-color-rgb: , 128, 154;
+            --bs-body-bg-rgb: 255, 255, 255;
+            --bs-font-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --bs-body-font-family: var(--bs-font-sans-serif);
+            --bs-body-font-size: 1rem;
+            --bs-body-font-weight: 400;
+            --bs-body-line-height: 1.5;
+            --bs-body-color: #7b809a;
+            --bs-body-bg: #fff;
+            --bs-border-width: 1px;
+            --bs-border-style: solid;
+            --bs-border-color: #dee2e6;
+            --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+            --bs-border-radius: 0.375rem;
+            --bs-border-radius-sm: 0.125rem;
+            --bs-border-radius-lg: 0.5rem;
+            --bs-border-radius-xl: 0.75rem;
+            --bs-border-radius-2xl: 1rem;
+            --bs-border-radius-pill: 50rem;
+            --bs-link-color: #272d86;
+            --bs-link-hover-color: #3e6094;
+            --bs-code-color: #d63384;
+            --bs-highlight-bg: #fcf8e3;
         }
 
-        .bg-primary {
-            background-color: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        .text-gradient.text-primary {
+            background-image: linear-gradient(195deg, #bea7af, #1b57d8);
+        }
+
+        .bg-gradient-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
         }
 
         tr.clickable {
@@ -146,6 +222,50 @@
             outline: none;
             width: 35%;
             text-align: center;
+        }
+
+
+        .input-group.input-group-outline .form-control {
+            background: none;
+            border: 1px solid var(--bs-primary);
+            border-radius: 0.375rem;
+            border-top-left-radius: 0.375rem !important;
+            border-bottom-left-radius: 0.375rem !important;
+            padding: 0.625rem 0.75rem !important;
+            line-height: 1.3 !important;
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: var(--bs-success) !important;
+            border-width: 2.2px;
+            outline: none;
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label {
+            color: var(--bs-primary) !important;
+            border-color: var(--bs-success) !important;
+        }
+
+        .input-group.input-group-outline.is-filled .form-label+.form-control {
+            border-color: var(--bs-success) !important;
+            border-top-color: transparent !important;
+            box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
+        }
+
+
+
+        .input-group.input-group-outline.is-focused .form-label:before,
+        .input-group.input-group-outline.is-focused .form-label:after,
+        .input-group.input-group-outline.is-filled .form-label:before,
+        .input-group.input-group-outline.is-filled .form-label:after {
+            border-top-color: var(--bs-success);
+            box-shadow: inset 0 1px var(--bs-success);
         }
     </style>
 

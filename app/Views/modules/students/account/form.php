@@ -7,12 +7,35 @@
                 </div>
             </div>
             <div class="card-body">
-                <p class="h2 text-center mb-2 mt-5">Update Password</p>
-              
+                <p class="h2 text-center mb-2 mt-5">Update Account information</p>
                 <div class="table-responsive">
                     <div class="container-fluid d-flex flex-column justify-content-start border-top p-0 py-2 px-1 mt-2">
 
-                        <form action="<?php echo site_url('password/update'); ?>" method="post">
+                        <form action="<?php echo site_url('password/update'); ?>" method="post" enctype="multipart/form-data">
+                            <div class="row mb-0 mt-4">
+                                <div class="col">
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label my-0">New Address</label>
+                                        <input type="text" class="form-control" name="address" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-0 mt-4">
+                                <div class="col">
+                                    <div class="input-group input-group-outline mb-3">
+                                        <label class="form-label my-0">New Phone</label>
+                                        <input type="text" class="form-control" name="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-0 mt-4">
+                                <div class="col">
+                                    <label class="form-label my-0">Profile Picture <span class="text-secondary opacity-5"> max size: 18mb </span> </label>
+                                    <div class="input-group input-group-outline mb-3">
+                                        <input type="file" class="form-control" name="file" accept="image/*" required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row mb-0 mt-4">
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
@@ -46,11 +69,11 @@
                 </div>
             </div>
             <div class="card-footer border-top border-bottom">
-               
-                
-                
+
+
+
             </div>
-      
+
         </div>
     </div>
 </div>
