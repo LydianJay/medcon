@@ -204,6 +204,17 @@
         .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
             background: var(--bs-info);
         }
+
+        .form-check-input {
+            appearance: checkbox;
+        }
+
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"],
+        .form-check:not(.form-switch) .form-check-input[type="radio"] {
+            border: 1px solid #d1d7e1;
+            margin-top: 0.25rem;
+            position: static;
+        }
     </style>
 
 
