@@ -37,6 +37,87 @@
 
     <!-- Custom -->
     <style>
+        :root {
+            --bs-blue: #63B3ED;
+            --bs-indigo: #596CFF;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #F56565;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #FBD38D;
+            --bs-green: #81E6D9;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-gray-100: #f8f9fa;
+            --bs-gray-200: #f0f2f5;
+            --bs-gray-300: #dee2e6;
+            --bs-gray-400: #ced4da;
+            --bs-gray-500: #adb5bd;
+            --bs-gray-600: #6c757d;
+            --bs-gray-700: #495057;
+            --bs-gray-800: #343a40;
+            --bs-gray-900: #212529;
+            /* --bs-primary: #e91e63; */
+            --bs-primary: #1a2dd8;
+            --bs-secondary: #7b809a;
+            --bs-success: #4CAF50;
+            --bs-info: #1A73E8;
+            --bs-warning: #fb8c00;
+            --bs-danger: #F44335;
+            --bs-light: #f0f2f5;
+            --bs-dark: #344767;
+            --bs-white: #fff;
+            --bs-dark-blue: #1A237E;
+            --bs-primary-rgb: 125, 25, 25;
+            --bs-secondary-rgb: , 128, 154;
+            --bs-success-rgb: 76, 175, 80;
+            --bs-info-rgb: 26, 115, 232;
+            --bs-warning-rgb: 251, 140, 0;
+            --bs-danger-rgb: 244, 67, 53;
+            --bs-light-rgb: 240, 242, 245;
+            --bs-dark-rgb: 52, 71, 103;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-dark-blue-rgb: 26, 35, 126;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-black-rgb: 0, 0, 0;
+            --bs-body-color-rgb: , 128, 154;
+            --bs-body-bg-rgb: 255, 255, 255;
+            --bs-font-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --bs-body-font-family: var(--bs-font-sans-serif);
+            --bs-body-font-size: 1rem;
+            --bs-body-font-weight: 400;
+            --bs-body-line-height: 1.5;
+            --bs-body-color: #7b809a;
+            --bs-body-bg: #fff;
+            --bs-border-width: 1px;
+            --bs-border-style: solid;
+            --bs-border-color: #dee2e6;
+            --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+            --bs-border-radius: 0.375rem;
+            --bs-border-radius-sm: 0.125rem;
+            --bs-border-radius-lg: 0.5rem;
+            --bs-border-radius-xl: 0.75rem;
+            --bs-border-radius-2xl: 1rem;
+            --bs-border-radius-pill: 50rem;
+            --bs-link-color: #272d86;
+            --bs-link-hover-color: #3e6094;
+            --bs-code-color: #d63384;
+            --bs-highlight-bg: #fcf8e3;
+        }
+
+        .text-gradient.text-primary {
+            background-image: linear-gradient(195deg, #bea7af, #1b57d8);
+        }
+
+        .bg-gradient-primary {
+            background-image: linear-gradient(195deg, #405aec 0%, #1b3ed8 100%);
+        }
+
         .input-group.input-group-outline .form-control {
             background: none;
             border: 1px solid var(--bs-primary);
@@ -55,7 +136,6 @@
             outline: none;
             box-shadow: inset 1px 0 var(--bs-success), inset -1px 0 var(--bs-success), inset 0 -1px var(--bs-success);
         }
-
 
 
 
@@ -95,20 +175,29 @@
             width: 100%;
             height: 100%;
             font-size: 0.6875rem !important;
-            color: var(--bs-info);
+            color: var(--bs-dark);
             display: flex;
             line-height: 1.25 !important;
         }
 
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked,
+        .form-check:not(.form-switch) .form-check-input[type="radio"]:checked {
+            border-color: var(--bs-info);
+        }
 
-        .input-group.input-group-outline .form-control {
-            background: none;
-            border: 1px solid #1a2dd8;
-            border-radius: 0.375rem;
-            border-top-left-radius: 0.375rem !important;
-            border-bottom-left-radius: 0.375rem !important;
-            padding: 0.625rem 0.75rem !important;
-            line-height: 1.3 !important;
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+            background: var(--bs-info);
+        }
+
+        .form-check-input {
+            appearance: checkbox;
+        }
+
+        .form-check:not(.form-switch) .form-check-input[type="checkbox"],
+        .form-check:not(.form-switch) .form-check-input[type="radio"] {
+            border: 1px solid #d1d7e1;
+            margin-top: 0.25rem;
+            position: static;
         }
 
         .text-gradient.text-primary {
@@ -229,11 +318,17 @@
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>" required>
+                                            <input type="password" class="form-control" name="password" id="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>" required>
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <label class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" name="confirm" value="<?php echo isset($_SESSION['confirm']) ? $_SESSION['confirm'] : ''  ?>" required>
+                                            <input type="password" class="form-control" name="confirm" id="password2" value="<?php echo isset($_SESSION['confirm']) ? $_SESSION['confirm'] : ''  ?>" required>
+                                        </div>
+                                        <div class="form-check ps-0 mb-3">
+                                            <input class="form-check-input" type="checkbox" name="check" onclick="show_password();">
+                                            <label class="form-check-label">
+                                                Show password
+                                            </label>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>
@@ -259,7 +354,19 @@
     <script src="<?php echo base_url() ?>/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/plugins/smooth-scrollbar.min.js"></script>
 
-
+    <script>
+        function show_password() {
+            var x = document.getElementById("password");
+            var y = document.getElementById("password2");
+            if (x.type === "password") {
+                x.type = "text";
+                y.type = "text";
+            } else {
+                x.type = "password";
+                y.type = "password";
+            }
+        }
+    </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

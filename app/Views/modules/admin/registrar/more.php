@@ -93,7 +93,7 @@
                         <div class="row mb-3 mt-3">
 
                             <div class="col">
-                                <p class="fs-8 text-bold my-0 text-nowrap">COR/School ID:</p>
+                                <p class="fs-8 text-bold my-0 text-nowrap"><?php echo $info->groupID == 1 ? 'School ID' : 'COR' ?></p>
                                 <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
                                     <img src="<?php echo $info->groupID == 1 ? $cor : $img ?>" class="img-fluid" alt="COR/IMG">
                                 </div>
