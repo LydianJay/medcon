@@ -71,20 +71,6 @@
 
 
 
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="d-flex flex-row border border-outline-secondary p-2">
-                                    <p class="fs-8 text-bold my-0 text-nowrap">Course:</p>
-                                    <p class="fs-10 my-0 ms-1 "><?php echo isset($schoolinfo->courseName) ? $schoolinfo->courseName : 'N/A' ?></p>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-flex flex-row border border-outline-secondary p-2">
-                                    <p class="fs-8 text-bold my-0 text-nowrap">Year:</p>
-                                    <p class="fs-10 my-0 ms-1 text-nowrap"><?php echo isset($schoolinfo->year) ? $schoolinfo->year : 'N/A' ?></p>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col">
