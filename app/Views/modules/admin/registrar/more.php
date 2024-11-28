@@ -109,7 +109,7 @@
                             <div class="col">
                                 <p class="fs-8 text-bold my-0 text-nowrap">COR/School ID:</p>
                                 <div class="d-flex flex-row border border-outline-secondary p-2 justify-content-center">
-                                    <img src="<?php echo $cor ?>" class="img-fluid" alt="COR">
+                                    <img src="<?php echo $info->groupID == 1 ? $cor : $img ?>" class="img-fluid" alt="COR/IMG">
                                 </div>
                             </div>
 

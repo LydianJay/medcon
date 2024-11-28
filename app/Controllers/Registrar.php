@@ -30,7 +30,6 @@ class Registrar extends BaseController
     {
         $info = $this->getTable('users')
         ->join('usergroups', 'users.groupID = usergroups.groupID')
-        ->where('level < ', 3)
         ->where('userID', $id)
         ->get()
         ->getResult()[0];
@@ -109,6 +108,7 @@ class Registrar extends BaseController
         $filepath = $this->private_data['info']->fname . $this->private_data['info']->mname . $this->private_data['info']->lname;
         $hash = hash('md5', $filepath);
         $this->private_data['cor'] = base_url('uploads/COR/' . $hash . '.' . 'png');
+        $this->private_data['img'] = base_url('uploads/Faculty/' . $hash . '.' . 'png');
 
         echo view('header', $this->data);
         echo view('modules/admin/registrar/more', $this->private_data);
