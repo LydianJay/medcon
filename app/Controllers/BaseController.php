@@ -185,24 +185,24 @@ abstract class BaseController extends Controller
 
     public function sendSMS($phone, $msg)
     {
-        //  $server_ip = getenv('GSM_SERVER');
-        //  $server_port = 80;
+         $server_ip = getenv('GSM_SERVER');
+         $server_port = 80;
 
-        // $data  = [
-        //      'number' => $phone,
-        //      'msg' => $msg,
-        // ];
-        //  $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        //  if (!$socket) {
-        //      die("Socket creation failed: " . socket_strerror(socket_last_error()));
-        //  }
-        //  $result = socket_connect($socket, $server_ip, $server_port);
-        //  if (!$result) {
-        //      die("Socket connection failed: " . socket_strerror(socket_last_error($socket)));
-        //  }
-        //  $jsonified = json_encode($data);
-        //  socket_write($socket, $jsonified, strlen($jsonified));
-        //  socket_close($socket);
+        $data  = [
+             'number' => $phone,
+             'msg' => $msg,
+        ];
+         $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+         if (!$socket) {
+             die("Socket creation failed: " . socket_strerror(socket_last_error()));
+         }
+         $result = socket_connect($socket, $server_ip, $server_port);
+         if (!$result) {
+             die("Socket connection failed: " . socket_strerror(socket_last_error($socket)));
+         }
+         $jsonified = json_encode($data);
+         socket_write($socket, $jsonified, strlen($jsonified));
+         socket_close($socket);
     }
 
     public function getTable($tableName)
