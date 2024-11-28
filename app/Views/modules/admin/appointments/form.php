@@ -41,19 +41,24 @@
                                 </div>
                                 <div class="col">
                                     <div class="d-flex flex-column border border-outline-secondary p-2">
-                                        <p class="fs-8 text-bold my-0 text-nowrap text-dark mb-2">Designation: </p>
-                                        <div class="form-check ps-0">
-                                            <input class="form-check-input fw-bold opacity-10 text-dark bg-dark" type="checkbox" name="check" <?php echo $current->groupID == 1 ? 'checked' : '' ?> disabled>
-                                            <label class="form-check-label fw-bold opacity-10 text-dark">
-                                                Student
-                                            </label>
+                                        <p class="fs-8 text-bold my-0 text-nowrap text-dark mb-2 ms-2">Designation: </p>
+
+                                        <div class="d-flex flex-row container-fluid justify-content-start">
+                                            <div class="form-check ps-0 me-3">
+                                                <input class="form-check-input fw-bold opacity-10 text-dark bg-dark" type="checkbox" name="check" <?php echo $current->groupID == 1 ? 'checked' : '' ?> disabled>
+                                                <label class="form-check-label fw-bold opacity-10 text-dark">
+                                                    Student
+                                                </label>
+                                            </div>
+                                            <div class="form-check ps-0">
+                                                <input class="form-check-input fw-bold opacity-10 text-dark" type="checkbox" name="check" <?php echo $current->groupID != 1 ? 'checked' : '' ?> disabled>
+                                                <label class="form-check-label fw-bold opacity-10 text-dark">
+                                                    Faculty
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="form-check ps-0">
-                                            <input class="form-check-input fw-bold opacity-10 text-dark" type="checkbox" name="check" <?php echo $current->groupID != 1 ? 'checked' : '' ?> disabled>
-                                            <label class="form-check-label fw-bold opacity-10 text-dark">
-                                                Faculty
-                                            </label>
-                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
