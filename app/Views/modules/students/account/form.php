@@ -56,7 +56,7 @@
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">Old Password</label>
-                                        <input type="password" class="form-control" name="old" required>
+                                        <input type="password" class="form-control" name="old" id="password3" required>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">New Password</label>
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="password" class="form-control" name="password" id="password2" required>
                                     </div>
                                 </div>
                             </div>
@@ -73,9 +73,15 @@
                                 <div class="col">
                                     <div class="input-group input-group-outline mb-3">
                                         <label class="form-label my-0">Confirm New Password</label>
-                                        <input type="password" class="form-control" name="confirm" required>
+                                        <input type="password" class="form-control" name="confirm" id="password" required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-check ps-0 mb-3">
+                                <input class="form-check-input" type="checkbox" name="check" onclick="show_password();">
+                                <label class="form-check-label">
+                                    Show password
+                                </label>
                             </div>
                             <div class="d-flex flex-row justify-content-center">
                                 <button type="submit" class="btn btn-success btm-sm">Update</button>
